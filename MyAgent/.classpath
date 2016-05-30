@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/jade-4.4.0.jar" sourcepath="lib/jade/src"/>
 	<classpathentry kind="lib" path="lib/java-json.jar"/>
+	<classpathentry kind="lib" path="lib/antworld.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

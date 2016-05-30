@@ -9,13 +9,13 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
-
-import java.util.Iterator;
-
 import main.java.gui.DwarfVisualCenter;
+import main.java.utils.AgentUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import de.aim.antworld.agent.AntWorldConsts;
 
 public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
@@ -55,50 +55,50 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 				ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 				msg.setSender(getAID());
 
-				// try {
-				// hlp = (TopicManagementHelper)
-				// getHelper(TopicManagementHelper.SERVICE_NAME);
-				// antServiceTopic = hlp.createTopic("antWorld2016");
-				// } catch (ServiceException e1) {
-				// System.out.println("Topic not found! " +
-				// e1.getStackTrace().toString());
-				// }
-
 				try {
-					System.out.println("searching for agents...");
-					// create filter for service1
+					System.out.println("\n------------------------------");
+					System.out.println("Searching for agents...");
+
+					System.out.println("---Set filter: " + AntWorldConsts.SEVICE_NAME + " for search.");
 					ServiceDescription filter = new ServiceDescription();
-					filter.setType("antWorld2016");
+					filter.setType(AntWorldConsts.SEVICE_NAME);
 					DFAgentDescription dfd = new DFAgentDescription();
 					dfd.addServices(filter);
-					// search for agents and services
+
+					System.out.println("---Search started...");
 					DFAgentDescription[] results = DFService.search(myAgent, dfd);
+
 					for (int i = 0; i < results.length; ++i) {
-						System.out.println(results[i].getName().getLocalName() + ":");
-						Iterator it = results[i].getAllServices();
-						while (it.hasNext()) {
-							ServiceDescription sd = (ServiceDescription) it.next();
-							System.out.println(" - " + sd.getName());
-							antWorldGameLeaderAID = new AID("sd.getOwnership()", AID.ISLOCALNAME);
+						System.out.println("---" + results[i].getName().getLocalName() + ":");
+						if (AgentUtils.containsString(results[i].getName().getLocalName(), "antWorld")) {
+							antWorldGameLeaderAID = new AID(results[i].getName().getLocalName(), AID.ISLOCALNAME);
+							System.out.println("---GameLeaderAgent found: " + antWorldGameLeaderAID.getLocalName());
+							break;
 						}
 					}
-					System.out.println();
+					if (antWorldGameLeaderAID == null) {
+						System.out.println("---No GameLeaderAgent found!");
+					}
 				} catch (Exception e) {
 					System.out.println("GameLeaderAgent not found! " + e.getStackTrace().toString());
 				}
+				System.out.println("Searching for agents finished!");
+				System.out.println("------------------------------\n");
 
 				msg.addReceiver(antWorldGameLeaderAID);
+				// msg.setInReplyTo(AntWorldConsts.SEVICE_NAME);
 				msg.setReplyWith("request");
 
 				try {
 					obj = new JSONObject();
-					obj.put("color", "ANT_COLOR_GREEN");
+					msg.setEncoding("JSON");
+					obj.put("color", AntWorldConsts.ANT_COLOR_GREEN);
 					obj.put("type", "ANT_ACTION_LOGIN");
-				} catch (JSONException e) {
-					System.out.println("JSON message can not be generated! " + e.getStackTrace().toString());
+				} catch (JSONException je) {
+					System.out.println("JSON message can not be generated! " + je.getStackTrace().toString());
 				}
 				if (obj != null && antWorldGameLeaderAID != null) {
-					System.out.println(obj.toString());
+					System.out.println("Login message: " + obj.toString() + "\n");
 					msg.setContent(obj.toString());
 					send(msg);
 				}
