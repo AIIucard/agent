@@ -1,5 +1,9 @@
 package main.java.agent;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -11,11 +15,6 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import main.java.gui.DwarfVisualCenter;
 import main.java.utils.AgentUtils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import de.aim.antworld.agent.AntWorldConsts;
 
 public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
@@ -87,11 +86,11 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 				msg.addReceiver(antWorldGameLeaderAID);
 				// msg.setInReplyTo(AntWorldConsts.SEVICE_NAME);
-				msg.setReplyWith("request");
+				// msg.setReplyWith("request");
 
 				try {
 					obj = new JSONObject();
-					msg.setEncoding("JSON");
+					msg.setLanguage("JSON");
 					obj.put("color", AntWorldConsts.ANT_COLOR_GREEN);
 					obj.put("type", "ANT_ACTION_LOGIN");
 				} catch (JSONException je) {
@@ -100,6 +99,7 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 				if (obj != null && antWorldGameLeaderAID != null) {
 					System.out.println("Login message: " + obj.toString() + "\n");
 					msg.setContent(obj.toString());
+					System.out.println("\n" + "message: " + msg.toString() + "\n");
 					send(msg);
 				}
 
