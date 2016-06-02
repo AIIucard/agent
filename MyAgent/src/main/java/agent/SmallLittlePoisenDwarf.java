@@ -1,11 +1,13 @@
 package main.java.agent;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
-import jade.core.messaging.TopicManagementHelper;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -16,14 +18,16 @@ import main.java.utils.DwarfUtils;
 public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
 
+	private static Logger log = Logger.getLogger(SmallLittlePoisenDwarf.class.getName());
+
 	private String name;
 	private DwarfVisualCenter dwarfVisualCenter;
 	// "%-5p [%-20C%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"
-	private TopicManagementHelper hlp;
 	private AID antWorldGameLeaderAID;
 
 	@Override
 	protected void setup() {
+		PropertyConfigurator.configure("C:/Users/Atze/git/agent/MyAgent/src/log4j.properties");
 		name = getLocalName();
 		dwarfVisualCenter = DwarfVisualCenter.getInstance();
 
@@ -80,7 +84,7 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 				// create and config message
 				if (antWorldGameLeaderAID != null) {
-					ACLMessage msg = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
+					ACLMessage msg = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID(), log);
 					if (msg != null) {
 						send(msg);
 					}

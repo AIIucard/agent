@@ -9,13 +9,12 @@ import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 
 public class DwarfUtils {
-	private static Logger log = Logger.getLogger(DwarfUtils.class);
 
 	public static boolean containsString(String s, String subString) {
 		return s.indexOf(subString) > -1 ? true : false;
 	}
 
-	public static ACLMessage createLoginMessage(AID receiver, AID sender) {
+	public static ACLMessage createLoginMessage(AID receiver, AID sender, Logger log) {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		msg.setSender(sender);
