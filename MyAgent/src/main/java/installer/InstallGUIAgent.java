@@ -8,25 +8,20 @@ import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
-import main.java.agent.SmallLittlePoisenDwarf;
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
 
-public class InstallAgent {
+public class InstallGUIAgent {
 
 	protected static SmallLittlePoisenDwarfWithGUI dwarfVisualCenter;
 	protected static AgentController agentController;
 	protected static AgentContainer container;
 	protected static String agentName;
 
-	private static Logger log = Logger.getLogger(SmallLittlePoisenDwarf.class.getName());
+	private static Logger log = Logger.getLogger(InstallGUIAgent.class.getName());
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
-		log.info("Install Agent with random name...");
-		installAgentWithRandomName(args);
-	}
-
-	public static void installAgentWithSpecificName(String name, String[] args) {
+		log.info("Install gui agent...");
 		try {
 			String host = "localhost";
 			int port = -1; // default port = 1099
@@ -38,24 +33,15 @@ public class InstallAgent {
 
 			container = runtime.createAgentContainer(profile);
 
-			if (name == null || name.equals("")) {
-				// agentName = "smallLittlePoisenDwarf" +
-				// (dwarfVisualCenter.getAgents().size() + 1);
+			if (args == null || args.length == 0 || args.equals("")) {
+				agentName = "smallLittlePoisenDwarfWithGUI";
 			} else {
-				agentName = name;
+				agentName = args[0];
 			}
-			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarf.class.getName(), args);
+			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarfWithGUI.class.getName(), args);
 			agentController.start();
-
-			// dwarfVisualCenter = SmallLittlePoisenDwarfWithGUI.getInstance();
-			// dwarfVisualCenter.installAgent("smallLittlePoisenDwarf",
-			// agentController);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Install exception: " + e.toString());
 		}
-	}
-
-	public static void installAgentWithRandomName(String[] args) {
-		installAgentWithSpecificName("", args);
 	}
 }

@@ -12,7 +12,6 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
-import main.java.gui.DwarfVisualCenter;
 import main.java.utils.DwarfUtils;
 
 public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
@@ -21,7 +20,6 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static Logger log = Logger.getLogger(SmallLittlePoisenDwarf.class.getName());
 
 	private String name;
-	private DwarfVisualCenter dwarfVisualCenter;
 	// "%-5p [%-20C%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"
 	private AID antWorldGameLeaderAID;
 
@@ -29,22 +27,6 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	protected void setup() {
 		PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
 		name = getLocalName();
-		dwarfVisualCenter = DwarfVisualCenter.getInstance();
-
-		// Location loc = here();
-		//
-		// // some info about me
-		// System.out.println(name + ": my local name is " + name);
-		// System.out.println(name + ": my global name is " + getName());
-		// System.out.println(name + ": my state is " + getAgentState());
-		// // some info about my location
-		// System.out.println(name + ": my location is " + loc.getName());
-		// System.out.println(name + ": the id of my location is " +
-		// loc.getID());
-		// System.out.println(name + ": the address of my location is "
-		// + loc.getAddress());
-		// System.out.println(name + ": the protocol of the location is "
-		// + loc.getProtocol());
 
 		addBehaviour(new OneShotBehaviour() {
 			private static final long serialVersionUID = 1L;
@@ -112,6 +94,6 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 	@Override
 	protected void takeDown() {
-		dwarfVisualCenter.getAgents().remove(name);
+		// dwarfVisualCenter.getAgents().remove(name);
 	};
 }
