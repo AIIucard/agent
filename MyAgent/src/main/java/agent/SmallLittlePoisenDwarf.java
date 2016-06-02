@@ -27,7 +27,7 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 	@Override
 	protected void setup() {
-		PropertyConfigurator.configure("C:/Users/Atze/git/agent/MyAgent/src/log4j.properties");
+		PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
 		name = getLocalName();
 		dwarfVisualCenter = DwarfVisualCenter.getInstance();
 
