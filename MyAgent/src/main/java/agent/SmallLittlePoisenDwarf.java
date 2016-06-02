@@ -1,8 +1,5 @@
 package main.java.agent;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.core.Agent;
@@ -14,14 +11,14 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import main.java.gui.DwarfVisualCenter;
-import main.java.utils.AgentUtils;
+import main.java.utils.DwarfUtils;
 
 public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
 	private DwarfVisualCenter dwarfVisualCenter;
-	private JSONObject obj;
+	// "%-5p [%-20C%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"
 	private TopicManagementHelper hlp;
 	private AID antWorldGameLeaderAID;
 
@@ -50,9 +47,6 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 			@Override
 			public void action() {
-				// create and config message
-				ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
-				msg.setSender(getAID());
 
 				try {
 					System.out.println("\n------------------------------");
@@ -69,7 +63,7 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 					for (int i = 0; i < results.length; ++i) {
 						System.out.println("---" + results[i].getName().getLocalName() + ":");
-						if (AgentUtils.containsString(results[i].getName().getLocalName(), "antWorld")) {
+						if (DwarfUtils.containsString(results[i].getName().getLocalName(), "antWorld")) {
 							antWorldGameLeaderAID = new AID(results[i].getName().getLocalName(), AID.ISLOCALNAME);
 							System.out.println("---GameLeaderAgent found: " + antWorldGameLeaderAID.getLocalName());
 							break;
@@ -84,25 +78,13 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 				System.out.println("Searching for agents finished!");
 				System.out.println("------------------------------\n");
 
-				msg.addReceiver(antWorldGameLeaderAID);
-				// msg.setInReplyTo(AntWorldConsts.SEVICE_NAME);
-				// msg.setReplyWith("request");
-
-				try {
-					obj = new JSONObject();
-					msg.setLanguage("JSON");
-					obj.put("color", AntWorldConsts.ANT_COLOR_GREEN);
-					obj.put("type", "ANT_ACTION_LOGIN");
-				} catch (JSONException je) {
-					System.out.println("JSON message can not be generated! " + je.getStackTrace().toString());
+				// create and config message
+				if (antWorldGameLeaderAID != null) {
+					ACLMessage msg = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
+					if (msg != null) {
+						send(msg);
+					}
 				}
-				if (obj != null && antWorldGameLeaderAID != null) {
-					System.out.println("Login message: " + obj.toString() + "\n");
-					msg.setContent(obj.toString());
-					System.out.println("\n" + "message: " + msg.toString() + "\n");
-					send(msg);
-				}
-
 			}
 		});
 		addBehaviour(new CyclicBehaviour(this) {
