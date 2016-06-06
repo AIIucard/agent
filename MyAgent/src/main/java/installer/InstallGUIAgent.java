@@ -20,7 +20,7 @@ public class InstallGUIAgent {
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	public static void main(String[] args) {
-		log.info("Install gui agent...");
+		log.info("Install GUIAgent...");
 		try {
 			String host = "localhost";
 			int port = -1; // default port = 1099
@@ -33,17 +33,17 @@ public class InstallGUIAgent {
 			container = runtime.createAgentContainer(profile);
 
 			if (args == null || args.length == 0 || args.equals("")) {
-				log.info("Install gui agent with name smallLittlePoisenDwarfWithGUI.");
+				log.info("Install GUIAgent with name smallLittlePoisenDwarfWithGUI.");
 				agentName = "smallLittlePoisenDwarfWithGUI";
 			} else {
-				log.info("Install gui agent with name {}.", args[0]);
+				log.info("Install GUIAgent with name {}.", args[0]);
 				agentName = args[0];
 			}
 			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarfWithGUI.class.getName(), args);
 			agentController.start();
-			log.info("Gui agent installed.");
+			log.info("GUIAgent installed.");
 		} catch (Exception e) {
-			log.error("Install exception: " + e.toString());
+			log.error("GUIAgent installation exception: " + e.toString());
 		}
 	}
 }
