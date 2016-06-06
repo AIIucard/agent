@@ -1,9 +1,5 @@
 package main.java.agent;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
-import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -14,10 +10,15 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import main.java.utils.DwarfUtils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.aim.antworld.agent.AntWorldConsts;
+
 public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
 
-	private static Logger log = Logger.getLogger(SmallLittlePoisenDwarf.class.getName());
+	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	private String name;
 	// "%-5p [%-20C%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"
@@ -25,7 +26,7 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 	@Override
 	protected void setup() {
-		PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
+		// PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
 		name = getLocalName();
 
 		addBehaviour(new OneShotBehaviour() {
@@ -35,38 +36,38 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 			public void action() {
 
 				try {
-					System.out.println("\n------------------------------");
-					System.out.println("Searching for agents...");
+					log.info("\n------------------------------");
+					log.info("Searching for agents...");
 
-					System.out.println("---Set filter: " + AntWorldConsts.SEVICE_NAME + " for search.");
+					log.info("---Set filter: " + AntWorldConsts.SEVICE_NAME + " for search.");
 					ServiceDescription filter = new ServiceDescription();
 					filter.setType(AntWorldConsts.SEVICE_NAME);
 					DFAgentDescription dfd = new DFAgentDescription();
 					dfd.addServices(filter);
 
-					System.out.println("---Search started...");
+					log.info("---Search started...");
 					DFAgentDescription[] results = DFService.search(myAgent, dfd);
 
 					for (int i = 0; i < results.length; ++i) {
-						System.out.println("---" + results[i].getName().getLocalName() + ":");
+						log.info("---" + results[i].getName().getLocalName() + ":");
 						if (DwarfUtils.containsString(results[i].getName().getLocalName(), "antWorld")) {
 							antWorldGameLeaderAID = new AID(results[i].getName().getLocalName(), AID.ISLOCALNAME);
-							System.out.println("---GameLeaderAgent found: " + antWorldGameLeaderAID.getLocalName());
+							log.info("---GameLeaderAgent found: " + antWorldGameLeaderAID.getLocalName());
 							break;
 						}
 					}
 					if (antWorldGameLeaderAID == null) {
-						System.out.println("---No GameLeaderAgent found!");
+						log.error("---No GameLeaderAgent found!");
 					}
 				} catch (Exception e) {
-					System.out.println("GameLeaderAgent not found! " + e.getStackTrace().toString());
+					log.error("GameLeaderAgent not found! " + e.getStackTrace().toString());
 				}
-				System.out.println("Searching for agents finished!");
-				System.out.println("------------------------------\n");
+				log.info("Searching for agents finished!");
+				log.info("------------------------------\n");
 
 				// create and config message
 				if (antWorldGameLeaderAID != null) {
-					ACLMessage msg = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID(), log);
+					ACLMessage msg = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
 					if (msg != null) {
 						send(msg);
 					}
@@ -81,7 +82,7 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 				ACLMessage msg = receive();
 				if (msg != null) {
 					doWait(5000);
-					System.out.println("Receive message:\n" + msg + "\n");
+					log.info("Receive message:\n" + msg + "\n");
 					// ACLMessage reply = msg.createReply();
 					// reply.setReplyWith("reply of " + msg.getReplyWith());
 					// send(reply);

@@ -1,14 +1,14 @@
 package main.java.installer;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class InstallGUIAgent {
 
@@ -17,10 +17,9 @@ public class InstallGUIAgent {
 	protected static AgentContainer container;
 	protected static String agentName;
 
-	private static Logger log = Logger.getLogger(InstallGUIAgent.class.getName());
+	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	public static void main(String[] args) {
-		PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
 		log.info("Install gui agent...");
 		try {
 			String host = "localhost";
@@ -34,12 +33,15 @@ public class InstallGUIAgent {
 			container = runtime.createAgentContainer(profile);
 
 			if (args == null || args.length == 0 || args.equals("")) {
+				log.info("Install gui agent with name smallLittlePoisenDwarfWithGUI.");
 				agentName = "smallLittlePoisenDwarfWithGUI";
 			} else {
+				log.info("Install gui agent with name {}.", args[0]);
 				agentName = args[0];
 			}
 			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarfWithGUI.class.getName(), args);
 			agentController.start();
+			log.info("Gui agent installed.");
 		} catch (Exception e) {
 			log.error("Install exception: " + e.toString());
 		}

@@ -1,13 +1,14 @@
 package main.java.agent;
 
-import java.util.HashMap;
-
-import javax.swing.JFrame;
-
 import jade.core.Profile;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.wrapper.AgentController;
+
+import java.util.HashMap;
+
+import javax.swing.JFrame;
+
 import main.java.gui.DwarfVisualCenter;
 
 public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
@@ -20,6 +21,7 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 
 	@Override
 	public void setup() {
+		
 		dwarfVisualCenter = new DwarfVisualCenter();
 		dwarfVisualCenter.setVisible(true);
 		agents = new HashMap<String, AgentController>();

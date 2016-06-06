@@ -1,8 +1,5 @@
 package main.java.installer;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -11,6 +8,9 @@ import jade.wrapper.AgentController;
 import main.java.agent.SmallLittlePoisenDwarf;
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class InstallAgent {
 
 	protected static SmallLittlePoisenDwarfWithGUI dwarfVisualCenter;
@@ -18,10 +18,10 @@ public class InstallAgent {
 	protected static AgentContainer container;
 	protected static String agentName;
 
-	private static Logger log = Logger.getLogger(SmallLittlePoisenDwarf.class.getName());
+	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	public static void main(String args[]) {
-		PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
+		// PropertyConfigurator.configure("./src/main/java/cfg/log4j.properties");
 		log.info("Install Agent with random name...");
 		installAgentWithRandomName(args);
 	}

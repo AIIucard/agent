@@ -1,20 +1,24 @@
 package main.java.utils;
 
-import org.apache.log4j.Logger;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.aim.antworld.agent.AntWorldConsts;
+
 public class DwarfUtils {
+
+	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	public static boolean containsString(String s, String subString) {
 		return s.indexOf(subString) > -1 ? true : false;
 	}
 
-	public static ACLMessage createLoginMessage(AID receiver, AID sender, Logger log) {
+	public static ACLMessage createLoginMessage(AID receiver, AID sender) {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		msg.setSender(sender);
