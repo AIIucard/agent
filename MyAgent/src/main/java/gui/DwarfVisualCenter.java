@@ -16,6 +16,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import main.java.agent.SmallLittlePoisenDwarfWithGUI;
 import main.java.jSwingComponentMenuTree.ComponentTreeNode;
 import main.java.jSwingComponentMenuTree.DwarfTreeCellEditor;
 import main.java.jSwingComponentMenuTree.TreeButtonUtils;
@@ -32,17 +33,18 @@ public class DwarfVisualCenter extends JFrame {
 	private JTabbedPane tabbedPane;
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 	private JTree agentSettingsTree;
+	private SmallLittlePoisenDwarfWithGUI owner;
 	private static final String agentSettingsTreeRootNodeLabelEditor = "Agenten";
 
-	public DwarfVisualCenter() {
+	public DwarfVisualCenter(SmallLittlePoisenDwarfWithGUI owner) {
+		this.owner = owner;
 		setTitle("DwarfVisualCenter");
 		this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-		// setSize(800, 400);
-		// setLocationRelativeTo(null);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
+				killGUIAgent();
 			}
 		});
 
@@ -56,6 +58,10 @@ public class DwarfVisualCenter extends JFrame {
 
 		log.info("Creation of dwarf visual center finished.");
 		setVisible(true);
+	}
+
+	private void killGUIAgent() {
+		owner.shutDownAgent();
 	}
 
 	private JComponent createMapEditor() {

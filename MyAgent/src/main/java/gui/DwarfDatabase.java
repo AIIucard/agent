@@ -17,6 +17,11 @@ public class DwarfDatabase {
 		mapLocations = new MapLocation[15][15];
 	}
 
+	public void insertLocation() {
+		// TODO
+		mapLocations[0][0] = null;
+	}
+
 	public HashMap<String, AgentController> getAgents() {
 		return agents;
 	}

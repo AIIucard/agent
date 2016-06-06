@@ -3,6 +3,7 @@ package main.java.agent;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.wrapper.AgentContainer;
+import jade.wrapper.StaleProxyException;
 
 import javax.swing.JFrame;
 
@@ -28,8 +29,7 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 		dwarfDatabase = new DwarfDatabase();
 
 		log.info("Install GUI in GUIAgent...");
-		dwarfVisualCenter = new DwarfVisualCenter();
-		dwarfVisualCenter.setVisible(true);
+		dwarfVisualCenter = new DwarfVisualCenter(this);
 
 		log.info("Install AgentContainer in GUIAgent...");
 		installAgentContainer(this.getContainerController());
@@ -39,6 +39,16 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 	protected void onGuiEvent(GuiEvent ev) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void shutDownAgent() {
+		try {
+			log.info("Shut down GUIAgent...");
+			getContainerController().kill();
+		} catch (StaleProxyException e) {
+			// TODO Auto-generated catch block
+			log.error("Error in shut down process {}", e.getStackTrace().toString());
+		}
 	}
 
 	public void installAgentContainer(AgentContainer agentContainer) {

@@ -9,12 +9,12 @@ public class MapEditor extends JComponent {
 	private static final long serialVersionUID = 1L;
 
 	public MapEditor() {
-
+		// TODO
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		//
+		// TODO
 	}
 
 }

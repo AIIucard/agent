@@ -5,6 +5,7 @@
 package main.java.jSwingComponentMenuTree;
 
 public enum MenuOptionCaption {
+	// TODO
 	// Pallet
 	GOODS_RECEIPT_PAL_INFEED_PIG01SP11("Wareneingang PIG01SP11"), //
 	GOODS_RECEIPT_PAL_CONTOUR_CHECK_PIG01IP12("Wareneingang Konturenkontrolle PIG01IP12"), //
