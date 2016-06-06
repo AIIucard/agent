@@ -1,7 +1,7 @@
 <configuration>
   
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-    <file>${application.home:-.}/log/AgentLog.log</file>
+    <file>log/AgentLog.log</file>
     <append>true</append>
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -17,6 +17,8 @@
       <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
     </encoder>
   </appender>
+  
+  afdafadga
   
   <root level="DEBUG">
     <appender-ref ref="STDOUT" />
