@@ -19,8 +19,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
 import main.java.jSwingComponentMenuTree.ComponentTreeNode;
 import main.java.jSwingComponentMenuTree.DwarfTreeCellEditor;
+import main.java.jSwingComponentMenuTree.MenuOptionCaption;
+import main.java.jSwingComponentMenuTree.NodeComponentButtonCaption;
 import main.java.jSwingComponentMenuTree.TreeButtonUtils;
 import main.java.jSwingComponentMenuTree.TreeNodeRenderer;
+import main.java.jSwingComponentMenuTree.TreeUtils;
 import main.java.map.MapEditor;
 
 import org.slf4j.Logger;
@@ -90,14 +93,24 @@ public class DwarfVisualCenter extends JFrame {
 			}
 
 		});
+		// ##### Tree root
 		DefaultMutableTreeNode agentSettingsTreeRootNode = new DefaultMutableTreeNode(
-				TreeButtonUtils.createLabelledComponent(agentSettingsTreeRootNodeLabelEditor, save, 100, 150));
-		DefaultMutableTreeNode menuOptionNode = new DefaultMutableTreeNode("Test 1");
-		ComponentTreeNode propertiesNode = new ComponentTreeNode(TreeButtonUtils.createLabelledComponent("TestButton1",
-				new JButton("Temp")), false);
-		menuOptionNode.add(propertiesNode);
-		agentSettingsTreeRootNode.add(menuOptionNode);
+				TreeUtils.createLabelledComponent(agentSettingsTreeRootNodeLabelEditor, save, 100, 150));
 
+		// ##### MenuOption Installation start
+		DefaultMutableTreeNode menuOptionNode = new DefaultMutableTreeNode(MenuOptionCaption.INSTALLATION);
+
+		// ----- Install new Agent
+		JButton newAgentButton = new JButton(NodeComponentButtonCaption.INSTALL_NEW_AGENT.getButtonLabel());
+		newAgentButton.addActionListener(TreeButtonUtils.createInstallationAction(owner));
+		ComponentTreeNode propertiesNode = new ComponentTreeNode(TreeUtils.createLabelledComponent("Installation",
+				newAgentButton), false);
+		menuOptionNode.add(propertiesNode);
+
+		agentSettingsTreeRootNode.add(menuOptionNode);
+		// ##### MenuOption Installation end
+
+		// ##### Create tree
 		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(agentSettingsTreeRootNode);
 		agentSettingsTree = new JTree(agentSettingsTreeRootNodeWithButtons);
 		JPanel panel = new JPanel();

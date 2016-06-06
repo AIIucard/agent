@@ -24,7 +24,7 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 
 	@Override
 	public void setup() {
-
+		log.info("Start GUIAgent...");
 		log.info("Install Database in GUIAgent...");
 		dwarfDatabase = new DwarfDatabase();
 
@@ -33,6 +33,7 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 
 		log.info("Install AgentContainer in GUIAgent...");
 		installAgentContainer(this.getContainerController());
+		log.info("GUIAgent started.");
 	}
 
 	@Override
@@ -45,14 +46,14 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 		try {
 			log.info("Shut down GUIAgent...");
 			getContainerController().kill();
+			doDelete();
 		} catch (StaleProxyException e) {
-			// TODO Auto-generated catch block
 			log.error("Error in shut down process {}", e.getStackTrace().toString());
 		}
 	}
 
 	public void installAgentContainer(AgentContainer agentContainer) {
-		dwarfDatabase.setAgentContainer(agentContainer);
+		getDwarfDatabase().setAgentContainer(agentContainer);
 	}
 
 	public JFrame getWindow() {
@@ -61,5 +62,9 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 
 	public void setWindow(JFrame window) {
 		this.dwarfVisualCenter = window;
+	}
+
+	public DwarfDatabase getDwarfDatabase() {
+		return dwarfDatabase;
 	}
 }

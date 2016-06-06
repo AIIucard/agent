@@ -11,10 +11,12 @@ public class DwarfDatabase {
 	private HashMap<String, AgentController> agents;
 	private AgentContainer agentContainer;
 	private MapLocation[][] mapLocations;
+	private int agentCounter;
 
 	public DwarfDatabase() {
 		agents = new HashMap<String, AgentController>();
 		mapLocations = new MapLocation[15][15];
+		agentCounter = 0;
 	}
 
 	public void insertLocation() {
@@ -38,4 +40,16 @@ public class DwarfDatabase {
 		this.agentContainer = agentContainer;
 	}
 
+	public int getAgentCounter() {
+		return agentCounter;
+	}
+
+	public void incrementAgentCounter() {
+		agentCounter = agentCounter + 1;
+	}
+
+	public void decrementAgentCounter() {
+		if (agentCounter > 0)
+			agentCounter = agentCounter - 1;
+	}
 }

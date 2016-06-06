@@ -4,55 +4,23 @@
 
 package main.java.jSwingComponentMenuTree;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import main.java.agent.SmallLittlePoisenDwarfWithGUI;
+import main.java.installer.AgentInstaller;
 
 public class TreeButtonUtils {
 
-	public static JPanel createLabelledComponent(String caption, JComponent component) {
-		return createLabelledComponent(caption, component, 125, 125);
-	}
+	public static ActionListener createInstallationAction(SmallLittlePoisenDwarfWithGUI owner) {
+		ActionListener action = new ActionListener() {
 
-	public static JPanel createLabelledComponent(String caption, JComponent component, int labelWidth, int textWidth) {
-		JLabel label = new JLabel(caption);
-		label.setPreferredSize(new Dimension(labelWidth, 20));
-		component.setPreferredSize(new Dimension(textWidth, 20));
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		panel.add(label, BorderLayout.WEST);
-		panel.add(component, BorderLayout.EAST);
-		return panel;
-	}
-
-	public static JPanel createLabelledComponent(String caption, JComponent component, int labelWidth, int textHeight,
-			int textWidth) {
-		JLabel label = new JLabel(caption);
-		label.setPreferredSize(new Dimension(labelWidth, 20));
-		component.setPreferredSize(new Dimension(textWidth, textHeight));
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		panel.add(label, BorderLayout.WEST);
-		panel.add(component, BorderLayout.EAST);
-		return panel;
-	}
-
-	public static JPanel createLabelledScrollableComponent(String caption, JComponent component, int labelWidth,
-			int textHeight, int textWidth) {
-		JLabel label = new JLabel(caption);
-		label.setPreferredSize(new Dimension(labelWidth, 20));
-		JPanel panel = new JPanel();
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setPreferredSize(new Dimension(textWidth, textHeight));
-		scrollPane.getViewport().setView(component);
-		panel.setLayout(new BorderLayout());
-		panel.add(label, BorderLayout.WEST);
-		panel.add(scrollPane, BorderLayout.EAST);
-		return panel;
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AgentInstaller.installAgentWithRandomName(owner);
+			}
+		};
+		return action;
 	}
 
 }
