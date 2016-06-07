@@ -1,12 +1,12 @@
 package main.java.installer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.agent.SmallLittlePoisenDwarf;
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AgentInstaller {
 
@@ -30,6 +30,8 @@ public class AgentInstaller {
 			}
 			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarf.class.getName(), null);
 			agentController.start();
+			owner.getDwarfDatabase().installAgent(agentName, agentController);
+			owner.updateGUI();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

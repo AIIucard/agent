@@ -1,10 +1,9 @@
 package main.java.gui;
 
-import jade.wrapper.AgentContainer;
-import jade.wrapper.AgentController;
-
 import java.util.HashMap;
 
+import jade.wrapper.AgentContainer;
+import jade.wrapper.AgentController;
 import main.java.map.MapLocation;
 
 public class DwarfDatabase {
@@ -21,7 +20,7 @@ public class DwarfDatabase {
 
 	public void insertLocation() {
 		// TODO
-		mapLocations[0][0] = null;
+		getMapLocations()[0][0] = null;
 	}
 
 	public HashMap<String, AgentController> getAgents() {
@@ -51,5 +50,9 @@ public class DwarfDatabase {
 	public void decrementAgentCounter() {
 		if (agentCounter > 0)
 			agentCounter = agentCounter - 1;
+	}
+
+	public MapLocation[][] getMapLocations() {
+		return mapLocations;
 	}
 }

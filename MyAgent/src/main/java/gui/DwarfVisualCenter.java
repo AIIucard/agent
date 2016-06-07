@@ -1,8 +1,6 @@
 package main.java.gui;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -13,8 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTree;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
 import main.java.jSwingComponentMenuTree.ComponentTreeNode;
@@ -23,20 +26,25 @@ import main.java.jSwingComponentMenuTree.MenuOptionCaption;
 import main.java.jSwingComponentMenuTree.NodeComponentButtonCaption;
 import main.java.jSwingComponentMenuTree.TreeButtonUtils;
 import main.java.jSwingComponentMenuTree.TreeNodeRenderer;
-import main.java.jSwingComponentMenuTree.TreeUtils;
 import main.java.map.MapEditor;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import main.java.utils.DwarfUtils;
 
 public class DwarfVisualCenter extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private JTabbedPane tabbedPane;
+	private JTable agentsTable;
+	DefaultTableModel agentsTableModel;
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 	private JTree agentSettingsTree;
 	private SmallLittlePoisenDwarfWithGUI owner;
+
+	// Tab names
+	private static final String AGENT_SETTINGS_TAB = "Agenten Einstellungen";
+	private static final String AGENT_TABLE_TAB = "Agenten Verwaltung";
+
+	// Tree root
 	private static final String agentSettingsTreeRootNodeLabelEditor = "Agenten";
 
 	public DwarfVisualCenter(SmallLittlePoisenDwarfWithGUI owner) {
@@ -68,50 +76,40 @@ public class DwarfVisualCenter extends JFrame {
 	}
 
 	private JComponent createMapEditor() {
-		JComponent temp = new MapEditor();
 		// TODO
+		JComponent temp = new MapEditor(owner);
+
 		return temp;
 
 	}
 
 	private JTabbedPane createSettingsPanel() {
 		JTabbedPane pane = new JTabbedPane();
-		pane.addTab("Agenten Einstellungen", createAgentSettingsTree());
+		pane.addTab(AGENT_SETTINGS_TAB, createAgentSettingsTree());
 		// TODO
 		return pane;
 	}
 
 	private JComponent createAgentSettingsTree() {
-		JButton save = new JButton("Übernehmen");
-		save.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (onCheck()) {
-					onAccept(agentSettingsTree);
-				}
-			}
-
-		});
 		// ##### Tree root
 		DefaultMutableTreeNode agentSettingsTreeRootNode = new DefaultMutableTreeNode(
-				TreeUtils.createLabelledComponent(agentSettingsTreeRootNodeLabelEditor, save, 100, 150));
+				agentSettingsTreeRootNodeLabelEditor);
 
 		// ##### MenuOption Installation start
-		DefaultMutableTreeNode menuOptionNode = new DefaultMutableTreeNode(MenuOptionCaption.INSTALLATION);
+		DefaultMutableTreeNode menuOptionNode = new DefaultMutableTreeNode(MenuOptionCaption.INSTALLATION.getLabel());
 
 		// ----- Install new Agent
 		JButton newAgentButton = new JButton(NodeComponentButtonCaption.INSTALL_NEW_AGENT.getButtonLabel());
 		newAgentButton.addActionListener(TreeButtonUtils.createInstallationAction(owner));
-		ComponentTreeNode propertiesNode = new ComponentTreeNode(TreeUtils.createLabelledComponent("Installation",
-				newAgentButton), false);
+		ComponentTreeNode propertiesNode = new ComponentTreeNode(newAgentButton);
 		menuOptionNode.add(propertiesNode);
 
 		agentSettingsTreeRootNode.add(menuOptionNode);
 		// ##### MenuOption Installation end
 
 		// ##### Create tree
-		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(agentSettingsTreeRootNode);
+		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(
+				agentSettingsTreeRootNode);
 		agentSettingsTree = new JTree(agentSettingsTreeRootNodeWithButtons);
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -138,136 +136,30 @@ public class DwarfVisualCenter extends JFrame {
 		return true;
 	}
 
-	public void onAccept(JTree tree) {
-		// if (tree != null) {
-		// ArrayList<ComponentTreeNode> nodeList =
-		// TreeUtils.getRootListFromTree(tree);
-		// for (int i = 0; i < nodeList.size(); i++) {
-		// ComponentTreeNode node = nodeList.get(i);
-		// if (node.getUserObject() instanceof JPanel) {
-		// JPanel panel = (JPanel) (node.getUserObject());
-		// Component[] container = panel.getComponents();
-		// for (int j = 0; j < container.length; j++) {
-		// if (core.getEntityById(node.getEntityId()) != null) {
-		// Entity propertyEntity = core.getEntityById(node.getEntityId());
-		// if (propertyEntity.getProperty(node.getProperty()) != null) {
-		// Property property = propertyEntity.getProperty(node.getProperty());
-		// if (container[j] instanceof JTextField) {
-		// JTextField textfield = (JTextField) container[j];
-		// if (!property.check(textfield.getText())) {
-		// JOptionPane.showMessageDialog(null, property.errorMessage(),
-		// "Fehler",
-		// JOptionPane.ERROR_MESSAGE);
-		// } else {
-		// if (draegerEntity.isInEditorMode()) {
-		// CoreUtils.changeProperty(propertyEntity, property.getKey(),
-		// textfield.getText());
-		// propertyEntity.onPropertiesChanged();
-		// propertyEntity.onReset();
-		// System.out.println("Propertie " + property.getKey() + " for Entity "
-		// + propertyEntity.getId() + " changed");
-		// } else if (draegerEntity.isInAnimationMode()) {
-		// synchronized (core.getMutex()) {
-		// //
-		// }
-		// } else {
-		// // AntSim error
-		// }
-		// }
-		// } else if (container[j] instanceof JScrollPane) {
-		// if (draegerEntity.isInEditorMode()) {
-		// if (property instanceof PojoListProperty<?>) {
-		// PojoListProperty<?> listProperty = (PojoListProperty<?>) property;
-		// JScrollPane jScroll = (JScrollPane) container[j];
-		// if (jScroll.getViewport().getView() instanceof JTable) {
-		// JTable table = (JTable) jScroll.getViewport().getView();
-		// int row = table.getSelectedRow();
-		// int col = table.getSelectedColumn();
-		// if (row != -1 && col != -1) {
-		// TableCellEditor editor = table.getCellEditor(row, col);
-		// if (editor != null) {
-		// editor.stopCellEditing();
-		// }
-		// }
-		// StringBuilder builder = new StringBuilder();
-		// for (int k = 0; k < table.getRowCount(); ++k) {
-		// for (int l = 0; l < table.getColumnCount(); ++l) {
-		// builder.append(table.getValueAt(k, l).toString());
-		// builder.append(listProperty.getFieldDelimiter());
-		// }
-		// builder.append(listProperty.getElementDelimiter());
-		// }
-		// CoreUtils.changeProperty(propertyEntity, listProperty.getKey(),
-		// builder.toString());
-		// propertyEntity.onPropertiesChanged();
-		// propertyEntity.onReset();
-		// System.out.println("Propertie " + property.getKey() + " for Entity "
-		// + propertyEntity.getId() + " changed");
-		// } else {
-		// JOptionPane.showMessageDialog(null,
-		// "Error! Property " + node.getProperty() + " from Entity "
-		// + node.getEntityId() + " not changed!",
-		// "Error Massage", JOptionPane.ERROR_MESSAGE);
-		// }
-		// } else {
-		// JOptionPane
-		// .showMessageDialog(
-		// null,
-		// "Error! Property "
-		// + node.getProperty()
-		// + " from Entity "
-		// + node.getEntityId()
-		// +
-		// " not changed! Viewport in JScrollPane can not be used! JTable required...",
-		// "Error Massage", JOptionPane.ERROR_MESSAGE);
-		// }
-		// } else if (draegerEntity.isInAnimationMode()) {
-		// synchronized (core.getMutex()) {
-		// // TODO
-		// }
-		// } else {
-		// // AntSim error
-		// }
-		// } else if (container[j] instanceof JCheckBox) {
-		// JCheckBox checkBox = (JCheckBox) container[j];
-		// if (draegerEntity.isInEditorMode()) {
-		// CoreUtils.changeProperty(propertyEntity, property.getKey(),
-		// checkBox.isSelected() ? "true" : "false");
-		// propertyEntity.onPropertiesChanged();
-		// propertyEntity.onReset();
-		// System.out.println("Propertie " + property.getKey() + " for Entity "
-		// + propertyEntity.getId() + " changed");
-		// } else if (draegerEntity.isInAnimationMode()) {
-		// synchronized (core.getMutex()) {
-		// // TODO
-		// }
-		// } else {
-		// // AntSim error
-		// }
-		//
-		// }
-		// } else {
-		// JOptionPane.showMessageDialog(null, "Property" + node.getProperty() +
-		// " from Entity "
-		// + node.getEntityId() + " not found!", "Error Massage",
-		// JOptionPane.ERROR_MESSAGE);
-		// }
-		// } else {
-		// JOptionPane.showMessageDialog(null, "Entity" + node.getEntityId() +
-		// " from property "
-		// + node.getProperty() + " not found!", "Error Massage",
-		// JOptionPane.ERROR_MESSAGE);
-		// }
-		// }
-		// } else {
-		// // No JPanel
-		// }
-		// }
-		// Editor.getCurrentInstance().makeDirty();
-		// } else {
-		// JOptionPane.showMessageDialog(null, "Error! Tree not created...",
-		// "Error Massage",
-		// JOptionPane.ERROR_MESSAGE);
-		// }
+	public void updateTabsPanel() {
+		log.info("Update tab panel...");
+		int agentManagementTabPlace = -1;
+		for (int i = 0; i < tabbedPane.getTabCount(); ++i) {
+			String label = tabbedPane.getTitleAt(i);
+			if (label.equals(AGENT_TABLE_TAB)) {
+				agentManagementTabPlace = i;
+			}
+		}
+		if ((owner.getDwarfDatabase().getAgents().size() == 0) && (agentManagementTabPlace != -1))
+			tabbedPane.remove(agentManagementTabPlace);
+		else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace == -1) {
+			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getAgents());
+			agentsTable = new JTable(agentsTableModel);
+			tabbedPane.addTab(AGENT_TABLE_TAB, agentsTable);
+		} else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace != -1) {
+			// TODO UPdate Table dosent work
+			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getAgents());
+			agentsTableModel.fireTableDataChanged();
+			agentsTable.repaint();
+			agentsTable.revalidate();
+		}
+		tabbedPane.repaint();
+		tabbedPane.revalidate();
+		log.info("Update tab panel finished.");
 	}
 }
