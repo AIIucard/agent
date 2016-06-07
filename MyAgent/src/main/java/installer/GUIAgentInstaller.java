@@ -1,14 +1,16 @@
 package main.java.installer;
 
+import javax.swing.JOptionPane;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.agent.SmallLittlePoisenDwarfWithGUI;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class GUIAgentInstaller {
 
@@ -21,8 +23,13 @@ public class GUIAgentInstaller {
 
 	public static void main(String[] args) {
 		log.info("Install GUIAgent...");
+		String host = JOptionPane.showInputDialog("Connection IP?");
 		try {
-			String host = "localhost";
+			if (host.equals("")) {
+				host = "192.168.1.233";
+			} else if (host.equals("-1")) {
+				host = "localhost";
+			}
 			int port = -1; // default port = 1099
 			String plattform = null; // default name
 			boolean main = false; // 'normal' container
