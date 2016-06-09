@@ -23,7 +23,6 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	private String name;
-	// "%-5p [%-20C%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"
 	private AID antWorldGameLeaderAID;
 
 	@Override

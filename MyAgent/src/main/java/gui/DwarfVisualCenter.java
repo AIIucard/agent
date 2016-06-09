@@ -151,9 +151,9 @@ public class DwarfVisualCenter extends JFrame {
 			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getAgents());
 			agentsTable = new JTable(agentsTableModel);
 			tabbedPane.addTab(AGENT_TABLE_TAB, agentsTable);
-		} else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace != -1) {
+		} else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace != -1
+				&& agentsTableModel != null) {
 			// TODO UPdate Table dosent work
-			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getAgents());
 			agentsTableModel.fireTableDataChanged();
 			agentsTable.repaint();
 			agentsTable.revalidate();
