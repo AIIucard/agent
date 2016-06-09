@@ -1,13 +1,13 @@
 package main.java.map;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import javax.swing.JComponent;
 
-import main.java.agent.SmallLittlePoisenDwarfWithGUI;
+import main.java.agent.GUILittlePoisenDwarf;
 
 public class MapEditor extends JComponent {
 
@@ -21,10 +21,10 @@ public class MapEditor extends JComponent {
 	public static final Color CLEAR_FIELD_COLOR = Color.WHITE;
 	public static final Color UNKNOWN_FIELD_COLOR = Color.DARK_GRAY;
 
-	private SmallLittlePoisenDwarfWithGUI owner;
+	private GUILittlePoisenDwarf owner;
 	private int squareDimensionSize = 50;
 
-	public MapEditor(SmallLittlePoisenDwarfWithGUI owner) {
+	public MapEditor(GUILittlePoisenDwarf owner) {
 		this.owner = owner;
 	}
 
@@ -36,22 +36,26 @@ public class MapEditor extends JComponent {
 	@Override
 	public void paintComponent(Graphics g) {
 		// TODO
-		// super.paint(g); // Call it's parent for proper rendering.
+		super.paintComponent(g); // Call it's parent for proper rendering.
 		Graphics2D g2 = (Graphics2D) g;
 		for (int x = 0; x < owner.getDwarfDatabase().getMapLocations().length; x++) {
 			for (int y = 0; y < owner.getDwarfDatabase().getMapLocations()[0].length; y++) {
 				if (owner.getDwarfDatabase().getMapLocations()[x][y] == null) {
 					g2.setColor(UNKNOWN_FIELD_COLOR);
 				}
-				g2.setStroke(new BasicStroke(2));
-				g2.fillRect(this.getLocationOnScreen().x + (x * squareDimensionSize),
-						this.getLocationOnScreen().y + (y * squareDimensionSize), squareDimensionSize,
-						squareDimensionSize);
+				Rectangle grid = new Rectangle(100 + x * squareDimensionSize, 100 + y * squareDimensionSize,
+						squareDimensionSize, squareDimensionSize);
+				g2.fill(grid);
+				// g2.draw(grid);
+
+				// g2.setStroke(new BasicStroke(2));
+				// g2.fillRect(this.getLocationOnScreen().x + (x *
+				// squareDimensionSize), this.getLocationOnScreen().y + (y *
+				// squareDimensionSize), squareDimensionSize,
+				// squareDimensionSize);
 			}
 		}
-		// do something for every field in the array
-		// i.e. g.setColor(Color.getColor(wallArray[i][j], 50, 50));
-		// g.drawLine(i,j,i,j);
+		g2.dispose();
 	}
 	// Display dwarfs
 }

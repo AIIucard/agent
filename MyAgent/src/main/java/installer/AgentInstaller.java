@@ -5,19 +5,19 @@ import org.slf4j.LoggerFactory;
 
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
-import main.java.agent.SmallLittlePoisenDwarf;
-import main.java.agent.SmallLittlePoisenDwarfWithGUI;
+import main.java.agent.LittlePoisenDwarf;
+import main.java.agent.GUILittlePoisenDwarf;
 
 public class AgentInstaller {
 
-	protected static SmallLittlePoisenDwarfWithGUI dwarfVisualCenter;
+	protected static GUILittlePoisenDwarf dwarfVisualCenter;
 	protected static AgentController agentController;
 	protected static AgentContainer container;
 	protected static String agentName;
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
-	public static void installAgentWithSpecificName(SmallLittlePoisenDwarfWithGUI owner, String name) {
+	public static void installAgentWithSpecificName(GUILittlePoisenDwarf owner, String name) {
 		container = owner.getContainerController();
 		try {
 			if (name == null || name.equals("")) {
@@ -28,16 +28,17 @@ public class AgentInstaller {
 				agentName = name;
 				owner.getDwarfDatabase().incrementAgentCounter();
 			}
-			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarf.class.getName(), null);
+			log.info("Install agent with name {}", agentName);
+			agentController = container.createNewAgent(agentName, LittlePoisenDwarf.class.getName(), null);
 			agentController.start();
 			owner.getDwarfDatabase().installAgent(agentName, agentController);
 			owner.updateGUI();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Exception in install process with stacktrace {}", e.getStackTrace().toString());
 		}
 	}
 
-	public static void installAgentWithRandomName(SmallLittlePoisenDwarfWithGUI owner) {
+	public static void installAgentWithRandomName(GUILittlePoisenDwarf owner) {
 		installAgentWithSpecificName(owner, "");
 	}
 }

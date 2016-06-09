@@ -10,7 +10,7 @@ import jade.wrapper.StaleProxyException;
 import main.java.gui.DwarfDatabase;
 import main.java.gui.DwarfVisualCenter;
 
-public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
+public class GUILittlePoisenDwarf extends GuiAgent {
 
 	private static final long serialVersionUID = 1L;
 
@@ -35,8 +35,9 @@ public class SmallLittlePoisenDwarfWithGUI extends GuiAgent {
 
 	@Override
 	protected void onGuiEvent(GuiEvent ev) {
-		// TODO Auto-generated method stub
-
+		switch (ev.getType()) {
+		// case null;
+		}
 	}
 
 	public void shutDownAgent() {

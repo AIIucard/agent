@@ -8,15 +8,11 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeModel;
 
 public class TreeUtils {
-
-	private static JTable table;
-	private static JScrollPane scrollPane;
 
 	public static ArrayList<ComponentTreeNode> getRootListFromTree(JTree tree) {
 		ArrayList<ComponentTreeNode> list = new ArrayList<ComponentTreeNode>();

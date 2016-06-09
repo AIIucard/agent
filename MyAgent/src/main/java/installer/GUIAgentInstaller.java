@@ -10,11 +10,11 @@ import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
-import main.java.agent.SmallLittlePoisenDwarfWithGUI;
+import main.java.agent.GUILittlePoisenDwarf;
 
 public class GUIAgentInstaller {
 
-	protected static SmallLittlePoisenDwarfWithGUI dwarfVisualCenter;
+	protected static GUILittlePoisenDwarf dwarfVisualCenter;
 	protected static AgentController agentController;
 	protected static AgentContainer container;
 	protected static String agentName;
@@ -40,13 +40,12 @@ public class GUIAgentInstaller {
 			container = runtime.createAgentContainer(profile);
 
 			if (args == null || args.length == 0 || args.equals("")) {
-				log.info("Install GUIAgent with name smallLittlePoisenDwarfWithGUI.");
-				agentName = "smallLittlePoisenDwarfWithGUI";
+				agentName = "LittlePoisenDwarfWithGUI";
 			} else {
-				log.info("Install GUIAgent with name {}.", args[0]);
 				agentName = args[0];
 			}
-			agentController = container.createNewAgent(agentName, SmallLittlePoisenDwarfWithGUI.class.getName(), args);
+			log.info("Install GUIAgent with name {}.", agentName);
+			agentController = container.createNewAgent(agentName, GUILittlePoisenDwarf.class.getName(), args);
 			agentController.start();
 			log.info("GUIAgent installed.");
 		} catch (Exception e) {

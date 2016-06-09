@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import main.java.agent.SmallLittlePoisenDwarfWithGUI;
+import main.java.agent.GUILittlePoisenDwarf;
 import main.java.installer.AgentInstaller;
 
 public class TreeButtonUtils {
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
-	public static ActionListener createInstallationAction(SmallLittlePoisenDwarfWithGUI owner) {
+	public static ActionListener createInstallationAction(GUILittlePoisenDwarf owner) {
 		ActionListener action = new ActionListener() {
 
 			@Override

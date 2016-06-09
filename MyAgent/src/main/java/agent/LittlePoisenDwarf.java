@@ -1,5 +1,8 @@
 package main.java.agent;
 
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +17,7 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import main.java.utils.DwarfUtils;
 
-public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
+public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
@@ -77,11 +80,47 @@ public class SmallLittlePoisenDwarf extends Agent implements InterfaceAgent {
 			public void action() {
 				ACLMessage msg = receive();
 				if (msg != null) {
-					doWait(5000);
 					log.info("Receive message:\n" + msg + "\n");
-					// ACLMessage reply = msg.createReply();
-					// reply.setReplyWith("reply of " + msg.getReplyWith());
-					// send(reply);
+					if (msg.getLanguage().equals("JSON")) {
+						try {
+							JSONParser parser = new JSONParser();
+							Object obj = parser.parse(msg.getContent());
+							JSONObject jsonObject = (JSONObject) obj;
+							if (msg.getSender() == antWorldGameLeaderAID) {
+								if (jsonObject.has("replyId")) {
+
+								}
+							} else if (msg.getSender() == antWorldGameLeaderAID) {
+
+							}
+
+							// if(jsonObject) =
+							// Set<String> keys = jsonObject.keyset();
+							// jsonObject.get
+							//
+							// String name = (String) jsonObject.get("name");
+							// System.out.println(name);
+							//
+							// long age = (Long) jsonObject.get("age");
+							// System.out.println(age);
+							//
+							// // JSONArray array = (JSONArray) obj;
+							// // for (int i = 0; i < array.length(); i++) {
+							// // JSONObject jsonObj = array.getJSONObject(i);
+							// // }
+						} catch (ParseException pe) {
+							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(),
+									pe.getStackTrace().toString());
+						}
+						// catch (JSONException je) {
+						// log.error("Error while decoding message into
+						// JSONObject with Stacktrace {}",
+						// je.getStackTrace().toString());
+						// }
+					} else {
+						log.error(
+								"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+					}
 				} else {
 					block();
 				}

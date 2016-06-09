@@ -6,7 +6,7 @@
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread] - %msg [%logger{0}]%n</pattern>
     </encoder>
   </appender>
   
@@ -14,12 +14,10 @@
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread][%6.-6mdc{ACX_CONTEXT}][%6.-6mdc{ACX_TXID}] - %msg [%logger{0}]%n</pattern>
+      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread] - %msg [%logger{0}]%n</pattern>
     </encoder>
   </appender>
-  
-  afdafadga
-  
+ 
   <root level="DEBUG">
     <appender-ref ref="STDOUT" />
     <appender-ref ref="FILE" />
