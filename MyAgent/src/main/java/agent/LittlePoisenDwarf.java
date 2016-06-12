@@ -1,6 +1,7 @@
 package main.java.agent;
 
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
+import main.java.DwarfConstants;
 import main.java.utils.DwarfUtils;
 
 public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
@@ -65,9 +67,9 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 				// create and config message
 				if (antWorldGameLeaderAID != null) {
-					ACLMessage msg = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
-					if (msg != null) {
-						send(msg);
+					ACLMessage loginMessage = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
+					if (loginMessage != null) {
+						send(loginMessage);
 					}
 				}
 			}
@@ -77,45 +79,41 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 			@Override
 			public void action() {
-				ACLMessage msg = receive();
-				if (msg != null) {
-					log.info("Receive message:\n" + msg + "\n");
-					if (msg.getLanguage().equals("JSON")) {
+				ACLMessage receivedMessage = receive();
+				if (receivedMessage != null) {
+					log.info(" Agent {} received message: {}", name, receivedMessage);
+					if (receivedMessage.getLanguage().equals("JSON")) {
 						try {
 							JSONParser parser = new JSONParser();
-							Object obj = parser.parse(msg.getContent());
+							Object obj = parser.parse(receivedMessage.getContent());
 							JSONObject jsonObject = (JSONObject) obj;
-							if (msg.getSender() == antWorldGameLeaderAID) {
-								if (jsonObject.has("replyId")) {
-
+							// if (msg.getSender() == antWorldGameLeaderAID) {
+							if (jsonObject.containsKey("cell")) {
+								JSONObject structure = (JSONObject) jsonObject.get("cell");
+								if (structure.containsKey("row") && structure.containsKey("col")) {
+									ACLMessage updateMapMessage = DwarfUtils.createUpdateMapMessage(
+											getAID(DwarfConstants.GUI_AGENT_NAME), getAID(),
+											(JSONObject) structure.get("row"), (JSONObject) structure.get("col"),
+											(JSONObject) structure.get("type"), (JSONObject) structure.get("food"),
+											(JSONObject) structure.get("smell"), (JSONObject) structure.get("stench"),
+											(JSONArray) structure.get("ants"));
+									if (updateMapMessage != null) {
+										send(updateMapMessage);
+									}
+								} else {
+									log.error("Perception message is incomplete: {}", receivedMessage);
 								}
-							} else if (msg.getSender() == antWorldGameLeaderAID) {
-
+							} else {
+								log.error("No perception message was received: {}", receivedMessage);
 							}
-
-							// if(jsonObject) =
-							// Set<String> keys = jsonObject.keyset();
-							// jsonObject.get
+							// } else if (msg.getSender() ==
+							// antWorldGameLeaderAID) {
 							//
-							// String name = (String) jsonObject.get("name");
-							// System.out.println(name);
-							//
-							// long age = (Long) jsonObject.get("age");
-							// System.out.println(age);
-							//
-							// // JSONArray array = (JSONArray) obj;
-							// // for (int i = 0; i < array.length(); i++) {
-							// // JSONObject jsonObj = array.getJSONObject(i);
-							// // }
+							// }
 						} catch (ParseException pe) {
 							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(),
 									pe.getStackTrace().toString());
 						}
-						// catch (JSONException je) {
-						// log.error("Error while decoding message into
-						// JSONObject with Stacktrace {}",
-						// je.getStackTrace().toString());
-						// }
 					} else {
 						log.error(
 								"Message type unknown, because language key not set! Can not decode message into JSONObject!");

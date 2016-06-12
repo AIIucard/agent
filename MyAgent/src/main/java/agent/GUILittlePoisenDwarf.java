@@ -1,12 +1,18 @@
 package main.java.agent;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jade.core.behaviours.CyclicBehaviour;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
+import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.StaleProxyException;
+import main.java.DwarfConstants;
 import main.java.gui.DwarfDatabase;
 import main.java.gui.DwarfVisualCenter;
 
@@ -30,7 +36,58 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 
 		log.info("Install AgentContainer in GUIAgent...");
 		installAgentContainer(this.getContainerController());
+
+		log.info("Install Behaviours in GUIAgent...");
+		installBehaviours();
 		log.info("GUIAgent started.");
+	}
+
+	private void installBehaviours() {
+		this.addBehaviour(new CyclicBehaviour(this) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void action() {
+				ACLMessage receivedMessage = receive();
+				if (receivedMessage != null) {
+					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT)) {
+						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
+								receivedMessage);
+						if (receivedMessage.getLanguage().equals("JSON")) {
+							try {
+								JSONParser parser = new JSONParser();
+								Object obj = parser.parse(receivedMessage.getContent());
+								JSONObject jsonObject = (JSONObject) obj;
+								if (jsonObject.containsKey("row") && jsonObject.containsKey("col")
+										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
+										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
+										&& jsonObject.containsKey("ants")) {
+									dwarfDatabase.updateMapLocation();
+								} else {
+									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
+											receivedMessage);
+								}
+							} catch (ParseException pe) {
+								log.error("Error while parsing message at position {} and Stacktrace {}",
+										pe.getPosition(), pe.getStackTrace().toString());
+							}
+						} else {
+							log.error(
+									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+						}
+					}
+					// else if () {
+					// // Other message
+					// }
+					else {
+						log.error("Unknown message received! No subject was found!");
+					}
+				} else {
+					block();
+				}
+			}
+
+		});
 	}
 
 	@Override

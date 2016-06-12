@@ -79,3 +79,303 @@ INFO  2016-06-09 15:00:57.142 [  smallLittlePoisenDwarf2] - Receive message:
 }" 
  :reply-with  MSG10001  :language  JSON )
  [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:30.696 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 13:31:33.970 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 13:31:34.036 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 13:31:34.037 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:31:34.038 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:31:34.041 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:31:34.049 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:31:34.105 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 13:31:34.110 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:31:34.127 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:31:34.129 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.348 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-12 13:31:51.349 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [AgentInstaller]
+INFO  2016-06-12 13:31:51.355 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:31:51.357 [  smallLittlePoisenDwarf1] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.358 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.360 [  smallLittlePoisenDwarf1] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.377 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:31:51.392 [  smallLittlePoisenDwarf1] - ---antWorlddec19652-fa88-45be-91cd-6d55ebc3491b: [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.393 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorlddec19652-fa88-45be-91cd-6d55ebc3491b [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.393 [  smallLittlePoisenDwarf1] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-12 13:31:51.393 [  smallLittlePoisenDwarf1] - Creating login message... [DwarfUtils]
+INFO  2016-06-12 13:31:51.397 [  smallLittlePoisenDwarf1] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-12 13:31:51.826 [  smallLittlePoisenDwarf1] - Receive message:
+(INFORM
+ :sender  ( agent-identifier :name antWorlddec19652-fa88-45be-91cd-6d55ebc3491b@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 14,
+    \"col\" : 6,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10000  :language  JSON )
+ [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.409 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-12 13:33:37.410 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf2 [AgentInstaller]
+INFO  2016-06-12 13:33:37.411 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:33:37.412 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:33:37.413 [  smallLittlePoisenDwarf2] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.414 [  smallLittlePoisenDwarf2] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.414 [  smallLittlePoisenDwarf2] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.425 [  smallLittlePoisenDwarf2] - ---antWorlddec19652-fa88-45be-91cd-6d55ebc3491b: [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.425 [  smallLittlePoisenDwarf2] - ---GameLeaderAgent found: antWorlddec19652-fa88-45be-91cd-6d55ebc3491b [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.425 [  smallLittlePoisenDwarf2] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-12 13:33:37.426 [  smallLittlePoisenDwarf2] - Creating login message... [DwarfUtils]
+INFO  2016-06-12 13:33:37.426 [  smallLittlePoisenDwarf2] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-12 13:33:37.437 [  smallLittlePoisenDwarf2] - Receive message:
+(INFORM
+ :sender  ( agent-identifier :name antWorlddec19652-fa88-45be-91cd-6d55ebc3491b@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf2@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf2\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 14,
+    \"col\" : 6,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\", \"smallLittlePoisenDwarf2\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10001  :language  JSON )
+ [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:11.644 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:34:25.762 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 13:34:29.038 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 13:34:29.098 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 13:34:29.100 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:34:29.100 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:34:29.104 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:34:29.117 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:34:29.166 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 13:34:29.171 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:34:29.187 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:34:29.188 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.082 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-12 13:34:43.084 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [AgentInstaller]
+INFO  2016-06-12 13:34:43.089 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:34:43.097 [  smallLittlePoisenDwarf1] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.097 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.099 [  smallLittlePoisenDwarf1] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.114 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:34:43.130 [  smallLittlePoisenDwarf1] - ---antWorlddec19652-fa88-45be-91cd-6d55ebc3491b: [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.131 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorlddec19652-fa88-45be-91cd-6d55ebc3491b [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.131 [  smallLittlePoisenDwarf1] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-12 13:34:43.131 [  smallLittlePoisenDwarf1] - Creating login message... [DwarfUtils]
+INFO  2016-06-12 13:34:43.135 [  smallLittlePoisenDwarf1] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-12 13:34:43.147 [  smallLittlePoisenDwarf1] - Receive message:
+(INFORM
+ :sender  ( agent-identifier :name antWorlddec19652-fa88-45be-91cd-6d55ebc3491b@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 3,
+    \"col\" : 26,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10002  :language  JSON )
+ [LittlePoisenDwarf]
+INFO  2016-06-12 13:43:52.448 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:44:04.528 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 13:44:07.701 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 13:44:07.765 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 13:44:07.767 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:44:07.769 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:44:07.770 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:44:07.780 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:44:07.837 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 13:44:07.842 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:44:07.856 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:44:07.857 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.234 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-12 13:45:09.235 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [AgentInstaller]
+INFO  2016-06-12 13:45:09.240 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:45:09.244 [  smallLittlePoisenDwarf1] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.245 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.249 [  smallLittlePoisenDwarf1] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.265 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:45:09.284 [  smallLittlePoisenDwarf1] - ---antWorlddec19652-fa88-45be-91cd-6d55ebc3491b: [LittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.284 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorlddec19652-fa88-45be-91cd-6d55ebc3491b [LittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.284 [  smallLittlePoisenDwarf1] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-12 13:45:09.284 [  smallLittlePoisenDwarf1] - Creating login message... [DwarfUtils]
+INFO  2016-06-12 13:45:09.290 [  smallLittlePoisenDwarf1] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-12 13:45:09.309 [  smallLittlePoisenDwarf1] - Receive message:
+(INFORM
+ :sender  ( agent-identifier :name antWorlddec19652-fa88-45be-91cd-6d55ebc3491b@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 4,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10003  :language  JSON )
+ [LittlePoisenDwarf]
+INFO  2016-06-12 13:46:38.333 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:49.264 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 13:46:51.843 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 13:46:51.898 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 13:46:51.901 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:51.901 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:51.905 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:51.914 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:46:51.985 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 13:46:51.993 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:46:52.008 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:52.010 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:54.884 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:46:57.887 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 13:47:00.403 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 13:47:00.469 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 13:47:00.474 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:47:00.474 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:47:00.477 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:47:00.486 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:47:00.535 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 13:47:00.555 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:47:00.570 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:47:00.571 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.585 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-12 13:47:25.587 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [AgentInstaller]
+INFO  2016-06-12 13:47:25.600 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:47:25.631 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:47:25.632 [  smallLittlePoisenDwarf1] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.632 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.637 [  smallLittlePoisenDwarf1] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.676 [  smallLittlePoisenDwarf1] - ---antWorlddec19652-fa88-45be-91cd-6d55ebc3491b: [LittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.677 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorlddec19652-fa88-45be-91cd-6d55ebc3491b [LittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.677 [  smallLittlePoisenDwarf1] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-12 13:47:25.677 [  smallLittlePoisenDwarf1] - Creating login message... [DwarfUtils]
+INFO  2016-06-12 13:47:25.684 [  smallLittlePoisenDwarf1] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-12 13:47:25.707 [  smallLittlePoisenDwarf1] - Receive message:
+(INFORM
+ :sender  ( agent-identifier :name antWorlddec19652-fa88-45be-91cd-6d55ebc3491b@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 5,
+    \"col\" : 4,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10004  :language  JSON )
+ [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:24.826 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:53:36.316 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 13:53:38.462 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 13:53:38.538 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 13:53:38.546 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:53:38.547 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:53:38.549 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:53:38.563 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:53:38.614 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 13:53:38.620 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:53:38.639 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:53:38.640 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.703 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-12 13:53:40.706 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [AgentInstaller]
+INFO  2016-06-12 13:53:40.718 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-12 13:53:40.748 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-12 13:53:40.764 [  smallLittlePoisenDwarf1] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.764 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.768 [  smallLittlePoisenDwarf1] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.796 [  smallLittlePoisenDwarf1] - ---antWorlddec19652-fa88-45be-91cd-6d55ebc3491b: [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.797 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorlddec19652-fa88-45be-91cd-6d55ebc3491b [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.797 [  smallLittlePoisenDwarf1] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-12 13:53:40.797 [  smallLittlePoisenDwarf1] - Creating login message... [DwarfUtils]
+INFO  2016-06-12 13:53:40.803 [  smallLittlePoisenDwarf1] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-12 13:53:40.818 [  smallLittlePoisenDwarf1] - Receive message:
+(INFORM
+ :sender  ( agent-identifier :name antWorlddec19652-fa88-45be-91cd-6d55ebc3491b@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.14:1099/JADE  :addresses (sequence http://192.168.0.14:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 4,
+    \"col\" : 18,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10005  :language  JSON )
+ [LittlePoisenDwarf]
+INFO  2016-06-12 13:54:02.698 [  smallLittlePoisenDwarf1] - Cell info: {"stench":0,"col":18,"ants":["smallLittlePoisenDwarf1"],"row":4,"type":"START","smell":0,"food":0} [LittlePoisenDwarf]
+INFO  2016-06-12 14:12:06.647 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-12 14:12:09.192 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-12 14:12:09.251 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-12 14:12:09.253 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 14:12:09.254 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 14:12:09.257 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 14:12:09.265 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-12 14:12:09.317 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-12 14:12:09.324 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-12 14:12:09.337 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-12 14:12:09.338 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 14:40:58.708 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]

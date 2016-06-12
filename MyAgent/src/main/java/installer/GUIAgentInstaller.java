@@ -10,6 +10,7 @@ import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
+import main.java.DwarfConstants;
 import main.java.agent.GUILittlePoisenDwarf;
 
 public class GUIAgentInstaller {
@@ -23,7 +24,7 @@ public class GUIAgentInstaller {
 
 	public static void main(String[] args) {
 		log.info("Install GUIAgent...");
-		String host = JOptionPane.showInputDialog("Connection IP?");
+		String host = JOptionPane.showInputDialog("Connection IP?", "-1");
 		try {
 			if (host.equals("")) {
 				host = "192.168.1.233";
@@ -40,7 +41,7 @@ public class GUIAgentInstaller {
 			container = runtime.createAgentContainer(profile);
 
 			if (args == null || args.length == 0 || args.equals("")) {
-				agentName = "LittlePoisenDwarfWithGUI";
+				agentName = DwarfConstants.GUI_AGENT_NAME;
 			} else {
 				agentName = args[0];
 			}

@@ -18,9 +18,8 @@ public class DwarfDatabase {
 		agentCounter = 0;
 	}
 
-	public void insertLocation() {
+	public void updateMapLocation() {
 		// TODO
-		getMapLocations()[0][0] = null;
 	}
 
 	public HashMap<String, AgentController> getAgents() {
