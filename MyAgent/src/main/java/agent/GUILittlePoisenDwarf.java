@@ -62,7 +62,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
 										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
 										&& jsonObject.containsKey("ants")) {
-									dwarfDatabase.updateMapLocation();
+									// dwarfDatabase.updateMapLocation();
 								} else {
 									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
 											receivedMessage);

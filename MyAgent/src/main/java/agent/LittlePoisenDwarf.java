@@ -97,6 +97,8 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 											(JSONObject) structure.get("type"), (JSONObject) structure.get("food"),
 											(JSONObject) structure.get("smell"), (JSONObject) structure.get("stench"),
 											(JSONArray) structure.get("ants"));
+
+									// update maplocation in database
 									if (updateMapMessage != null) {
 										send(updateMapMessage);
 									}

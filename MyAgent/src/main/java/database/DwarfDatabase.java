@@ -18,7 +18,21 @@ public class DwarfDatabase {
 		agentCounter = 0;
 	}
 
-	public void updateMapLocation() {
+	public void updateMapLocation(int row, int col, int foodUnits, int smellConcentration, int stenchConcentration) {
+		if (row > mapLocations.length) {
+			// resize mapLocations
+		}
+		if (col > mapLocations[0].length) {
+			// resize mapLocations
+		}
+		if (mapLocations[row][col] == null) {
+			// Location Status
+			// mapLocations[row][col]= new MapLocation(row, col,
+			// smellConcentration, stenchConcentration, foodUnits,
+			// locationStatus)
+		}
+		// "type"
+		// "ants"
 		// TODO
 	}
 

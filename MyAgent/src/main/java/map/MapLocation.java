@@ -2,8 +2,8 @@ package main.java.map;
 
 public class MapLocation {
 
-	private int myX;
-	private int myY;
+	private int row;
+	private int col;
 	private int smellConcentration;
 	private int stenchConcentration;
 	private int foodUnits;
@@ -13,40 +13,40 @@ public class MapLocation {
 		EMPTY, BLOCKADE, TRAP, FOOD, SMELL, STENCH
 	}
 
-	public MapLocation(int x, int y, int smellConcentration, int stenchConcentration, int foodUnits,
+	public MapLocation(int row, int col, int smellConcentration, int stenchConcentration, int foodUnits,
 			LocationStatus locationStatus) {
-		setXCoordinate(x);
-		setYCoordinate(y);
+		setRowCoordinate(row);
+		setColumnCoordinate(col);
 		setSmellConcentration(smellConcentration);
 		setStenchConcentration(stenchConcentration);
 		setFoodUnits(foodUnits);
 		setLocationStatus(locationStatus);
 	}
 
-	public void updateLocation(int x, int y, int smellConcentration, int stenchConcentration, int foodUnits,
+	public void updateLocation(int row, int col, int smellConcentration, int stenchConcentration, int foodUnits,
 			LocationStatus locationStatus) {
-		setXCoordinate(x);
-		setYCoordinate(y);
+		setRowCoordinate(row);
+		setColumnCoordinate(col);
 		setSmellConcentration(smellConcentration);
 		setStenchConcentration(stenchConcentration);
 		setFoodUnits(foodUnits);
 		setLocationStatus(locationStatus);
 	}
 
-	public int getXCoordinate() {
-		return myX;
+	public int getRowCoordinate() {
+		return row;
 	}
 
-	public void setXCoordinate(int x) {
-		this.myX = x;
+	public void setRowCoordinate(int x) {
+		this.row = x;
 	}
 
-	public int getYCoordinate() {
-		return myY;
+	public int getColumnCoordinate() {
+		return col;
 	}
 
-	public void setYCoordinate(int y) {
-		this.myY = y;
+	public void setColumnCoordinate(int y) {
+		this.col = y;
 	}
 
 	public int getSmellConcentration() {
