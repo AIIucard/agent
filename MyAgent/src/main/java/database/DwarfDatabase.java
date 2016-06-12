@@ -1,4 +1,4 @@
-package main.java.gui;
+package main.java.database;
 
 import java.util.HashMap;
 

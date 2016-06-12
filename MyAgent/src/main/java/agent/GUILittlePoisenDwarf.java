@@ -13,7 +13,7 @@ import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.StaleProxyException;
 import main.java.DwarfConstants;
-import main.java.gui.DwarfDatabase;
+import main.java.database.DwarfDatabase;
 import main.java.gui.DwarfVisualCenter;
 
 public class GUILittlePoisenDwarf extends GuiAgent {

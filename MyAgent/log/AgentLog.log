@@ -391,3 +391,4 @@ INFO  2016-06-12 16:33:51.746 [ LittlePoisenDwarfWithGUI] - Creation of dwarf vi
 INFO  2016-06-12 16:33:51.752 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
 INFO  2016-06-12 16:33:51.752 [ LittlePoisenDwarfWithGUI] - Install Behaviours in GUIAgent... [GUILittlePoisenDwarf]
 INFO  2016-06-12 16:33:51.753 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-12 16:37:49.674 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]
