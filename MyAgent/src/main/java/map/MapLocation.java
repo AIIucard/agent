@@ -1,20 +1,34 @@
 package main.java.map;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapLocation {
 
-	private int row;
-	private int col;
+	private long row;
+	private long col;
 	private int smellConcentration;
 	private int stenchConcentration;
 	private int foodUnits;
-	private LocationStatus locationStatus;
+	private List<LocationStatus> locationStatus;
+	private List<String> dwarfs;
 
 	public enum LocationStatus {
-		EMPTY, BLOCKADE, TRAP, FOOD, SMELL, STENCH
+		CLEAR, BLOCKADE, TRAP, FOOD, SMELL, STENCH
 	}
 
-	public MapLocation(int row, int col, int smellConcentration, int stenchConcentration, int foodUnits,
-			LocationStatus locationStatus) {
+	public MapLocation(long row, long col, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus, String dwarfName) {
+		setRowCoordinate(row);
+		setColumnCoordinate(col);
+		setSmellConcentration(smellConcentration);
+		setStenchConcentration(stenchConcentration);
+		setFoodUnits(foodUnits);
+		setLocationStatus(locationStatus);
+		dwarfs = new ArrayList<String>();
+		addDwarfToLocation(dwarfName);
+	}
+
+	public void updateLocation(long row, long col, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus) {
 		setRowCoordinate(row);
 		setColumnCoordinate(col);
 		setSmellConcentration(smellConcentration);
@@ -23,30 +37,34 @@ public class MapLocation {
 		setLocationStatus(locationStatus);
 	}
 
-	public void updateLocation(int row, int col, int smellConcentration, int stenchConcentration, int foodUnits,
-			LocationStatus locationStatus) {
-		setRowCoordinate(row);
-		setColumnCoordinate(col);
-		setSmellConcentration(smellConcentration);
-		setStenchConcentration(stenchConcentration);
-		setFoodUnits(foodUnits);
-		setLocationStatus(locationStatus);
+	public void addDwarfToLocation(String dwarfName) {
+		dwarfs.add(dwarfName);
 	}
 
-	public int getRowCoordinate() {
+	public boolean removeDwarfFromLocation(String dwarfName) {
+		for (int i = 0; i < dwarfs.size(); ++i) {
+			if (dwarfs.get(i).equals(dwarfName)) {
+				dwarfs.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public long getRowCoordinate() {
 		return row;
 	}
 
-	public void setRowCoordinate(int x) {
-		this.row = x;
+	public void setRowCoordinate(long row) {
+		this.row = row;
 	}
 
-	public int getColumnCoordinate() {
+	public long getColumnCoordinate() {
 		return col;
 	}
 
-	public void setColumnCoordinate(int y) {
-		this.col = y;
+	public void setColumnCoordinate(long col) {
+		this.col = col;
 	}
 
 	public int getSmellConcentration() {
@@ -73,11 +91,19 @@ public class MapLocation {
 		this.foodUnits = foodUnits;
 	}
 
-	public LocationStatus getLocationStatus() {
+	public List<LocationStatus> getLocationStatus() {
 		return locationStatus;
 	}
 
-	public void setLocationStatus(LocationStatus locationStatus) {
+	public void setLocationStatus(List<LocationStatus> locationStatus) {
 		this.locationStatus = locationStatus;
+	}
+
+	public List<String> getDwarfList() {
+		return dwarfs;
+	}
+
+	public void setDwarfList(List<String> dwarfs) {
+		this.dwarfs = dwarfs;
 	}
 }

@@ -1,11 +1,5 @@
 package main.java.agent;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jade.core.behaviours.CyclicBehaviour;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
@@ -15,6 +9,12 @@ import jade.wrapper.StaleProxyException;
 import main.java.DwarfConstants;
 import main.java.database.DwarfDatabase;
 import main.java.gui.DwarfVisualCenter;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GUILittlePoisenDwarf extends GuiAgent {
 
@@ -51,29 +51,47 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 				ACLMessage receivedMessage = receive();
 				if (receivedMessage != null) {
 					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
-								receivedMessage);
+						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
 								Object obj = parser.parse(receivedMessage.getContent());
 								JSONObject jsonObject = (JSONObject) obj;
-								if (jsonObject.containsKey("row") && jsonObject.containsKey("col")
-										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
-										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
-										&& jsonObject.containsKey("ants")) {
-									// dwarfDatabase.updateMapLocation();
+								if (jsonObject.containsKey("row") && jsonObject.containsKey("col") && jsonObject.containsKey("type")
+										&& jsonObject.containsKey("food") && jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
+										&& jsonObject.containsKey("dwarfName")) {
+									boolean isTrap = false;
+									// TODO check type
+									if (jsonObject.get("type").equals("TRAP"))
+										isTrap = true;
+									boolean isBlockade = false;
+									// TODO check type
+									if (jsonObject.get("type").equals("BLOCKADE"))
+										isBlockade = true;
+									int row = -1;
+									if (jsonObject.get("row") instanceof Long) {
+										// TODO cast long
+										row = toIntExact(jsonObject.get("row"));
+										// java.lang.Math.toIntExact;
+									}
+									Integer col = -1;
+									if (jsonObject.get("col") instanceof Long) {
+										// TODO cast long
+										col = toIntExact(jsonObject.get("col"));
+									}
+									if ((row != -1) && (col != -1)) {
+										dwarfDatabase.updateMapLocation(isTrap, isBlockade, row, col, jsonObject.get("food"), jsonObject.get("smell"),
+												jsonObject.get("stench"), jsonObject.get("dwarfName"));
+										dwarfVisualCenter.updateMap();
+									}
 								} else {
-									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
-											receivedMessage);
+									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT, receivedMessage);
 								}
 							} catch (ParseException pe) {
-								log.error("Error while parsing message at position {} and Stacktrace {}",
-										pe.getPosition(), pe.getStackTrace().toString());
+								log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
 							}
 						} else {
-							log.error(
-									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
 					}
 					// else if () {
