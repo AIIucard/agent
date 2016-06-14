@@ -16,6 +16,9 @@ import javax.swing.JTree;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import main.java.agent.GUILittlePoisenDwarf;
 import main.java.jSwingComponentMenuTree.ComponentTreeNode;
 import main.java.jSwingComponentMenuTree.DwarfTreeCellEditor;
@@ -25,9 +28,6 @@ import main.java.jSwingComponentMenuTree.TreeButtonUtils;
 import main.java.jSwingComponentMenuTree.TreeNodeRenderer;
 import main.java.map.MapEditor;
 import main.java.utils.DwarfUtils;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DwarfVisualCenter extends JFrame {
 
@@ -78,7 +78,9 @@ public class DwarfVisualCenter extends JFrame {
 
 	private JComponent createMapEditor() {
 		editor = new MapEditor(owner);
-		return editor;
+		JScrollPane viewPortWithScrollbars = new JScrollPane();
+		viewPortWithScrollbars.setViewportView(editor);
+		return viewPortWithScrollbars;
 	}
 
 	private JTabbedPane createSettingsPanel() {
@@ -90,7 +92,8 @@ public class DwarfVisualCenter extends JFrame {
 
 	private JComponent createAgentSettingsTree() {
 		// ##### Tree root
-		DefaultMutableTreeNode agentSettingsTreeRootNode = new DefaultMutableTreeNode(agentSettingsTreeRootNodeLabelEditor);
+		DefaultMutableTreeNode agentSettingsTreeRootNode = new DefaultMutableTreeNode(
+				agentSettingsTreeRootNodeLabelEditor);
 
 		// ##### MenuOption Installation start
 		DefaultMutableTreeNode menuOptionNode = new DefaultMutableTreeNode(MenuOptionCaption.INSTALLATION.getLabel());
@@ -105,7 +108,8 @@ public class DwarfVisualCenter extends JFrame {
 		// ##### MenuOption Installation end
 
 		// ##### Create tree
-		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(agentSettingsTreeRootNode);
+		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(
+				agentSettingsTreeRootNode);
 		agentSettingsTree = new JTree(agentSettingsTreeRootNodeWithButtons);
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -147,7 +151,8 @@ public class DwarfVisualCenter extends JFrame {
 			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getAgents());
 			agentsTable = new JTable(agentsTableModel);
 			tabbedPane.addTab(AGENT_TABLE_TAB, agentsTable);
-		} else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace != -1 && agentsTableModel != null) {
+		} else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace != -1
+				&& agentsTableModel != null) {
 			// TODO UPdate Table dosent work
 			agentsTableModel.fireTableDataChanged();
 			agentsTable.repaint();
@@ -158,7 +163,8 @@ public class DwarfVisualCenter extends JFrame {
 		log.info("Update tab panel finished.");
 	}
 
-	public void updateMap() {
+	public void repaintMap() {
+		log.info("Repaint map...");
 		editor.updateMap();
 	}
 

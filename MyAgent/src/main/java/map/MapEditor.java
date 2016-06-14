@@ -1,9 +1,11 @@
 package main.java.map;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 
 import javax.swing.JComponent;
 
@@ -20,6 +22,7 @@ public class MapEditor extends JComponent {
 	public static final Color STENCH_FIELD_COLOR = Color.LIGHT_GRAY;
 	public static final Color CLEAR_FIELD_COLOR = Color.WHITE;
 	public static final Color UNKNOWN_FIELD_COLOR = Color.DARK_GRAY;
+	public static final Color STANDARD_BOARDER_COLOR = Color.BLACK;
 
 	private GUILittlePoisenDwarf owner;
 	private int squareDimensionSize = 50;
@@ -38,21 +41,27 @@ public class MapEditor extends JComponent {
 		// TODO
 		super.paintComponent(g); // Call it's parent for proper rendering.
 		Graphics2D g2 = (Graphics2D) g;
-		for (int x = 0; x < owner.getDwarfDatabase().getMapLocations().length; x++) {
-			for (int y = 0; y < owner.getDwarfDatabase().getMapLocations()[0].length; y++) {
-				if (owner.getDwarfDatabase().getMapLocations()[x][y] == null) {
+
+		for (int col = 0; col < owner.getDwarfDatabase().getMapLocations().length; col++) {
+			for (int row = 0; row < owner.getDwarfDatabase().getMapLocations()[0].length; row++) {
+				Rectangle grid = new Rectangle(100 + col * squareDimensionSize, 100 + row * squareDimensionSize,
+						squareDimensionSize, squareDimensionSize);
+				Stroke oldStroke = g2.getStroke();
+				g2.setStroke(new BasicStroke(2));
+				g2.draw(grid);
+				if (owner.getDwarfDatabase().getMapLocations()[col][row] != null) {
+					if (owner.getDwarfDatabase().getMapLocations()[col][row].isStartField()) {
+						g2.setColor(START_FIELD_COLOR);
+					}
+					// g2.setColor(SMELL_FIELD_COLOR);
+					// g2.fill(grid);
+					// g2.setColor(STANDARD_BOARDER_COLOR);
+				} else {
 					g2.setColor(UNKNOWN_FIELD_COLOR);
 				}
-				Rectangle grid = new Rectangle(100 + x * squareDimensionSize, 100 + y * squareDimensionSize,
-						squareDimensionSize, squareDimensionSize);
 				g2.fill(grid);
-				// g2.draw(grid);
-
-				// g2.setStroke(new BasicStroke(2));
-				// g2.fillRect(this.getLocationOnScreen().x + (x *
-				// squareDimensionSize), this.getLocationOnScreen().y + (y *
-				// squareDimensionSize), squareDimensionSize,
-				// squareDimensionSize);
+				g2.setColor(STANDARD_BOARDER_COLOR);
+				g2.setStroke(oldStroke);
 			}
 		}
 		g2.dispose();

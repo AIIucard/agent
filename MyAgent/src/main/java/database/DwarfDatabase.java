@@ -1,16 +1,15 @@
 package main.java.database;
 
-import jade.wrapper.AgentContainer;
-import jade.wrapper.AgentController;
-
 import java.util.HashMap;
-
-import main.java.DwarfConstants;
-import main.java.map.MapLocation;
-import main.java.utils.DwarfUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jade.wrapper.AgentContainer;
+import jade.wrapper.AgentController;
+import main.java.DwarfConstants;
+import main.java.map.MapLocation;
+import main.java.utils.DwarfUtils;
 
 public class DwarfDatabase {
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
@@ -26,71 +25,82 @@ public class DwarfDatabase {
 		agentCounter = 0;
 	}
 
-	public boolean updateExistingMapLocation(boolean isTrap, boolean isBlockade, int row, int col, int foodUnits, int smellConcentration,
-			int stenchConcentration) {
-		if (row > mapLocations.length || col > mapLocations[0].length) {
+	public boolean updateExistingMapLocation(boolean isTrap, boolean isBlockade, int col, int row, int foodUnits,
+			int smellConcentration, int stenchConcentration) {
+		if (col > mapLocations.length || row > mapLocations[0].length) {
+			log.error("Location [{},{}] is not an existing mapLocation", row, col);
 			return false;
 		}
-		mapLocations[row][col].updateLocation(row, col, smellConcentration, stenchConcentration, foodUnits,
+		mapLocations[col][row].updateLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
 				DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration, stenchConcentration));
 		return true;
 	}
 
-	public boolean updateMapLocation(boolean isTrap, boolean isBlockade, int row, int col, int foodUnits, int smellConcentration, int stenchConcentration,
-			String dwarfName) {
-		if (row > mapLocations.length) {
+	public boolean updateMapLocation(boolean isStartfield, boolean isTrap, boolean isBlockade, int col, int row,
+			int foodUnits, int smellConcentration, int stenchConcentration, String dwarfName) {
+		if (col >= mapLocations.length) {
+			log.info("Start resizing...");
+			int newColumns = resizeColumns(col);
+			log.info("Resized mapLocations and added {} new columns.",
+					(newColumns * DwarfConstants.RESIZE_CHANGE_NUMBER));
+		}
+		if (row >= mapLocations[0].length) {
 			log.info("Start resizing...");
 			int newRows = resizeRows(row);
 			log.info("Resized mapLocations and added {} new rows.", newRows);
 		}
-		if (col > mapLocations[0].length) {
-			log.info("Start resizing...");
-			int newColumns = resizeColumns(col);
-			log.info("Resized mapLocations and added {} new columns.", newColumns);
-		}
 		if ((dwarfName != null) && !dwarfName.equals("")) {
-			if (mapLocations[row][col] == null) {
+			if (mapLocations[col][row] == null) {
 				// Location Status
-				mapLocations[row][col] = new MapLocation(row, col, smellConcentration, stenchConcentration, foodUnits, DwarfUtils.getLocationStatus(isTrap,
-						isBlockade, foodUnits, smellConcentration, stenchConcentration), dwarfName);
+				mapLocations[col][row] = new MapLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
+						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration,
+								stenchConcentration),
+						dwarfName);
+				mapLocations[col][row].setStartField(isStartfield);
+				log.info(
+						"Added new mapLocation at [{},{}] with isTrap = {}, isBlockade = {}, smellConcentration = {}, stenchConcentration = {}, foodUnits = {}",
+						row, col, isTrap, isBlockade, smellConcentration, stenchConcentration, foodUnits);
 				return true;
 			} else {
-				mapLocations[row][col].updateLocation(row, col, smellConcentration, stenchConcentration, foodUnits,
-						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration, stenchConcentration));
-				mapLocations[row][col].addDwarfToLocation(dwarfName);
+				mapLocations[col][row].updateLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
+						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration,
+								stenchConcentration));
+				mapLocations[col][row].addDwarfToLocation(dwarfName);
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private int resizeRows(int row) {
-		int countResizes = 1;
-		while (row > ((countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER) + mapLocations.length)) {
+	private int resizeColumns(int col) {
+		int countResizes = 0;
+		while (col >= ((countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER) + mapLocations.length)) {
 			++countResizes;
 		}
-		int oldRowCount = mapLocations.length;
-		int oldColumnCount = mapLocations[0].length;
-		MapLocation[][] newMapLocations = new MapLocation[oldRowCount + (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)][oldColumnCount];
-		for (int i = 0; i < oldRowCount; i++) {
-			for (int j = 0; j < oldColumnCount; j++) {
-				newMapLocations[i][j] = mapLocations[i][j];
+		int oldColumnCount = mapLocations.length;
+		int oldRowCount = mapLocations[0].length;
+		MapLocation[][] newMapLocations = new MapLocation[oldColumnCount
+				+ (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)][oldRowCount];
+		for (int columns = 0; columns < oldColumnCount; columns++) {
+			for (int rows = 0; rows < oldRowCount; rows++) {
+				newMapLocations[columns][rows] = mapLocations[columns][rows];
 			}
 		}
 		mapLocations = newMapLocations;
 		return countResizes;
 	}
 
-	private int resizeColumns(int col) {
-		int countResizes = 0;
-		while (col > ((countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER) + mapLocations[0].length)) {
+	private int resizeRows(int row) {
+		int countResizes = 1;
+		while (row >= ((countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER) + mapLocations[0].length)) {
 			++countResizes;
 		}
-		int oldRowCount = mapLocations.length;
-		int oldColumnCount = mapLocations[0].length;
-		MapLocation[][] newMapLocations = new MapLocation[oldRowCount][oldColumnCount + (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)];
-		for (int i = 0; i < oldRowCount; i++) {
-			for (int j = 0; j < oldColumnCount; j++) {
+		int oldColumnCount = mapLocations.length;
+		int oldRowCount = mapLocations[0].length;
+		MapLocation[][] newMapLocations = new MapLocation[oldColumnCount][oldRowCount
+				+ (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)];
+		for (int i = 0; i < oldColumnCount; i++) {
+			for (int j = 0; j < oldRowCount; j++) {
 				newMapLocations[i][j] = mapLocations[i][j];
 			}
 		}

@@ -5,11 +5,12 @@ import java.util.List;
 
 public class MapLocation {
 
-	private long row;
 	private long col;
+	private long row;
 	private int smellConcentration;
 	private int stenchConcentration;
 	private int foodUnits;
+	private boolean startField;
 	private List<LocationStatus> locationStatus;
 	private List<String> dwarfs;
 
@@ -17,9 +18,10 @@ public class MapLocation {
 		CLEAR, BLOCKADE, TRAP, FOOD, SMELL, STENCH
 	}
 
-	public MapLocation(long row, long col, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus, String dwarfName) {
-		setRowCoordinate(row);
+	public MapLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits,
+			List<LocationStatus> locationStatus, String dwarfName) {
 		setColumnCoordinate(col);
+		setRowCoordinate(row);
 		setSmellConcentration(smellConcentration);
 		setStenchConcentration(stenchConcentration);
 		setFoodUnits(foodUnits);
@@ -28,9 +30,10 @@ public class MapLocation {
 		addDwarfToLocation(dwarfName);
 	}
 
-	public void updateLocation(long row, long col, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus) {
-		setRowCoordinate(row);
+	public void updateLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits,
+			List<LocationStatus> locationStatus) {
 		setColumnCoordinate(col);
+		setRowCoordinate(row);
 		setSmellConcentration(smellConcentration);
 		setStenchConcentration(stenchConcentration);
 		setFoodUnits(foodUnits);
@@ -51,20 +54,20 @@ public class MapLocation {
 		return false;
 	}
 
-	public long getRowCoordinate() {
-		return row;
-	}
-
-	public void setRowCoordinate(long row) {
-		this.row = row;
-	}
-
 	public long getColumnCoordinate() {
 		return col;
 	}
 
 	public void setColumnCoordinate(long col) {
 		this.col = col;
+	}
+
+	public long getRowCoordinate() {
+		return row;
+	}
+
+	public void setRowCoordinate(long row) {
+		this.row = row;
 	}
 
 	public int getSmellConcentration() {
@@ -105,5 +108,13 @@ public class MapLocation {
 
 	public void setDwarfList(List<String> dwarfs) {
 		this.dwarfs = dwarfs;
+	}
+
+	public boolean isStartField() {
+		return startField;
+	}
+
+	public void setStartField(boolean startField) {
+		this.startField = startField;
 	}
 }
