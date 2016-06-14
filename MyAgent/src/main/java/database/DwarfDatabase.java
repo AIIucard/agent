@@ -58,8 +58,8 @@ public class DwarfDatabase {
 						dwarfName);
 				mapLocations[col][row].setStartField(isStartfield);
 				log.info(
-						"Added new mapLocation at [{},{}] with isTrap = {}, isBlockade = {}, smellConcentration = {}, stenchConcentration = {}, foodUnits = {}",
-						row, col, isTrap, isBlockade, smellConcentration, stenchConcentration, foodUnits);
+						"Added new mapLocation at [{},{}] with isStartfield = {}, isTrap = {}, isBlockade = {}, smellConcentration = {}, stenchConcentration = {}, foodUnits = {}",
+						isStartfield, row, col, isTrap, isBlockade, smellConcentration, stenchConcentration, foodUnits);
 				return true;
 			} else {
 				mapLocations[col][row].updateLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
