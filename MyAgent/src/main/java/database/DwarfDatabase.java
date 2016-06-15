@@ -1,6 +1,8 @@
 package main.java.database;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +19,16 @@ public class DwarfDatabase {
 	private HashMap<String, AgentController> agents;
 	private AgentContainer agentContainer;
 	private MapLocation[][] mapLocations;
+	private List<MapLocation> locationsToBeInvestigated;
+	private List<MapLocation> locationsWithFood;
 	private int agentCounter;
 
 	public DwarfDatabase() {
 		agents = new HashMap<String, AgentController>();
 		mapLocations = new MapLocation[15][15];
 		agentCounter = 0;
+		locationsToBeInvestigated = new ArrayList<MapLocation>();
+		locationsWithFood = new ArrayList<MapLocation>();
 	}
 
 	public boolean updateExistingMapLocation(boolean isTrap, boolean isBlockade, int col, int row, int foodUnits,
@@ -52,6 +58,7 @@ public class DwarfDatabase {
 		if ((dwarfName != null) && !dwarfName.equals("")) {
 			if (mapLocations[col][row] == null) {
 				// Location Status
+				// TODO Add update locationsToBeInvestigated, locationsWithFood
 				mapLocations[col][row] = new MapLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
 						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration,
 								stenchConcentration),
@@ -139,5 +146,13 @@ public class DwarfDatabase {
 
 	public MapLocation[][] getMapLocations() {
 		return mapLocations;
+	}
+
+	public List<MapLocation> getLocationsToBeInvestigated() {
+		return locationsToBeInvestigated;
+	}
+
+	public List<MapLocation> getLocationsWithFood() {
+		return locationsWithFood;
 	}
 }
