@@ -9,4 +9,10 @@ public class DwarfConstants {
 
 	// MapLocation
 	public static final int RESIZE_CHANGE_NUMBER = 3;
+
+	// Movement Orders
+	public static final String MOVE_UP = "UP";
+	public static final String MOVE_DOWN = "DOWN";
+	public static final String MOVE_LEFT = "LEFT";
+	public static final String MOVE_RIGHT = "RIGHT";
 }

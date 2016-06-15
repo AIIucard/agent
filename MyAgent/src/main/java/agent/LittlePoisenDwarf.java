@@ -1,5 +1,14 @@
 package main.java.agent;
 
+import java.util.Queue;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -11,14 +20,6 @@ import jade.lang.acl.ACLMessage;
 import main.java.DwarfConstants;
 import main.java.utils.DwarfUtils;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.aim.antworld.agent.AntWorldConsts;
-
 public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +27,9 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 	private String name;
 	private AID antWorldGameLeaderAID;
+
+	private MovementOrder aktiveMovementOrder;
+	private Queue<MovementOrder> finishedMovementOrders;
 
 	@Override
 	protected void setup() {
@@ -91,9 +95,10 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 							if (jsonObject.containsKey("cell")) {
 								JSONObject structure = (JSONObject) jsonObject.get("cell");
 								if (structure.containsKey("row") && structure.containsKey("col")) {
-									ACLMessage updateMapMessage = DwarfUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(),
-											structure.get("row"), structure.get("col"), structure.get("type"), structure.get("food"), structure.get("smell"),
-											structure.get("stench"), name);
+									ACLMessage updateMapMessage = DwarfUtils.createUpdateMapMessage(
+											getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), structure.get("row"),
+											structure.get("col"), structure.get("type"), structure.get("food"),
+											structure.get("smell"), structure.get("stench"), name);
 									if (updateMapMessage != null) {
 										send(updateMapMessage);
 									}
@@ -108,10 +113,12 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 							//
 							// }
 						} catch (ParseException pe) {
-							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
+							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(),
+									pe.getStackTrace().toString());
 						}
 					} else {
-						log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
+						log.error(
+								"Message type unknown, because language key not set! Can not decode message into JSONObject!");
 					}
 				} else {
 					block();
