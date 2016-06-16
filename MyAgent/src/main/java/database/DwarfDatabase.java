@@ -11,6 +11,7 @@ import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.DwarfConstants;
 import main.java.map.MapLocation;
+import main.java.map.UnknownMapLocation;
 import main.java.utils.DwarfUtils;
 
 public class DwarfDatabase {
@@ -19,7 +20,7 @@ public class DwarfDatabase {
 	private HashMap<String, AgentController> agents;
 	private AgentContainer agentContainer;
 	private MapLocation[][] mapLocations;
-	private List<MapLocation> locationsToBeInvestigated;
+	private List<UnknownMapLocation> locationsToBeInvestigated;
 	private List<MapLocation> locationsWithFood;
 	private int agentCounter;
 
@@ -27,7 +28,7 @@ public class DwarfDatabase {
 		agents = new HashMap<String, AgentController>();
 		mapLocations = new MapLocation[15][15];
 		agentCounter = 0;
-		locationsToBeInvestigated = new ArrayList<MapLocation>();
+		locationsToBeInvestigated = new ArrayList<UnknownMapLocation>();
 		locationsWithFood = new ArrayList<MapLocation>();
 	}
 
@@ -58,15 +59,20 @@ public class DwarfDatabase {
 		if ((dwarfName != null) && !dwarfName.equals("")) {
 			if (mapLocations[col][row] == null) {
 				// Location Status
-				// TODO Add update locationsToBeInvestigated, locationsWithFood
 				mapLocations[col][row] = new MapLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
 						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration,
 								stenchConcentration),
 						dwarfName);
 				mapLocations[col][row].setStartField(isStartfield);
-				log.info(
-						"Added new mapLocation at [{},{}] with isStartfield = {}, isTrap = {}, isBlockade = {}, smellConcentration = {}, stenchConcentration = {}, foodUnits = {}",
-						isStartfield, row, col, isTrap, isBlockade, smellConcentration, stenchConcentration, foodUnits);
+				log.info("Added new {}", mapLocations[col][row].toString());
+
+				// Surrounding Locations
+				addSurroundingLocationsToBeInvestigated(row, col);
+
+				// Food Locations
+				if (foodUnits > 0) {
+					addFoodLocation(row, col, mapLocations[col][row]);
+				}
 				return true;
 			} else {
 				mapLocations[col][row].updateLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
@@ -77,6 +83,69 @@ public class DwarfDatabase {
 			}
 		}
 		return false;
+	}
+
+	private void addFoodLocation(int col, int row, MapLocation loc) {
+		if (checkForLocationNotInFoodLocationList(col, row)) {
+			locationsWithFood.add(loc);
+		}
+	}
+
+	private void addSurroundingLocationsToBeInvestigated(int row, int col) {
+		if (col - 1 >= 0) {
+			if (mapLocations[col - 1][row] == null) {
+				if (checkForLocationNotInInvestigationQueue(col - 1, row)) {
+					mapLocations[col - 1][row] = new UnknownMapLocation(col - 1, row);
+					locationsToBeInvestigated.add(new UnknownMapLocation(col - 1, row));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+				}
+			}
+		}
+		if ((row - 1) >= 0) {
+			if (mapLocations[col][row - 1] == null) {
+				if (checkForLocationNotInInvestigationQueue(col, row - 1)) {
+					mapLocations[col][row - 1] = new UnknownMapLocation(col, row - 1);
+					locationsToBeInvestigated.add(new UnknownMapLocation(col, row - 1));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+				}
+			}
+		}
+		if (mapLocations[col + 1][row] == null) {
+			if (checkForLocationNotInInvestigationQueue(col + 1, row)) {
+				mapLocations[col + 1][row] = new UnknownMapLocation(col + 1, row);
+				locationsToBeInvestigated.add(new UnknownMapLocation(col + 1, row));
+				log.info("Added new {} to investigation list",
+						locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+			}
+		}
+		if (mapLocations[col][row + 1] == null) {
+			if (checkForLocationNotInInvestigationQueue(col, row + 1)) {
+				mapLocations[col][row + 1] = new UnknownMapLocation(col, row + 1);
+				locationsToBeInvestigated.add(new UnknownMapLocation(col, row + 1));
+				log.info("Added new {} to investigation list",
+						locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+			}
+		}
+	}
+
+	public boolean checkForLocationNotInFoodLocationList(int col, int row) {
+		for (int i = 0; i < locationsWithFood.size(); ++i) {
+			if ((locationsWithFood.get(i).getColumnCoordinate() == col)
+					&& (locationsWithFood.get(i).getRowCoordinate() == row))
+				return false;
+		}
+		return true;
+	}
+
+	public boolean checkForLocationNotInInvestigationQueue(int col, int row) {
+		for (int i = 0; i < locationsToBeInvestigated.size(); ++i) {
+			if ((locationsToBeInvestigated.get(i).getColumnCoordinate() == col)
+					&& (locationsToBeInvestigated.get(i).getRowCoordinate() == row))
+				return false;
+		}
+		return true;
 	}
 
 	private int resizeColumns(int col) {
@@ -148,7 +217,7 @@ public class DwarfDatabase {
 		return mapLocations;
 	}
 
-	public List<MapLocation> getLocationsToBeInvestigated() {
+	public List<UnknownMapLocation> getLocationsToBeInvestigated() {
 		return locationsToBeInvestigated;
 	}
 

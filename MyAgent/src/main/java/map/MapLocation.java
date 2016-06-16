@@ -18,6 +18,20 @@ public class MapLocation {
 		CLEAR, BLOCKADE, TRAP, FOOD, SMELL, STENCH
 	}
 
+	/**
+	 * Constructor for UnknownMapLocation class. This will create a MapLoation
+	 * without location information.
+	 *
+	 * @param col
+	 *            the collumn of the UnknownMapLocation
+	 * @param row
+	 *            the row of the UnknownMapLocation
+	 */
+	public MapLocation(long col, long row) {
+		setColumnCoordinate(col);
+		setRowCoordinate(row);
+	}
+
 	public MapLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits,
 			List<LocationStatus> locationStatus, String dwarfName) {
 		setColumnCoordinate(col);
@@ -116,5 +130,17 @@ public class MapLocation {
 
 	public void setStartField(boolean startField) {
 		this.startField = startField;
+	}
+
+	@Override
+	public String toString() {
+		if (isStartField()) {
+			return "MapLocation Startfield [" + col + "," + row + "] with smellConcentration = " + smellConcentration
+					+ ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
+					+ " and LocationStatus: " + locationStatus.toString();
+		}
+		return "MapLocation  [" + col + "," + row + "] with smellConcentration = " + smellConcentration
+				+ ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
+				+ " and LocationStatus: " + locationStatus.toString();
 	}
 }
