@@ -6,6 +6,7 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.aim.antworld.entity.AntCellType;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
@@ -64,15 +65,15 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
 										&& jsonObject.containsKey("dwarfName")) {
 									boolean isStartfield = false;
-									if (jsonObject.get("type").equals("START"))
+									if (jsonObject.get("type").equals(AntCellType.START.name()))
 										isStartfield = true;
 									boolean isTrap = false;
 									// TODO check type
-									if (jsonObject.get("type").equals("TRAP"))
+									if (jsonObject.get("type").equals(AntCellType.PIT.name()))
 										isTrap = true;
 									boolean isBlockade = false;
 									// TODO check type
-									if (jsonObject.get("type").equals("BLOCKADE"))
+									if (jsonObject.get("type").equals(AntCellType.OBSTACLE.name()))
 										isBlockade = true;
 									dwarfDatabase.updateMapLocation(isStartfield, isTrap, isBlockade,
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")),
