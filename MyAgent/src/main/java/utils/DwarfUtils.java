@@ -45,8 +45,7 @@ public class DwarfUtils {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static ACLMessage createUpdateMapMessage(AID receiver, AID sender, Object row, Object col, Object type,
-			Object food, Object smell, Object stench, String dwarfName) {
+	public static ACLMessage createUpdateMapMessage(AID receiver, AID sender, Object row, Object col, Object type, Object food, Object smell, Object stench, String dwarfName) {
 		log.info("Creating {} message...", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT);
 		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.addReceiver(receiver);
@@ -79,8 +78,7 @@ public class DwarfUtils {
 		return model;
 	}
 
-	public static List<MapLocation.LocationStatus> getLocationStatus(boolean isTrap, boolean isBlockade, int foodUnits,
-			int smellConcentration, int stenchConcentration) {
+	public static List<MapLocation.LocationStatus> getLocationStatus(boolean isTrap, boolean isBlockade, int foodUnits, int smellConcentration, int stenchConcentration) {
 		List<MapLocation.LocationStatus> list = new ArrayList<MapLocation.LocationStatus>();
 		if (isTrap) {
 			list.add(MapLocation.LocationStatus.TRAP);
@@ -103,7 +101,7 @@ public class DwarfUtils {
 	public static int castJSONObjectLongToInt(Object obj) {
 		int value = -1;
 		if (obj instanceof Long) {
-			value = ((Long) obj).intValue();
+			value = Math.toIntExact((Long) obj);
 		} else if (obj instanceof Integer) {
 			value = (Integer) obj;
 		}

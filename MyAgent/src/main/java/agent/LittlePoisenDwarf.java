@@ -28,7 +28,7 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 	private String name;
 	private AID antWorldGameLeaderAID;
 
-	private MovementOrder aktiveMovementOrder;
+	private MovementOrder activeMovementOrder;
 	private Queue<MovementOrder> finishedMovementOrders;
 
 	@Override
@@ -95,10 +95,8 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 							if (jsonObject.containsKey("cell")) {
 								JSONObject structure = (JSONObject) jsonObject.get("cell");
 								if (structure.containsKey("row") && structure.containsKey("col")) {
-									ACLMessage updateMapMessage = DwarfUtils.createUpdateMapMessage(
-											getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), structure.get("row"),
-											structure.get("col"), structure.get("type"), structure.get("food"),
-											structure.get("smell"), structure.get("stench"), name);
+									ACLMessage updateMapMessage = DwarfUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), structure.get("row"), structure.get("col"),
+											structure.get("type"), structure.get("food"), structure.get("smell"), structure.get("stench"), name);
 									if (updateMapMessage != null) {
 										send(updateMapMessage);
 									}
@@ -113,12 +111,10 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 							//
 							// }
 						} catch (ParseException pe) {
-							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(),
-									pe.getStackTrace().toString());
+							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
 						}
 					} else {
-						log.error(
-								"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+						log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
 					}
 				} else {
 					block();

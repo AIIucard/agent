@@ -62,4 +62,17 @@ public class MapLocationForPathFinding {
 	public String toShortString() {
 		return "MapLocation  [" + sourceMapLocation.getIntColumnCoordinate() + "," + sourceMapLocation.getIntRowCoordinate() + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof MapLocationForPathFinding) {
+			MapLocationForPathFinding location = (MapLocationForPathFinding) obj;
+			if ((this.getSourceMapLocation().getIntColumnCoordinate() == location.getSourceMapLocation().getIntColumnCoordinate())
+					&& (this.getSourceMapLocation().getIntRowCoordinate() == location.getSourceMapLocation().getIntRowCoordinate())) {
+				return true;
+			}
+			return false;
+		}
+		return super.equals(obj);
+	}
 }

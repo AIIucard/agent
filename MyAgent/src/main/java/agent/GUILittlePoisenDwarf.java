@@ -53,17 +53,14 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 				ACLMessage receivedMessage = receive();
 				if (receivedMessage != null) {
 					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
-								receivedMessage);
+						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
 								Object obj = parser.parse(receivedMessage.getContent());
 								JSONObject jsonObject = (JSONObject) obj;
-								if (jsonObject.containsKey("row") && jsonObject.containsKey("col")
-										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
-										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
-										&& jsonObject.containsKey("dwarfName")) {
+								if (jsonObject.containsKey("row") && jsonObject.containsKey("col") && jsonObject.containsKey("type") && jsonObject.containsKey("food")
+										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench") && jsonObject.containsKey("dwarfName")) {
 									boolean isStartfield = false;
 									if (jsonObject.get("type").equals(AntCellType.START.name()))
 										isStartfield = true;
@@ -75,25 +72,19 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 									// TODO check type
 									if (jsonObject.get("type").equals(AntCellType.OBSTACLE.name()))
 										isBlockade = true;
-									dwarfDatabase.updateMapLocation(isStartfield, isTrap, isBlockade,
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")),
+									dwarfDatabase.updateMapLocation(isStartfield, isTrap, isBlockade, DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")),
 											jsonObject.get("dwarfName").toString());
 									dwarfVisualCenter.repaintMap();
 								} else {
-									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT,
-											receivedMessage);
+									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT, receivedMessage);
 								}
 							} catch (ParseException pe) {
-								log.error("Error while parsing message at position {} and Stacktrace {}",
-										pe.getPosition(), pe.getStackTrace().toString());
+								log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
 							}
 						} else {
-							log.error(
-									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
 					}
 					// else if () {

@@ -1,7 +1,9 @@
 package main.java.utils;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,25 +19,39 @@ public class DwarfPathFindingUtils {
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
-	public static void checkForPathToLocation(MapLocation[][] mapLocations, MapLocation startLocation, MapLocation goalLocation) {
-		log.info("--?--> Looking for path from {} to {}", startLocation.toShortString(), goalLocation.toShortString());
+	public static Queue<MapLocation> checkForPathToLocation(MapLocation[][] mapLocations, MapLocation startLocation, MapLocation targetMapLocation) {
+		log.info("--?--> Looking for path from {} to {}", startLocation.toShortString(), targetMapLocation.toShortString());
 		PriorityQueueMapLocationForPathFinding<MapLocationForPathFinding> openList = new PriorityQueueMapLocationForPathFinding<MapLocationForPathFinding>(new DistanceComperator());
 		ClosedListMapLocation<MapLocation> closedList = new ClosedListMapLocation<MapLocation>();
 		openList.add(new MapLocationForPathFinding(startLocation, null, 0));
 
 		while (!openList.isEmpty()) {
 			MapLocationForPathFinding currentMapLocation = openList.remove();
-			if (currentMapLocation.getSourceMapLocation().equals(goalLocation)) {
-				// TODO
-				// return path found
-				log.info("-----> Path found from {} to {}", startLocation.toShortString(), goalLocation.toShortString());
+			if (currentMapLocation.getSourceMapLocation().equals(targetMapLocation)) {
+				log.info("-----> Path found from {} to {}", startLocation.toShortString(), targetMapLocation.toShortString());
+				Queue<MapLocation> path = getPath(startLocation, currentMapLocation);
+				return path;
 			}
 			closedList.add(currentMapLocation.getSourceMapLocation());
-			addSurroundingLocationsToPriorityQueue(openList, closedList, mapLocations, currentMapLocation, goalLocation);
+			addSurroundingLocationsToPriorityQueue(openList, closedList, mapLocations, currentMapLocation, targetMapLocation);
 		}
-		// TODO
-		// return no path found
-		log.info("--x--> No path found from {} to {}", startLocation.toShortString(), goalLocation.toShortString());
+		log.info("--x--> No path found from {} to {}", startLocation.toShortString(), targetMapLocation.toShortString());
+		return null;
+	}
+
+	private static Queue<MapLocation> getPath(MapLocation startLocation, MapLocationForPathFinding currentMapLocation) {
+		String logString = "Path: ";
+		Queue<MapLocation> path = new LinkedList<MapLocation>();
+		logString += "" + currentMapLocation.getSourceMapLocation().toShortString() + ", ";
+		path.add(currentMapLocation.getSourceMapLocation());
+		MapLocationForPathFinding previousMapLocation = currentMapLocation.getParentMapLocation();
+		while (!previousMapLocation.getSourceMapLocation().equals(startLocation)) {
+			logString += "" + previousMapLocation.getSourceMapLocation().toShortString() + ", ";
+			path.add(previousMapLocation.getSourceMapLocation());
+			previousMapLocation = previousMapLocation.getParentMapLocation();
+		}
+		log.info("{}", logString);
+		return path;
 	}
 
 	private static void addSurroundingLocationsToPriorityQueue(PriorityQueue<MapLocationForPathFinding> openList, List<MapLocation> closedList, MapLocation[][] mapLocations,
