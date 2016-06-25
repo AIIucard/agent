@@ -1,5 +1,7 @@
 package main.java.utils;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -41,17 +43,19 @@ public class DwarfPathFindingUtils {
 
 	private static Queue<MapLocation> getPath(MapLocation startLocation, MapLocationForPathFinding currentMapLocation) {
 		String logString = "Path: ";
-		Queue<MapLocation> path = new LinkedList<MapLocation>();
+		Deque<MapLocation> pathStack = new ArrayDeque<MapLocation>();
 		logString += "" + currentMapLocation.getSourceMapLocation().toShortString() + ", ";
-		path.add(currentMapLocation.getSourceMapLocation());
+		pathStack.push(currentMapLocation.getSourceMapLocation());
 		MapLocationForPathFinding previousMapLocation = currentMapLocation.getParentMapLocation();
 		while (!previousMapLocation.getSourceMapLocation().equals(startLocation)) {
 			logString += "" + previousMapLocation.getSourceMapLocation().toShortString() + ", ";
-			path.add(previousMapLocation.getSourceMapLocation());
+			pathStack.push(previousMapLocation.getSourceMapLocation());
 			previousMapLocation = previousMapLocation.getParentMapLocation();
 		}
+		// TODO Check if invert of pathQueue is needed
+		Queue<MapLocation> pathQueue = new LinkedList<MapLocation>(pathStack);
 		log.info("{}", logString);
-		return path;
+		return pathQueue;
 	}
 
 	private static void addSurroundingLocationsToPriorityQueue(PriorityQueue<MapLocationForPathFinding> openList, List<MapLocation> closedList, MapLocation[][] mapLocations,
