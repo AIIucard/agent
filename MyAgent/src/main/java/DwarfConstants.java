@@ -4,9 +4,6 @@ public class DwarfConstants {
 	// Agent Names
 	public static final String GUI_AGENT_NAME = "LittlePoisenDwarfWithGUI";
 
-	// Subjects
-	public static final String UPDATE_MAP_MESSAGE_SUBJECT = "UpdateMap";
-
 	// MapLocation
 	public static final int RESIZE_CHANGE_NUMBER = 3;
 
@@ -18,4 +15,8 @@ public class DwarfConstants {
 
 	// Path Finding
 	public static final int MOVEMENT_COSTS = 1;
+
+	// Subjects
+	public static final String UPDATE_MAP_MESSAGE_REPLY = "UpdateMap";
+	public static final String REQUEST_MOVEMENTORDER_MESSAGE_REPLY = "RequestMovementOrder";
 }

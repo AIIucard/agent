@@ -18,6 +18,7 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import main.java.DwarfConstants;
+import main.java.utils.DwarfMessagingUtils;
 import main.java.utils.DwarfUtils;
 
 public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
@@ -71,7 +72,7 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 
 				// create and config message
 				if (antWorldGameLeaderAID != null) {
-					ACLMessage loginMessage = DwarfUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
+					ACLMessage loginMessage = DwarfMessagingUtils.createLoginMessage(antWorldGameLeaderAID, getAID());
 					if (loginMessage != null) {
 						send(loginMessage);
 					}
@@ -91,25 +92,75 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 							JSONParser parser = new JSONParser();
 							Object obj = parser.parse(receivedMessage.getContent());
 							JSONObject jsonObject = (JSONObject) obj;
-							// if (msg.getSender() == antWorldGameLeaderAID) {
-							if (jsonObject.containsKey("cell")) {
-								JSONObject structure = (JSONObject) jsonObject.get("cell");
-								if (structure.containsKey("row") && structure.containsKey("col")) {
-									ACLMessage updateMapMessage = DwarfUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), structure.get("row"), structure.get("col"),
-											structure.get("type"), structure.get("food"), structure.get("smell"), structure.get("stench"), name);
-									if (updateMapMessage != null) {
-										send(updateMapMessage);
+							if (receivedMessage.getInReplyTo() == null) {
+								// TODO check if collect and drop are possible
+								if (jsonObject.containsKey("cell")) {
+									JSONObject structure = (JSONObject) jsonObject.get("cell");
+									if (structure.containsKey("row") && structure.containsKey("col")) {
+										ACLMessage updateMapMessage = DwarfMessagingUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), structure.get("row"),
+												structure.get("col"), structure.get("type"), structure.get("food"), structure.get("smell"), structure.get("stench"), name);
+										if (updateMapMessage != null) {
+											send(updateMapMessage);
+										}
+										// TODO Update activeMovementOrder (isFinished = True if col and row fit)
+									} else {
+										log.error("Perception message is incomplete: {}", receivedMessage);
 									}
 								} else {
-									log.error("Perception message is incomplete: {}", receivedMessage);
+									log.error("No perception message was received: {}", receivedMessage);
 								}
-							} else {
-								log.error("No perception message was received: {}", receivedMessage);
+							} else if (receivedMessage.getInReplyTo().equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
+								if (jsonObject.containsKey("moves")) {
+									JSONObject structure = (JSONObject) jsonObject.get("moves");
+									// TODO convert msg into movementorder
+
+									// if (structure.containsKey("row") && structure.containsKey("col")) {
+									// ACLMessage updateMapMessage =
+									// DwarfMessagingUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME),
+									// getAID(), structure.get("row"),
+									// structure.get("col"), structure.get("type"), structure.get("food"),
+									// structure.get("smell"), structure.get("stench"), name);
+									// if (updateMapMessage != null) {
+									// send(updateMapMessage);
+									// }
+									// } else {
+									// log.error("Perception message is incomplete: {}", receivedMessage);
+									// }
+
+								} else {
+									log.error("No movementorder message was received: {}", receivedMessage);
+								}
 							}
-							// } else if (msg.getSender() ==
-							// antWorldGameLeaderAID) {
-							//
-							// }
+							if (activeMovementOrder == null) {
+								ACLMessage requestMovementOrderMessage = DwarfMessagingUtils.createRequestMovementOrderMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID());
+								if (requestMovementOrderMessage != null) {
+									send(requestMovementOrderMessage);
+								}
+							} else if (activeMovementOrder != null) {
+								String currentMovement = activeMovementOrder.getMoves().remove();
+								switch (currentMovement) {
+								case "UP":
+									// TODO UP msg to gameLeader
+									break;
+								case "DOWN":
+									// TODO DOWN msg to gameLeader
+									break;
+								case "LEFT":
+									// TODO LEFT msg to gameLeader
+									break;
+								case "RIGHT":
+									// TODO RIGHT msg to gameLeader
+									break;
+								case "COLLECT":
+									// TODO COLLECT msg to gameLeader
+									// Check if collect is possible
+									break;
+								case "DROP":
+									// TODO DROP msg to gameLeader
+									// check if drop is possible
+									break;
+								}
+							}
 						} catch (ParseException pe) {
 							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
 						}

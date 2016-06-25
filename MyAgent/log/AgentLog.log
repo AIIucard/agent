@@ -1862,3 +1862,62 @@ INFO  2016-06-14 14:13:28.463 [ LittlePoisenDwarfWithGUI] - GUIAgent received Up
  :in-reply-to  UpdateMap  :language  JSON ) [GUILittlePoisenDwarf]
 INFO  2016-06-14 14:13:28.464 [ LittlePoisenDwarfWithGUI] - Added new mapLocation at [0,13] with isTrap = false, isBlockade = false, smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 [DwarfDatabase]
 INFO  2016-06-14 14:13:28.464 [ LittlePoisenDwarfWithGUI] - Repaint map... [DwarfVisualCenter]
+INFO  2016-06-25 19:05:10.204 [                     main] - Install GUIAgent... [GUIAgentInstaller]
+INFO  2016-06-25 19:05:12.130 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [GUIAgentInstaller]
+INFO  2016-06-25 19:05:12.152 [                     main] - GUIAgent installed. [GUIAgentInstaller]
+INFO  2016-06-25 19:05:12.152 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:12.153 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:12.154 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:12.159 [ LittlePoisenDwarfWithGUI] - Create settings panel... [DwarfVisualCenter]
+INFO  2016-06-25 19:05:12.191 [ LittlePoisenDwarfWithGUI] - Create map editor... [DwarfVisualCenter]
+INFO  2016-06-25 19:05:12.193 [ LittlePoisenDwarfWithGUI] - Creation of dwarf visual center finished. [DwarfVisualCenter]
+INFO  2016-06-25 19:05:12.201 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:12.201 [ LittlePoisenDwarfWithGUI] - Install Behaviours in GUIAgent... [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:12.202 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.286 [         AWT-EventQueue-0] - Installing new agent with random name... [TreeButtonUtils]
+INFO  2016-06-25 19:05:28.286 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [AgentInstaller]
+INFO  2016-06-25 19:05:28.288 [         AWT-EventQueue-0] - Update tab panel... [DwarfVisualCenter]
+INFO  2016-06-25 19:05:28.288 [  smallLittlePoisenDwarf1] - Searching for agents... [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.288 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.289 [  smallLittlePoisenDwarf1] - ---Search started... [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.294 [         AWT-EventQueue-0] - Update tab panel finished. [DwarfVisualCenter]
+INFO  2016-06-25 19:05:28.298 [  smallLittlePoisenDwarf1] - ---antWorlddda800fd-fa5d-4c2c-ba18-abd6222fa3d4: [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.298 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorlddda800fd-fa5d-4c2c-ba18-abd6222fa3d4 [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.298 [  smallLittlePoisenDwarf1] - Searching for agents finished! [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.298 [  smallLittlePoisenDwarf1] - Creating login message... [DwarfUtils]
+INFO  2016-06-25 19:05:28.299 [  smallLittlePoisenDwarf1] - Login message: {"color":"ANT_COLOR_GREEN","type":"ANT_ACTION_LOGIN"} [DwarfUtils]
+INFO  2016-06-25 19:05:28.440 [  smallLittlePoisenDwarf1] -  Agent smallLittlePoisenDwarf1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorlddda800fd-fa5d-4c2c-ba18-abd6222fa3d4@192.168.0.11:1099/JADE  :addresses (sequence http://192.168.0.11:7778/acc ))
+ :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.11:1099/JADE  :addresses (sequence http://192.168.0.11:7778/acc )) )
+ :content  "{
+  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LOGIN\",
+  \"cell\" : {
+    \"row\" : 9,
+    \"col\" : 0,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+  },
+  \"replyId\" : \"\"
+}" 
+ :reply-with  MSG10000  :language  JSON ) [LittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.444 [  smallLittlePoisenDwarf1] - Creating UpdateMap message... [DwarfUtils]
+INFO  2016-06-25 19:05:28.444 [  smallLittlePoisenDwarf1] - UpdateMap message: {"stench":0,"col":0,"dwarfName":"smallLittlePoisenDwarf1","row":9,"type":"START","smell":0,"food":0} [DwarfUtils]
+INFO  2016-06-25 19:05:28.445 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name smallLittlePoisenDwarf1@192.168.0.11:1099/JADE  :addresses (sequence http://192.168.0.11:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@192.168.0.11:1099/JADE  :addresses (sequence http://192.168.0.11:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":0,\"dwarfName\":\"smallLittlePoisenDwarf1\",\"row\":9,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [GUILittlePoisenDwarf]
+INFO  2016-06-25 19:05:28.446 [ LittlePoisenDwarfWithGUI] - Added new MapLocation Startfield [0,9] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [] [DwarfDatabase]
+INFO  2016-06-25 19:05:28.447 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [0][8] to investigation list [DwarfDatabase]
+INFO  2016-06-25 19:05:28.447 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [1][9] to investigation list [DwarfDatabase]
+INFO  2016-06-25 19:05:28.447 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [0][10] to investigation list [DwarfDatabase]
+INFO  2016-06-25 19:05:28.447 [ LittlePoisenDwarfWithGUI] - Repaint map... [DwarfVisualCenter]
+INFO  2016-06-25 19:17:39.664 [         AWT-EventQueue-0] - Shut down GUIAgent... [GUILittlePoisenDwarf]

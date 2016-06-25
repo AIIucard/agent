@@ -52,8 +52,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 			public void action() {
 				ACLMessage receivedMessage = receive();
 				if (receivedMessage != null) {
-					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT, receivedMessage);
+					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_REPLY)) {
+						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
@@ -78,7 +78,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 											jsonObject.get("dwarfName").toString());
 									dwarfVisualCenter.repaintMap();
 								} else {
-									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_SUBJECT, receivedMessage);
+									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
 								}
 							} catch (ParseException pe) {
 								log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());

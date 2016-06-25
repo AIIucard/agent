@@ -9,6 +9,10 @@ public class MovementOrder {
 	public Queue<String> moves;
 	public boolean isFinished;
 
+	public enum Move {
+		UP, DOWN, LEFT, RIGHT, COLLECT, DROP
+	}
+
 	public MovementOrder(MapLocation destination, Queue<String> moves) {
 		this.destination = destination;
 		this.moves = moves;
