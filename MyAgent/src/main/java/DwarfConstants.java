@@ -15,4 +15,7 @@ public class DwarfConstants {
 	public static final String MOVE_DOWN = "DOWN";
 	public static final String MOVE_LEFT = "LEFT";
 	public static final String MOVE_RIGHT = "RIGHT";
+
+	// Path Finding
+	public static final int MOVEMENT_COSTS = 1;
 }

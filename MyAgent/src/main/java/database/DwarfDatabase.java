@@ -112,20 +112,24 @@ public class DwarfDatabase {
 				}
 			}
 		}
-		if (mapLocations[col + 1][row] == null) {
-			if (checkForLocationNotInInvestigationQueue(col + 1, row)) {
-				mapLocations[col + 1][row] = new UnknownMapLocation(col + 1, row);
-				locationsToBeInvestigated.add(new UnknownMapLocation(col + 1, row));
-				log.info("Added new {} to investigation list",
-						locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+		if (!(col + 1 >= mapLocations.length)) {
+			if (mapLocations[col + 1][row] == null) {
+				if (checkForLocationNotInInvestigationQueue(col + 1, row)) {
+					mapLocations[col + 1][row] = new UnknownMapLocation(col + 1, row);
+					locationsToBeInvestigated.add(new UnknownMapLocation(col + 1, row));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+				}
 			}
 		}
-		if (mapLocations[col][row + 1] == null) {
-			if (checkForLocationNotInInvestigationQueue(col, row + 1)) {
-				mapLocations[col][row + 1] = new UnknownMapLocation(col, row + 1);
-				locationsToBeInvestigated.add(new UnknownMapLocation(col, row + 1));
-				log.info("Added new {} to investigation list",
-						locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+		if (!(row + 1 >= mapLocations[0].length)) {
+			if (mapLocations[col][row + 1] == null) {
+				if (checkForLocationNotInInvestigationQueue(col, row + 1)) {
+					mapLocations[col][row + 1] = new UnknownMapLocation(col, row + 1);
+					locationsToBeInvestigated.add(new UnknownMapLocation(col, row + 1));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+				}
 			}
 		}
 	}

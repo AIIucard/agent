@@ -9,6 +9,7 @@ public class MapLocation {
 	private long row;
 	private int smellConcentration;
 	private int stenchConcentration;
+	private boolean save;
 	private int foodUnits;
 	private boolean startField;
 	private List<LocationStatus> locationStatus;
@@ -72,12 +73,20 @@ public class MapLocation {
 		return col;
 	}
 
+	public int getIntColumnCoordinate() {
+		return Math.toIntExact(col);
+	}
+
 	public void setColumnCoordinate(long col) {
 		this.col = col;
 	}
 
 	public long getRowCoordinate() {
 		return row;
+	}
+
+	public int getIntRowCoordinate() {
+		return Math.toIntExact(row);
 	}
 
 	public void setRowCoordinate(long row) {
@@ -98,6 +107,14 @@ public class MapLocation {
 
 	public void setStenchConcentration(int stenchConcentration) {
 		this.stenchConcentration = stenchConcentration;
+	}
+
+	public boolean isSave() {
+		return save;
+	}
+
+	public void setSave(boolean save) {
+		this.save = save;
 	}
 
 	public int getFoodUnits() {
@@ -142,5 +159,9 @@ public class MapLocation {
 		return "MapLocation  [" + col + "," + row + "] with smellConcentration = " + smellConcentration
 				+ ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
 				+ " and LocationStatus: " + locationStatus.toString();
+	}
+
+	public String toShortString() {
+		return "MapLocation  [" + col + "," + row + "]";
 	}
 }
