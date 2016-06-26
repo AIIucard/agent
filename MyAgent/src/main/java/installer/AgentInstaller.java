@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
-import main.java.agent.LittlePoisenDwarf;
 import main.java.agent.GUILittlePoisenDwarf;
+import main.java.agent.LittlePoisenDwarf;
 
 public class AgentInstaller {
 
@@ -22,19 +22,19 @@ public class AgentInstaller {
 		try {
 			if (name == null || name.equals("")) {
 
-				agentName = "smallLittlePoisenDwarf" + (owner.getDwarfDatabase().getAgentCounter() + 1);
-				owner.getDwarfDatabase().incrementAgentCounter();
+				agentName = "smallLittlePoisenDwarf" + (owner.getDwarfDatabase().getDwarfCounter() + 1);
+				owner.getDwarfDatabase().incrementDwarfCounter();
 			} else {
 				agentName = name;
-				owner.getDwarfDatabase().incrementAgentCounter();
+				owner.getDwarfDatabase().incrementDwarfCounter();
 			}
 			log.info("Install agent with name {}", agentName);
 			agentController = container.createNewAgent(agentName, LittlePoisenDwarf.class.getName(), null);
 			agentController.start();
-			owner.getDwarfDatabase().installAgent(agentName, agentController);
+			owner.getDwarfDatabase().recruitDwarf(agentName, agentController);
 			owner.updateGUI();
-		} catch (Exception e) {
-			log.error("Exception in install process with stacktrace {}", e.getStackTrace().toString());
+		} catch (Exception ex) {
+			log.error("Exception in install process!", ex);
 		}
 	}
 

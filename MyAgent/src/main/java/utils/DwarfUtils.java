@@ -25,10 +25,10 @@ public class DwarfUtils {
 	public static List<MapLocation.LocationStatus> getLocationStatus(boolean isTrap, boolean isBlockade, int foodUnits, int smellConcentration, int stenchConcentration) {
 		List<MapLocation.LocationStatus> list = new ArrayList<MapLocation.LocationStatus>();
 		if (isTrap) {
-			list.add(MapLocation.LocationStatus.TRAP);
+			list.add(MapLocation.LocationStatus.PIT);
 		}
 		if (isBlockade) {
-			list.add(MapLocation.LocationStatus.BLOCKADE);
+			list.add(MapLocation.LocationStatus.OBSTACLE);
 		}
 		if (foodUnits != 0) {
 			list.add(MapLocation.LocationStatus.FOOD);

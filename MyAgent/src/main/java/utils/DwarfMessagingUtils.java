@@ -58,7 +58,8 @@ public class DwarfMessagingUtils {
 		return null;
 	}
 
-	public static ACLMessage createRequestMovementOrderMessage(AID receiver, AID sender) {
+	@SuppressWarnings("unchecked")
+	public static ACLMessage createRequestMovementOrderMessage(AID receiver, AID sender, String dwarfName) {
 		log.info("Creating {} message...", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.addReceiver(receiver);
@@ -66,19 +67,32 @@ public class DwarfMessagingUtils {
 		msg.setSender(sender);
 		JSONObject obj = new JSONObject();
 		msg.setLanguage("JSON");
-		// obj.put("row", row);
-		// obj.put("col", col);
-		// obj.put("type", type);
-		// obj.put("food", food);
-		// obj.put("smell", smell);
-		// obj.put("stench", stench);
-		// obj.put("dwarfName", dwarfName);
+		obj.put("dwarfName", dwarfName);
 		if (obj != null && receiver != null) {
 			log.info("{} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, obj.toString());
 			msg.setContent(obj.toString());
 			return msg;
 		}
 		log.error("No {} message created!", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static ACLMessage createMovementOrderMessage(AID receiver, AID sender, String dwarfName) {
+		// log.info("Creating {} message...", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+		// ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		// msg.addReceiver(receiver);
+		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+		// msg.setSender(sender);
+		// JSONObject obj = new JSONObject();
+		// msg.setLanguage("JSON");
+		// obj.put("dwarfName", dwarfName);
+		// if (obj != null && receiver != null) {
+		// log.info("{} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, obj.toString());
+		// msg.setContent(obj.toString());
+		// return msg;
+		// }
+		// log.error("No {} message created!", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		return null;
 	}
 }

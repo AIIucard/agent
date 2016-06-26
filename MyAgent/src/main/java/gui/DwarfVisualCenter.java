@@ -92,8 +92,7 @@ public class DwarfVisualCenter extends JFrame {
 
 	private JComponent createAgentSettingsTree() {
 		// ##### Tree root
-		DefaultMutableTreeNode agentSettingsTreeRootNode = new DefaultMutableTreeNode(
-				agentSettingsTreeRootNodeLabelEditor);
+		DefaultMutableTreeNode agentSettingsTreeRootNode = new DefaultMutableTreeNode(agentSettingsTreeRootNodeLabelEditor);
 
 		// ##### MenuOption Installation start
 		DefaultMutableTreeNode menuOptionNode = new DefaultMutableTreeNode(MenuOptionCaption.INSTALLATION.getLabel());
@@ -108,8 +107,7 @@ public class DwarfVisualCenter extends JFrame {
 		// ##### MenuOption Installation end
 
 		// ##### Create tree
-		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(
-				agentSettingsTreeRootNode);
+		DefaultMutableTreeNode agentSettingsTreeRootNodeWithButtons = createSettinButtonNodes(agentSettingsTreeRootNode);
 		agentSettingsTree = new JTree(agentSettingsTreeRootNodeWithButtons);
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -145,14 +143,13 @@ public class DwarfVisualCenter extends JFrame {
 				agentManagementTabPlace = i;
 			}
 		}
-		if ((owner.getDwarfDatabase().getAgents().size() == 0) && (agentManagementTabPlace != -1))
+		if ((owner.getDwarfDatabase().getDwarfs().size() == 0) && (agentManagementTabPlace != -1))
 			tabbedPane.remove(agentManagementTabPlace);
-		else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace == -1) {
-			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getAgents());
+		else if ((owner.getDwarfDatabase().getDwarfs().size() != 0) && agentManagementTabPlace == -1) {
+			agentsTableModel = DwarfUtils.toTableModel(owner.getDwarfDatabase().getDwarfs());
 			agentsTable = new JTable(agentsTableModel);
 			tabbedPane.addTab(AGENT_TABLE_TAB, agentsTable);
-		} else if ((owner.getDwarfDatabase().getAgents().size() != 0) && agentManagementTabPlace != -1
-				&& agentsTableModel != null) {
+		} else if ((owner.getDwarfDatabase().getDwarfs().size() != 0) && agentManagementTabPlace != -1 && agentsTableModel != null) {
 			// TODO UPdate Table dosent work
 			agentsTableModel.fireTableDataChanged();
 			agentsTable.repaint();

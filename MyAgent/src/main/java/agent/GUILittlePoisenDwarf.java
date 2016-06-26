@@ -80,8 +80,34 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 								} else {
 									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
 								}
-							} catch (ParseException pe) {
-								log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
+							} catch (ParseException pex) {
+								log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
+							}
+						} else {
+							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
+						}
+					} else if (receivedMessage.getInReplyTo().equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
+						log.info("GUIAgent received {} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
+						if (receivedMessage.getLanguage().equals("JSON")) {
+							try {
+								JSONParser parser = new JSONParser();
+								Object obj = parser.parse(receivedMessage.getContent());
+								JSONObject jsonObject = (JSONObject) obj;
+								if (jsonObject.containsKey("dwarfName")) {
+									String name = jsonObject.get("dwarfName").toString();
+									// DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
+									// startLocation, targetMapLocation)
+									// // TODO DO Pathfinding
+									// ACLMessage movementOrderMessage =
+									// DwarfMessagingUtils.createMovementOrderMessage(receiver, sender, dwarfName);
+									// if (movementOrderMessage != null) {
+									// send(movementOrderMessage);
+									// }
+								} else {
+									log.error("{} message is incomplete: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
+								}
+							} catch (ParseException pex) {
+								log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 							}
 						} else {
 							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
@@ -112,8 +138,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 			log.info("Shut down GUIAgent...");
 			getContainerController().kill();
 			doDelete();
-		} catch (StaleProxyException e) {
-			log.error("Error in shut down process {}", e.getStackTrace().toString());
+		} catch (StaleProxyException spex) {
+			log.error("Error in shut down process!", spex);
 		}
 	}
 
@@ -122,7 +148,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 	}
 
 	public void installAgentContainer(AgentContainer agentContainer) {
-		getDwarfDatabase().setAgentContainer(agentContainer);
+		getDwarfDatabase().setDwarfContainer(agentContainer);
 	}
 
 	public DwarfDatabase getDwarfDatabase() {

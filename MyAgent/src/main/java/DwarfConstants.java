@@ -1,8 +1,14 @@
 package main.java;
 
+import java.io.File;
+
 public class DwarfConstants {
-	// Agent Names
+	// Dwarf Names
 	public static final String GUI_AGENT_NAME = "LittlePoisenDwarfWithGUI";
+
+	// File Path
+	public static final String MAP_LOCATION_IMAGE_FILE_PATH = "src" + File.separator + "main" + File.separator + "java" + File.separator + "img" + File.separator + "mapLocations" + File.separator;
+	public static final String DWARF_IMAGE_FILE_PATH = "src" + File.separator + "main" + File.separator + "java" + File.separator + "img" + File.separator + "dwarfs" + File.separator;
 
 	// MapLocation
 	public static final int RESIZE_CHANGE_NUMBER = 3;

@@ -184,7 +184,7 @@ public class DwarfPathFindingUtils {
 				log.info("--|LS|--> LocationStatus is save from mapLocation: {}", mapLocation.toShortString());
 				return true;
 			}
-			if (locationStati.get(i).equals(LocationStatus.BLOCKADE) || locationStati.get(i).equals(LocationStatus.TRAP)) {
+			if (locationStati.get(i).equals(LocationStatus.OBSTACLE) || locationStati.get(i).equals(LocationStatus.PIT)) {
 				log.info("--|LNS|--> LocationStatus is unsave from mapLocation: {}", mapLocation.toShortString());
 				return false;
 			}

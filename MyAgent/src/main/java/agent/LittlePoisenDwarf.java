@@ -66,7 +66,7 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 						log.error("---No GameLeaderAgent found!");
 					}
 				} catch (Exception e) {
-					log.error("GameLeaderAgent not found! " + e.getStackTrace().toString());
+					log.error("GameLeaderAgent not found! ", e);
 				}
 				log.info("Searching for agents finished!");
 
@@ -132,7 +132,7 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 								}
 							}
 							if (activeMovementOrder == null) {
-								ACLMessage requestMovementOrderMessage = DwarfMessagingUtils.createRequestMovementOrderMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID());
+								ACLMessage requestMovementOrderMessage = DwarfMessagingUtils.createRequestMovementOrderMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), name);
 								if (requestMovementOrderMessage != null) {
 									send(requestMovementOrderMessage);
 								}
@@ -161,8 +161,8 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 									break;
 								}
 							}
-						} catch (ParseException pe) {
-							log.error("Error while parsing message at position {} and Stacktrace {}", pe.getPosition(), pe.getStackTrace().toString());
+						} catch (ParseException pex) {
+							log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 						}
 					} else {
 						log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");

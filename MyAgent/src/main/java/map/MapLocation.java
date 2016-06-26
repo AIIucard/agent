@@ -1,6 +1,5 @@
 package main.java.map;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MapLocation {
@@ -13,10 +12,9 @@ public class MapLocation {
 	private int foodUnits;
 	private boolean startField;
 	private List<LocationStatus> locationStatus;
-	private List<String> dwarfs;
 
 	public enum LocationStatus {
-		CLEAR, BLOCKADE, TRAP, FOOD, SMELL, STENCH
+		CLEAR, OBSTACLE, PIT, FOOD, SMELL, STENCH
 	}
 
 	/**
@@ -32,15 +30,13 @@ public class MapLocation {
 		setRowCoordinate(row);
 	}
 
-	public MapLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus, String dwarfName) {
+	public MapLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus) {
 		setColumnCoordinate(col);
 		setRowCoordinate(row);
 		setSmellConcentration(smellConcentration);
 		setStenchConcentration(stenchConcentration);
 		setFoodUnits(foodUnits);
 		setLocationStatus(locationStatus);
-		dwarfs = new ArrayList<String>();
-		addDwarfToLocation(dwarfName);
 	}
 
 	public void updateLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus) {
@@ -50,20 +46,6 @@ public class MapLocation {
 		setStenchConcentration(stenchConcentration);
 		setFoodUnits(foodUnits);
 		setLocationStatus(locationStatus);
-	}
-
-	public void addDwarfToLocation(String dwarfName) {
-		dwarfs.add(dwarfName);
-	}
-
-	public boolean removeDwarfFromLocation(String dwarfName) {
-		for (int i = 0; i < dwarfs.size(); ++i) {
-			if (dwarfs.get(i).equals(dwarfName)) {
-				dwarfs.remove(i);
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public long getColumnCoordinate() {
@@ -128,14 +110,6 @@ public class MapLocation {
 
 	public void setLocationStatus(List<LocationStatus> locationStatus) {
 		this.locationStatus = locationStatus;
-	}
-
-	public List<String> getDwarfList() {
-		return dwarfs;
-	}
-
-	public void setDwarfList(List<String> dwarfs) {
-		this.dwarfs = dwarfs;
 	}
 
 	public boolean isStartField() {

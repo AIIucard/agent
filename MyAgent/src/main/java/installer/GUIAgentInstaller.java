@@ -49,8 +49,8 @@ public class GUIAgentInstaller {
 			agentController = container.createNewAgent(agentName, GUILittlePoisenDwarf.class.getName(), args);
 			agentController.start();
 			log.info("GUIAgent installed.");
-		} catch (Exception e) {
-			log.error("GUIAgent installation exception: " + e.toString());
+		} catch (Exception ex) {
+			log.error("GUIAgent installation exception! ", ex);
 		}
 	}
 }
