@@ -25,7 +25,7 @@ import main.java.agent.MovementOrder.Move;
 import main.java.utils.DwarfMessagingUtils;
 import main.java.utils.DwarfUtils;
 
-public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
+public class LittlePoisenDwarf extends Agent {
 	private static final long serialVersionUID = 1L;
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
