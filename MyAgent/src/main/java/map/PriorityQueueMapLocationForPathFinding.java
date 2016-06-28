@@ -22,22 +22,4 @@ public class PriorityQueueMapLocationForPathFinding<E> extends PriorityQueue<E> 
 		}
 		return null;
 	}
-
-	@Override
-	public boolean contains(Object obj) {
-		if (obj instanceof MapLocationForPathFinding) {
-			MapLocationForPathFinding location = (MapLocationForPathFinding) obj;
-			MapLocationForPathFinding[] array = (MapLocationForPathFinding[]) this.toArray();
-			for (MapLocationForPathFinding mapLocationForPathFinding : array) {
-				if ((mapLocationForPathFinding.getSourceMapLocation().getIntColumnCoordinate() == location
-						.getSourceMapLocation().getIntColumnCoordinate())
-						&& (mapLocationForPathFinding.getSourceMapLocation().getIntRowCoordinate() == location
-								.getSourceMapLocation().getIntRowCoordinate())) {
-					return true;
-				}
-			}
-			return false;
-		}
-		return super.contains(obj);
-	}
 }

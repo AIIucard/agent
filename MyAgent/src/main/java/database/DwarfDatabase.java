@@ -23,6 +23,7 @@ public class DwarfDatabase {
 	private List<UnknownMapLocation> locationsToBeInvestigated;
 	private List<MapLocation> locationsWithFood;
 	private HashMap<String, MapLocation> dwarfPositions;
+	private MapLocation homeLocation;
 	private int dwarfCounter;
 
 	public DwarfDatabase() {
@@ -34,7 +35,8 @@ public class DwarfDatabase {
 		dwarfPositions = new HashMap<String, MapLocation>();
 	}
 
-	public boolean updateExistingMapLocation(boolean isTrap, boolean isBlockade, int col, int row, int foodUnits, int smellConcentration, int stenchConcentration) {
+	public boolean updateExistingMapLocation(boolean isTrap, boolean isBlockade, int col, int row, int foodUnits,
+			int smellConcentration, int stenchConcentration) {
 		if (col > mapLocations.length || row > mapLocations[0].length) {
 			log.error("Location [{},{}] is not an existing mapLocation", row, col);
 			return false;
@@ -44,11 +46,13 @@ public class DwarfDatabase {
 		return true;
 	}
 
-	public boolean updateMapLocation(boolean isStartfield, boolean isTrap, boolean isBlockade, int col, int row, int foodUnits, int smellConcentration, int stenchConcentration, String dwarfName) {
+	public boolean updateMapLocation(boolean isStartfield, boolean isTrap, boolean isBlockade, int col, int row,
+			int foodUnits, int smellConcentration, int stenchConcentration, String dwarfName) {
 		if (col >= mapLocations.length - 1) {
 			log.info("Start resizing...");
 			int newColumns = resizeColumns(col);
-			log.info("Resized mapLocations and added {} new columns.", (newColumns * DwarfConstants.RESIZE_CHANGE_NUMBER));
+			log.info("Resized mapLocations and added {} new columns.",
+					(newColumns * DwarfConstants.RESIZE_CHANGE_NUMBER));
 		}
 		if (row >= mapLocations[0].length - 1) {
 			log.info("Start resizing...");
@@ -59,8 +63,13 @@ public class DwarfDatabase {
 			if (mapLocations[col][row] == null) {
 				// Location Status
 				mapLocations[col][row] = new MapLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
-						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration, stenchConcentration));
-				mapLocations[col][row].setStartField(isStartfield);
+						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration,
+								stenchConcentration));
+				if (isStartfield) {
+					mapLocations[col][row].setStartField(isStartfield);
+					setHomeLocation(mapLocations[col][row]);
+					log.info("Added new home location at position [{},{}]", col, row);
+				}
 				log.info("Added new {}", mapLocations[col][row].toString());
 
 				// Dwarf Position
@@ -83,7 +92,8 @@ public class DwarfDatabase {
 				return true;
 			} else {
 				mapLocations[col][row].updateLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
-						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration, stenchConcentration));
+						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration,
+								stenchConcentration));
 
 				// Dwarf Position
 				if (dwarfPositions.containsKey("dwarfName")) {
@@ -109,7 +119,8 @@ public class DwarfDatabase {
 				if (checkForLocationNotInInvestigationQueue(col - 1, row)) {
 					mapLocations[col - 1][row] = new UnknownMapLocation(col - 1, row);
 					locationsToBeInvestigated.add(new UnknownMapLocation(col - 1, row));
-					log.info("Added new {} to investigation list", locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
 				}
 			}
 		}
@@ -118,7 +129,8 @@ public class DwarfDatabase {
 				if (checkForLocationNotInInvestigationQueue(col, row - 1)) {
 					mapLocations[col][row - 1] = new UnknownMapLocation(col, row - 1);
 					locationsToBeInvestigated.add(new UnknownMapLocation(col, row - 1));
-					log.info("Added new {} to investigation list", locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
 				}
 			}
 		}
@@ -127,7 +139,8 @@ public class DwarfDatabase {
 				if (checkForLocationNotInInvestigationQueue(col + 1, row)) {
 					mapLocations[col + 1][row] = new UnknownMapLocation(col + 1, row);
 					locationsToBeInvestigated.add(new UnknownMapLocation(col + 1, row));
-					log.info("Added new {} to investigation list", locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
 				}
 			}
 		}
@@ -136,7 +149,8 @@ public class DwarfDatabase {
 				if (checkForLocationNotInInvestigationQueue(col, row + 1)) {
 					mapLocations[col][row + 1] = new UnknownMapLocation(col, row + 1);
 					locationsToBeInvestigated.add(new UnknownMapLocation(col, row + 1));
-					log.info("Added new {} to investigation list", locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
+					log.info("Added new {} to investigation list",
+							locationsToBeInvestigated.get(locationsToBeInvestigated.size() - 1));
 				}
 			}
 		}
@@ -144,7 +158,8 @@ public class DwarfDatabase {
 
 	public boolean checkForLocationNotInFoodLocationList(int col, int row) {
 		for (int i = 0; i < locationsWithFood.size(); ++i) {
-			if ((locationsWithFood.get(i).getColumnCoordinate() == col) && (locationsWithFood.get(i).getRowCoordinate() == row))
+			if ((locationsWithFood.get(i).getColumnCoordinate() == col)
+					&& (locationsWithFood.get(i).getRowCoordinate() == row))
 				return false;
 		}
 		return true;
@@ -152,7 +167,8 @@ public class DwarfDatabase {
 
 	public boolean checkForLocationNotInInvestigationQueue(int col, int row) {
 		for (int i = 0; i < locationsToBeInvestigated.size(); ++i) {
-			if ((locationsToBeInvestigated.get(i).getColumnCoordinate() == col) && (locationsToBeInvestigated.get(i).getRowCoordinate() == row))
+			if ((locationsToBeInvestigated.get(i).getColumnCoordinate() == col)
+					&& (locationsToBeInvestigated.get(i).getRowCoordinate() == row))
 				return false;
 		}
 		return true;
@@ -165,7 +181,8 @@ public class DwarfDatabase {
 		}
 		int oldColumnCount = mapLocations.length;
 		int oldRowCount = mapLocations[0].length;
-		MapLocation[][] newMapLocations = new MapLocation[oldColumnCount + (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)][oldRowCount];
+		MapLocation[][] newMapLocations = new MapLocation[oldColumnCount
+				+ (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)][oldRowCount];
 		for (int columns = 0; columns < oldColumnCount; columns++) {
 			for (int rows = 0; rows < oldRowCount; rows++) {
 				newMapLocations[columns][rows] = mapLocations[columns][rows];
@@ -182,7 +199,8 @@ public class DwarfDatabase {
 		}
 		int oldColumnCount = mapLocations.length;
 		int oldRowCount = mapLocations[0].length;
-		MapLocation[][] newMapLocations = new MapLocation[oldColumnCount][oldRowCount + (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)];
+		MapLocation[][] newMapLocations = new MapLocation[oldColumnCount][oldRowCount
+				+ (countResizes * DwarfConstants.RESIZE_CHANGE_NUMBER)];
 		for (int i = 0; i < oldColumnCount; i++) {
 			for (int j = 0; j < oldRowCount; j++) {
 				newMapLocations[i][j] = mapLocations[i][j];
@@ -235,5 +253,13 @@ public class DwarfDatabase {
 
 	public List<MapLocation> getLocationsWithFood() {
 		return locationsWithFood;
+	}
+
+	public MapLocation getHomeLocation() {
+		return homeLocation;
+	}
+
+	public void setHomeLocation(MapLocation homeLocation) {
+		this.homeLocation = homeLocation;
 	}
 }

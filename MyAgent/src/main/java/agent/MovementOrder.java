@@ -2,45 +2,23 @@ package main.java.agent;
 
 import java.util.Queue;
 
-import main.java.map.MapLocation;
-
 public class MovementOrder {
-	public MapLocation destination;
-	public Queue<String> moves;
-	public boolean isFinished;
+	public Queue<Move> moves;
 
 	public enum Move {
 		UP, DOWN, LEFT, RIGHT, COLLECT, DROP
 	}
 
-	public MovementOrder(MapLocation destination, Queue<String> moves) {
-		this.destination = destination;
+	public MovementOrder(Queue<Move> moves) {
 		this.moves = moves;
 	}
 
-	public MapLocation getDestination() {
-		return destination;
-	}
-
-	@Deprecated
-	public void setDestination(MapLocation destination) {
-		this.destination = destination;
-	}
-
-	public Queue<String> getMoves() {
+	public Queue<Move> getMoves() {
 		return moves;
 	}
 
 	@Deprecated
-	public void setMoves(Queue<String> moves) {
+	public void setMoves(Queue<Move> moves) {
 		this.moves = moves;
-	}
-
-	public boolean isFinished() {
-		return isFinished;
-	}
-
-	public void setFinished(boolean isFinished) {
-		this.isFinished = isFinished;
 	}
 }

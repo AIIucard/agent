@@ -18,7 +18,8 @@ public class MapLocation {
 	}
 
 	/**
-	 * Constructor for UnknownMapLocation class. This will create a MapLoation without location information.
+	 * Constructor for UnknownMapLocation class. This will create a MapLoation
+	 * without location information.
 	 *
 	 * @param col
 	 *            the collumn of the UnknownMapLocation
@@ -30,7 +31,8 @@ public class MapLocation {
 		setRowCoordinate(row);
 	}
 
-	public MapLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus) {
+	public MapLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits,
+			List<LocationStatus> locationStatus) {
 		setColumnCoordinate(col);
 		setRowCoordinate(row);
 		setSmellConcentration(smellConcentration);
@@ -39,7 +41,8 @@ public class MapLocation {
 		setLocationStatus(locationStatus);
 	}
 
-	public void updateLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits, List<LocationStatus> locationStatus) {
+	public void updateLocation(long col, long row, int smellConcentration, int stenchConcentration, int foodUnits,
+			List<LocationStatus> locationStatus) {
 		setColumnCoordinate(col);
 		setRowCoordinate(row);
 		setSmellConcentration(smellConcentration);
@@ -123,10 +126,12 @@ public class MapLocation {
 	@Override
 	public String toString() {
 		if (isStartField()) {
-			return "MapLocation Startfield [" + col + "," + row + "] with smellConcentration = " + smellConcentration + ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
+			return "MapLocation Startfield [" + col + "," + row + "] with smellConcentration = " + smellConcentration
+					+ ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
 					+ " and LocationStatus: " + locationStatus.toString();
 		}
-		return "MapLocation  [" + col + "," + row + "] with smellConcentration = " + smellConcentration + ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
+		return "MapLocation  [" + col + "," + row + "] with smellConcentration = " + smellConcentration
+				+ ", stenchConcentration = " + stenchConcentration + ", foodUnits = " + foodUnits
 				+ " and LocationStatus: " + locationStatus.toString();
 	}
 
@@ -136,13 +141,11 @@ public class MapLocation {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof MapLocation) {
+		if ((obj != null) && (obj instanceof MapLocation)) {
 			MapLocation location = (MapLocation) obj;
-			if ((this.getIntColumnCoordinate() == location.getIntColumnCoordinate()) && (this.getIntRowCoordinate() == location.getIntRowCoordinate())) {
-				return true;
-			}
-			return false;
+			return location.getIntColumnCoordinate() == this.getIntColumnCoordinate()
+					&& location.getIntRowCoordinate() == this.getIntRowCoordinate();
 		}
-		return super.equals(obj);
+		return this.equals(obj);
 	}
 }

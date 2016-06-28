@@ -1,5 +1,10 @@
 package main.java.agent;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+import javax.swing.SwingUtilities;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -14,8 +19,12 @@ import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.StaleProxyException;
 import main.java.DwarfConstants;
+import main.java.agent.MovementOrder.Move;
 import main.java.database.DwarfDatabase;
 import main.java.gui.DwarfVisualCenter;
+import main.java.map.MapLocation;
+import main.java.utils.DwarfMessagingUtils;
+import main.java.utils.DwarfPathFindingUtils;
 import main.java.utils.DwarfUtils;
 
 public class GUILittlePoisenDwarf extends GuiAgent {
@@ -27,6 +36,12 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
+	private AgentenStatus agentStatus;
+
+	public enum AgentenStatus {
+		SEARCH, COLLECT
+	}
+
 	@Override
 	public void setup() {
 		log.info("Start GUIAgent...");
@@ -34,13 +49,23 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 		dwarfDatabase = new DwarfDatabase();
 
 		log.info("Install GUI in GUIAgent...");
-		dwarfVisualCenter = new DwarfVisualCenter(this);
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				dwarfVisualCenter = new DwarfVisualCenter(GUILittlePoisenDwarf.this);
+			}
+		});
 
 		log.info("Install AgentContainer in GUIAgent...");
 		installAgentContainer(this.getContainerController());
 
 		log.info("Install Behaviours in GUIAgent...");
 		installBehaviours();
+
+		log.info("Set AgentStatus to SEARCH.");
+		agentStatus = AgentenStatus.SEARCH;
+
 		log.info("GUIAgent started.");
 	}
 
@@ -53,14 +78,17 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 				ACLMessage receivedMessage = receive();
 				if (receivedMessage != null) {
 					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_REPLY)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
+						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY,
+								receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
 								Object obj = parser.parse(receivedMessage.getContent());
 								JSONObject jsonObject = (JSONObject) obj;
-								if (jsonObject.containsKey("row") && jsonObject.containsKey("col") && jsonObject.containsKey("type") && jsonObject.containsKey("food")
-										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench") && jsonObject.containsKey("dwarfName")) {
+								if (jsonObject.containsKey("row") && jsonObject.containsKey("col")
+										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
+										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
+										&& jsonObject.containsKey("dwarfName")) {
 									boolean isStartfield = false;
 									if (jsonObject.get("type").equals(AntCellType.START.name()))
 										isStartfield = true;
@@ -72,45 +100,86 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 									// TODO check type
 									if (jsonObject.get("type").equals(AntCellType.OBSTACLE.name()))
 										isBlockade = true;
-									dwarfDatabase.updateMapLocation(isStartfield, isTrap, isBlockade, DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")),
+									Boolean updated = dwarfDatabase.updateMapLocation(isStartfield, isTrap, isBlockade,
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")),
 											jsonObject.get("dwarfName").toString());
-									dwarfVisualCenter.repaintMap();
+									if (updated) {
+										updateMap();
+									}
 								} else {
-									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
+									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY,
+											receivedMessage);
 								}
 							} catch (ParseException pex) {
 								log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 							}
 						} else {
-							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
+							log.error(
+									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
-					} else if (receivedMessage.getInReplyTo().equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
+					} else if (receivedMessage.getInReplyTo()
+							.equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
+						log.info("GUIAgent received {} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY,
+								receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
 								Object obj = parser.parse(receivedMessage.getContent());
 								JSONObject jsonObject = (JSONObject) obj;
-								if (jsonObject.containsKey("dwarfName")) {
+								if (jsonObject.containsKey("dwarfName") && jsonObject.containsKey("collectedFood")) {
 									String name = jsonObject.get("dwarfName").toString();
-									// DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
-									// startLocation, targetMapLocation)
-									// // TODO DO Pathfinding
-									// ACLMessage movementOrderMessage =
-									// DwarfMessagingUtils.createMovementOrderMessage(receiver, sender, dwarfName);
-									// if (movementOrderMessage != null) {
-									// send(movementOrderMessage);
-									// }
+									Queue<MapLocation> path = new LinkedList<MapLocation>();
+									Queue<Move> moveActionQueue = new LinkedList<Move>();
+									if (jsonObject.get("collectedFood").equals("TRUE")) {
+										path = searchForHomePath(name);
+										if (path != null) {
+											moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path, false,
+													true);
+										}
+									} else {
+										switch (agentStatus) {
+										case SEARCH:
+											path = searchForPathToNextLocationToInvestigate(name);
+
+											if (path != null) {
+												moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path,
+														false, false);
+											}
+											break;
+										case COLLECT:
+											path = searchForPathToFoodLocation(name);
+											if (path != null) {
+												// moveActionQueue =
+												// convertPathToActions(path,
+												// true, false);
+											}
+											break;
+										}
+									}
+									if ((path.size() != 0) && (moveActionQueue.size() != 0)) {
+										ACLMessage movementOrderMessage = DwarfMessagingUtils
+												.createMovementOrderMessage(receivedMessage.getSender(), getAID(),
+														moveActionQueue);
+										if (movementOrderMessage != null) {
+											send(movementOrderMessage);
+										}
+									} else {
+										log.error("Unable to send MovementOrderMessage...");
+									}
 								} else {
-									log.error("{} message is incomplete: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
+									log.error("{} message is incomplete: {}",
+											DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
 								}
 							} catch (ParseException pex) {
 								log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 							}
 						} else {
-							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
+							log.error(
+									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
 					}
 					// else if () {
@@ -126,11 +195,33 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 		});
 	}
 
-	@Override
-	protected void onGuiEvent(GuiEvent ev) {
-		switch (ev.getType()) {
-		// case null;
+	private Queue<MapLocation> searchForHomePath(String name) {
+		return DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
+				dwarfDatabase.getDwarfPositions().get(name), dwarfDatabase.getHomeLocation());
+	}
+
+	private Queue<MapLocation> searchForPathToNextLocationToInvestigate(String name) {
+		Queue<MapLocation> path;
+		for (MapLocation mapLocation : dwarfDatabase.getLocationsToBeInvestigated()) {
+			path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
+					dwarfDatabase.getDwarfPositions().get(name), mapLocation);
+			if (path != null) {
+				return path;
+			}
 		}
+		return null;
+	}
+
+	private Queue<MapLocation> searchForPathToFoodLocation(String name) {
+		Queue<MapLocation> path;
+		for (MapLocation mapLocation : dwarfDatabase.getLocationsWithFood()) {
+			path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
+					dwarfDatabase.getDwarfPositions().get(name), mapLocation);
+			if (path != null) {
+				return path;
+			}
+		}
+		return null;
 	}
 
 	public void shutDownAgent() {
@@ -144,7 +235,23 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 	}
 
 	public void updateGUI() {
-		dwarfVisualCenter.updateTabsPanel();
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				dwarfVisualCenter.updateTabsPanel();
+			}
+		});
+	}
+
+	private void updateMap() {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				dwarfVisualCenter.repaintMap();
+			}
+		});
 	}
 
 	public void installAgentContainer(AgentContainer agentContainer) {
@@ -153,5 +260,11 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 
 	public DwarfDatabase getDwarfDatabase() {
 		return dwarfDatabase;
+	}
+
+	@Override
+	protected void onGuiEvent(GuiEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 }

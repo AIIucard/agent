@@ -10,5 +10,4 @@ public class UnknownMapLocation extends MapLocation {
 	public String toString() {
 		return "UnknownMapLocation [" + getColumnCoordinate() + "][" + getRowCoordinate() + "]";
 	}
-
 }
