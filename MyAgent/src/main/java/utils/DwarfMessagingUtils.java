@@ -38,7 +38,7 @@ public class DwarfMessagingUtils {
 
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createUpdateMapMessage(AID receiver, AID sender, Object row, Object col, Object type,
-			Object food, Object smell, Object stench, String dwarfName) {
+			Object food, Object smell, Object stench, String dwarfName, int peformative) {
 		log.info("Creating {} message...", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY);
 		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.addReceiver(receiver);
@@ -54,6 +54,7 @@ public class DwarfMessagingUtils {
 		jsonObject.put("smell", smell);
 		jsonObject.put("stench", stench);
 		jsonObject.put("dwarfName", dwarfName);
+		jsonObject.put("peformative", peformative);
 		if (jsonObject != null && receiver != null) {
 			msg.setContent(jsonObject.toString());
 			log.info("{} message created: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, msg);

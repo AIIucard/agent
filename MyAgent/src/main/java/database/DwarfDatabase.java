@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.DwarfConstants;
@@ -47,7 +48,7 @@ public class DwarfDatabase {
 	}
 
 	public boolean updateMapLocation(boolean isStartfield, boolean isTrap, boolean isBlockade, int col, int row,
-			int foodUnits, int smellConcentration, int stenchConcentration, String dwarfName) {
+			int foodUnits, int smellConcentration, int stenchConcentration, String dwarfName, int performative) {
 		if (col >= mapLocations.length - 1) {
 			log.info("Start resizing...");
 			int newColumns = resizeColumns(col);
@@ -73,13 +74,15 @@ public class DwarfDatabase {
 				log.info("Added new {}", mapLocations[col][row].toString());
 
 				// Dwarf Position
-				if (dwarfPositions.containsKey(dwarfName)) {
-					dwarfPositions.remove(dwarfName);
-					dwarfPositions.put(dwarfName, mapLocations[col][row]);
-					log.info("Moved dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
-				} else {
-					dwarfPositions.put(dwarfName, mapLocations[col][row]);
-					log.info("Added dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
+				if (performative == ACLMessage.INFORM) {
+					if (dwarfPositions.containsKey(dwarfName)) {
+						dwarfPositions.remove(dwarfName);
+						dwarfPositions.put(dwarfName, mapLocations[col][row]);
+						log.info("Moved dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
+					} else {
+						dwarfPositions.put(dwarfName, mapLocations[col][row]);
+						log.info("Added dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
+					}
 				}
 
 				// Surrounding Locations

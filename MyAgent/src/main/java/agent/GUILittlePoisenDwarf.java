@@ -88,7 +88,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 								if (jsonObject.containsKey("row") && jsonObject.containsKey("col")
 										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
 										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
-										&& jsonObject.containsKey("dwarfName")) {
+										&& jsonObject.containsKey("dwarfName")
+										&& jsonObject.containsKey("performative")) {
 									boolean isStartfield = false;
 									if (jsonObject.get("type").equals(AntCellType.START.name()))
 										isStartfield = true;
@@ -106,7 +107,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")),
-											jsonObject.get("dwarfName").toString());
+											jsonObject.get("dwarfName").toString(),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("performative")));
 									if (updated) {
 										updateMap();
 									}
@@ -160,7 +162,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 											break;
 										}
 									}
-									if ((path.size() != 0) && (moveActionQueue.size() != 0)) {
+									if ((path != null) && (path.size() != 0) && (moveActionQueue != null)
+											&& (moveActionQueue.size() != 0)) {
 										ACLMessage movementOrderMessage = DwarfMessagingUtils
 												.createMovementOrderMessage(receivedMessage.getSender(), getAID(),
 														moveActionQueue);

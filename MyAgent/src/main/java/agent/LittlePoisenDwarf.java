@@ -111,7 +111,8 @@ public class LittlePoisenDwarf extends Agent {
 										ACLMessage updateMapMessage = DwarfMessagingUtils.createUpdateMapMessage(
 												getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), structure.get("row"),
 												structure.get("col"), structure.get("type"), structure.get("food"),
-												structure.get("smell"), structure.get("stench"), name);
+												structure.get("smell"), structure.get("stench"), name,
+												receivedMessage.getPerformative());
 										if (updateMapMessage != null) {
 											send(updateMapMessage);
 										}
