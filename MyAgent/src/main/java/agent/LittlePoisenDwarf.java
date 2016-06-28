@@ -99,9 +99,11 @@ public class LittlePoisenDwarf extends Agent implements InterfaceAgent {
 							JSONParser parser = new JSONParser();
 							Object obj = parser.parse(receivedMessage.getContent());
 							JSONObject jsonObject = (JSONObject) obj;
-							if (receivedMessage.getInReplyTo() != DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY
-									|| receivedMessage.getInReplyTo().equals(antWorldGameLeaderReply)) {
-								antWorldGameLeaderReply = receivedMessage.getInReplyTo();
+							if ((receivedMessage
+									.getInReplyTo() != DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
+								if (receivedMessage.getReplyWith() != null) {
+									antWorldGameLeaderReply = receivedMessage.getReplyWith();
+								}
 								// TODO check if collect and drop are possible
 								if (jsonObject.containsKey("cell")) {
 									JSONObject structure = (JSONObject) jsonObject.get("cell");

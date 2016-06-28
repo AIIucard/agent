@@ -67,7 +67,7 @@ public class DwarfMessagingUtils {
 	public static ACLMessage createRequestMovementOrderMessage(AID receiver, AID sender, String dwarfName,
 			boolean collectedFood) {
 		log.info("Creating {} message...", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
@@ -110,7 +110,7 @@ public class DwarfMessagingUtils {
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMoveUpMessage(AID receiver, AID sender, String antWorldGameLeaderReply) {
 		log.info("Creating {} message...", DwarfConstants.MOVE_UP_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
@@ -131,7 +131,7 @@ public class DwarfMessagingUtils {
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMoveDownMessage(AID receiver, AID sender, String antWorldGameLeaderReply) {
 		log.info("Creating {} message...", DwarfConstants.MOVE_DOWN_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
@@ -152,7 +152,7 @@ public class DwarfMessagingUtils {
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMoveLeftMessage(AID receiver, AID sender, String antWorldGameLeaderReply) {
 		log.info("Creating {} message...", DwarfConstants.MOVE_LEFT_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
@@ -173,7 +173,7 @@ public class DwarfMessagingUtils {
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMoveRightMessage(AID receiver, AID sender, String antWorldGameLeaderReply) {
 		log.info("Creating {} message...", DwarfConstants.MOVE_RIGHT_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
@@ -194,7 +194,7 @@ public class DwarfMessagingUtils {
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMoveCollectMessage(AID receiver, AID sender, String antWorldGameLeaderReply) {
 		log.info("Creating {} message...", DwarfConstants.MOVE_COLLECT_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
@@ -215,7 +215,7 @@ public class DwarfMessagingUtils {
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMoveDropMessage(AID receiver, AID sender, String antWorldGameLeaderReply) {
 		log.info("Creating {} message...", DwarfConstants.MOVE_DROP_MESSAGE_REPLY);
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
 		// msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);

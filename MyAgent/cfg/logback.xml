@@ -2,11 +2,11 @@
   
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
     <file>log/AgentLog.log</file>
-    <append>true</append>
+    <append>false</append>
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread] - %msg [%logger{0}]%n</pattern>
+      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread] - %msg [%line][%logger{0}]%n</pattern>
     </encoder>
   </appender>
   
@@ -14,7 +14,7 @@
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread][%line] - %msg [%logger{0}]%n</pattern>
+      <pattern>%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%25.25thread] - %msg [%line][%logger{0}]%n</pattern>
     </encoder>
   </appender>
  
