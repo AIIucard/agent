@@ -37,8 +37,8 @@ public class DwarfMessagingUtils {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static ACLMessage createUpdateMapMessage(AID receiver, AID sender, Object row, Object col, Object type,
-			Object food, Object smell, Object stench, String dwarfName, int peformative) {
+	public static ACLMessage createUpdateMapMessage(AID receiver, AID sender, Object row, Object col, Object type, Object food, Object smell, Object stench,
+			String dwarfName, int peformative, boolean isObstacle) {
 		log.info("Creating {} message...", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY);
 		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.addReceiver(receiver);
@@ -54,7 +54,8 @@ public class DwarfMessagingUtils {
 		jsonObject.put("smell", smell);
 		jsonObject.put("stench", stench);
 		jsonObject.put("dwarfName", dwarfName);
-		jsonObject.put("peformative", peformative);
+		jsonObject.put("performative", peformative);
+		jsonObject.put("isObstacle", isObstacle);
 		if (jsonObject != null && receiver != null) {
 			msg.setContent(jsonObject.toString());
 			log.info("{} message created: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, msg);
@@ -65,8 +66,7 @@ public class DwarfMessagingUtils {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static ACLMessage createRequestMovementOrderMessage(AID receiver, AID sender, String dwarfName,
-			boolean collectedFood) {
+	public static ACLMessage createRequestMovementOrderMessage(AID receiver, AID sender, String dwarfName, boolean collectedFood) {
 		log.info("Creating {} message...", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.addReceiver(receiver);
@@ -87,10 +87,10 @@ public class DwarfMessagingUtils {
 
 	@SuppressWarnings("unchecked")
 	public static ACLMessage createMovementOrderMessage(AID receiver, AID sender, Queue<Move> moves) {
-		log.info("Creating {} message...", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+		log.info("Creating {} message...", DwarfConstants.MOVEMENTORDER_MESSAGE_REPLY);
 		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.addReceiver(receiver);
-		msg.setInReplyTo(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+		msg.setInReplyTo(DwarfConstants.MOVEMENTORDER_MESSAGE_REPLY);
 		msg.setSender(sender);
 		JSONObject jsonObject = new JSONObject();
 		msg.setLanguage("JSON");
@@ -101,10 +101,10 @@ public class DwarfMessagingUtils {
 		jsonObject.put("moves", moveArray);
 		if (jsonObject != null && receiver != null) {
 			msg.setContent(jsonObject.toString());
-			log.info("{} message created: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, msg);
+			log.info("{} message created: {}", DwarfConstants.MOVEMENTORDER_MESSAGE_REPLY, msg);
 			return msg;
 		}
-		log.error("No {} message created!", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+		log.error("No {} message created!", DwarfConstants.MOVEMENTORDER_MESSAGE_REPLY);
 		return null;
 	}
 

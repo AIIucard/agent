@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
 import main.java.map.MapLocation;
+import main.java.map.MapLocation.LocationStatus;
 
 public class DwarfUtils {
 
@@ -38,6 +39,9 @@ public class DwarfUtils {
 		}
 		if (stenchConcentration != 0) {
 			list.add(MapLocation.LocationStatus.STENCH);
+		}
+		if (!isTrap && !isBlockade) {
+			list.add(LocationStatus.FREE);
 		}
 		return list;
 	}

@@ -1,6 +1,12 @@
 package main.java.gui;
 
 import java.awt.BorderLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -13,6 +19,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTree;
+import javax.swing.JViewport;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -48,7 +56,7 @@ public class DwarfVisualCenter extends JFrame {
 	// Tree root
 	private static final String agentSettingsTreeRootNodeLabelEditor = "Agenten";
 
-	public DwarfVisualCenter(GUILittlePoisenDwarf owner) {
+	public DwarfVisualCenter(GUILittlePoisenDwarf owner, int col, int row) {
 		this.owner = owner;
 		setTitle("DwarfVisualCenter");
 		this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -64,7 +72,7 @@ public class DwarfVisualCenter extends JFrame {
 		tabbedPane = createSettingsPanel();
 
 		log.info("Create map editor...");
-		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, tabbedPane, createMapEditor());
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, tabbedPane, createMapEditor(col, row));
 		splitPane.setDividerLocation(300);
 		getContentPane().add(splitPane, BorderLayout.CENTER);
 
@@ -76,10 +84,44 @@ public class DwarfVisualCenter extends JFrame {
 		owner.shutDownAgent();
 	}
 
-	private JComponent createMapEditor() {
-		editor = new MapEditor(owner);
+	private JComponent createMapEditor(int col, int row) {
+		editor = new MapEditor(owner, col, row);
+		editor.setAutoscrolls(true);
+		// Drag and Drop
+		editor.addMouseListener(new MouseAdapter() {
+
+			private Point origin;
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				origin = new Point(e.getPoint());
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				if (origin != null) {
+					JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, editor);
+					if (viewPort != null) {
+						int deltaX = origin.x - e.getX();
+						int deltaY = origin.y - e.getY();
+
+						Rectangle view = viewPort.getViewRect();
+						view.x += deltaX;
+						view.y += deltaY;
+
+						editor.scrollRectToVisible(view);
+					}
+				}
+			}
+
+		});
 		JScrollPane viewPortWithScrollbars = new JScrollPane();
 		viewPortWithScrollbars.setViewportView(editor);
+		viewPortWithScrollbars.getViewport().setViewPosition(new Point(0, 0));
 		return viewPortWithScrollbars;
 	}
 
@@ -122,6 +164,19 @@ public class DwarfVisualCenter extends JFrame {
 		}
 		JScrollPane treeView = new JScrollPane(panel);
 		return treeView;
+	}
+
+	// TODO remove after work is finished
+	public static void showOnScreen(int screen, JFrame frame) {
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice[] gd = ge.getScreenDevices();
+		if (screen > -1 && screen < gd.length) {
+			frame.setLocation(gd[screen].getDefaultConfiguration().getBounds().x, gd[screen].getDefaultConfiguration().getBounds().y + frame.getY());
+		} else if (gd.length > 0) {
+			frame.setLocation(gd[0].getDefaultConfiguration().getBounds().x, gd[0].getDefaultConfiguration().getBounds().y + frame.getY());
+		} else {
+			throw new RuntimeException("No Screens Found");
+		}
 	}
 
 	private DefaultMutableTreeNode createSettinButtonNodes(DefaultMutableTreeNode palletTreeRootNode) {

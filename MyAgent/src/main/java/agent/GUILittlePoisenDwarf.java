@@ -1,5 +1,6 @@
 package main.java.agent;
 
+import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -53,7 +54,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 
 			@Override
 			public void run() {
-				dwarfVisualCenter = new DwarfVisualCenter(GUILittlePoisenDwarf.this);
+				dwarfVisualCenter = new DwarfVisualCenter(GUILittlePoisenDwarf.this, dwarfDatabase.getMapLocations().length, dwarfDatabase.getMapLocations()[0].length);
+				DwarfVisualCenter.showOnScreen(1, dwarfVisualCenter);
 			}
 		});
 
@@ -78,55 +80,41 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 				ACLMessage receivedMessage = receive();
 				if (receivedMessage != null) {
 					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_REPLY)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY,
-								receivedMessage);
+						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
 								Object obj = parser.parse(receivedMessage.getContent());
 								JSONObject jsonObject = (JSONObject) obj;
-								if (jsonObject.containsKey("row") && jsonObject.containsKey("col")
-										&& jsonObject.containsKey("type") && jsonObject.containsKey("food")
-										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench")
-										&& jsonObject.containsKey("dwarfName")
-										&& jsonObject.containsKey("performative")) {
+								if (jsonObject.containsKey("row") && jsonObject.containsKey("col") && jsonObject.containsKey("type") && jsonObject.containsKey("food")
+										&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench") && jsonObject.containsKey("dwarfName")
+										&& jsonObject.containsKey("performative") && jsonObject.containsKey("isObstacle")) {
 									boolean isStartfield = false;
 									if (jsonObject.get("type").equals(AntCellType.START.name()))
 										isStartfield = true;
 									boolean isTrap = false;
-									// TODO check type
 									if (jsonObject.get("type").equals(AntCellType.PIT.name()))
 										isTrap = true;
-									boolean isBlockade = false;
-									// TODO check type
-									if (jsonObject.get("type").equals(AntCellType.OBSTACLE.name()))
-										isBlockade = true;
-									Boolean updated = dwarfDatabase.updateMapLocation(isStartfield, isTrap, isBlockade,
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
-											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")),
-											jsonObject.get("dwarfName").toString(),
+									boolean isObstacle = jsonObject.get("isObstacle").equals("true") ? true : false;
+									Boolean updated = dwarfDatabase.updateMapLocation(isStartfield, isTrap, isObstacle,
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
+											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")), jsonObject.get("dwarfName").toString(),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("performative")));
 									if (updated) {
 										updateMap();
 									}
 								} else {
-									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY,
-											receivedMessage);
+									log.error("{} message is incomplete: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
 								}
 							} catch (ParseException pex) {
 								log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 							}
 						} else {
-							log.error(
-									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
-					} else if (receivedMessage.getInReplyTo()
-							.equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
-						log.info("GUIAgent received {} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY,
-								receivedMessage);
+					} else if (receivedMessage.getInReplyTo().equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
+						log.info("GUIAgent received {} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
 							try {
 								JSONParser parser = new JSONParser();
@@ -136,11 +124,10 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 									String name = jsonObject.get("dwarfName").toString();
 									Queue<MapLocation> path = new LinkedList<MapLocation>();
 									Queue<Move> moveActionQueue = new LinkedList<Move>();
-									if (jsonObject.get("collectedFood").equals("TRUE")) {
+									if (jsonObject.get("collectedFood").equals("true")) {
 										path = searchForHomePath(name);
 										if (path != null) {
-											moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path, false,
-													true);
+											moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path, false, true);
 										}
 									} else {
 										switch (agentStatus) {
@@ -148,8 +135,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 											path = searchForPathToNextLocationToInvestigate(name);
 
 											if (path != null) {
-												moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path,
-														false, false);
+												moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path, false, false);
 											}
 											break;
 										case COLLECT:
@@ -162,27 +148,24 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 											break;
 										}
 									}
-									if ((path != null) && (path.size() != 0) && (moveActionQueue != null)
-											&& (moveActionQueue.size() != 0)) {
-										ACLMessage movementOrderMessage = DwarfMessagingUtils
-												.createMovementOrderMessage(receivedMessage.getSender(), getAID(),
-														moveActionQueue);
+									if ((path != null) && (path.size() != 0) && (moveActionQueue != null) && (moveActionQueue.size() != 0)) {
+										ACLMessage movementOrderMessage = DwarfMessagingUtils.createMovementOrderMessage(receivedMessage.getSender(), getAID(),
+												moveActionQueue);
 										if (movementOrderMessage != null) {
 											send(movementOrderMessage);
+											log.info("---M--> {} send {} to {}", name, DwarfConstants.MOVEMENTORDER_MESSAGE_REPLY, movementOrderMessage.getAllReceiver());
 										}
 									} else {
-										log.error("Unable to send MovementOrderMessage...");
+										log.error("---X--> Unable to send MovementOrderMessage!");
 									}
 								} else {
-									log.error("{} message is incomplete: {}",
-											DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
+									log.error("{} message is incomplete: {}", DwarfConstants.MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
 								}
 							} catch (ParseException pex) {
 								log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 							}
 						} else {
-							log.error(
-									"Message type unknown, because language key not set! Can not decode message into JSONObject!");
+							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
 					}
 					// else if () {
@@ -199,18 +182,22 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 	}
 
 	private Queue<MapLocation> searchForHomePath(String name) {
-		return DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
-				dwarfDatabase.getDwarfPositions().get(name), dwarfDatabase.getHomeLocation());
+		return DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(), dwarfDatabase.getDwarfPositions().get(name),
+				dwarfDatabase.getHomeLocation());
 	}
 
 	private Queue<MapLocation> searchForPathToNextLocationToInvestigate(String name) {
 		Queue<MapLocation> path;
-		for (MapLocation mapLocation : dwarfDatabase.getLocationsToBeInvestigated()) {
-			path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
-					dwarfDatabase.getDwarfPositions().get(name), mapLocation);
-			if (path != null) {
-				return path;
+		if (dwarfDatabase.getLocationsToBeInvestigated().size() != 0) {
+			for (MapLocation mapLocation : dwarfDatabase.getLocationsToBeInvestigated()) {
+				path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(), dwarfDatabase.getDwarfPositions().get(name), mapLocation);
+				if (path != null) {
+					dwarfDatabase.getLocationsToBeInvestigated().remove(mapLocation);
+					return path;
+				}
 			}
+		} else {
+			log.info("No locations for investigation left! Can not find Path!");
 		}
 		return null;
 	}
@@ -218,8 +205,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 	private Queue<MapLocation> searchForPathToFoodLocation(String name) {
 		Queue<MapLocation> path;
 		for (MapLocation mapLocation : dwarfDatabase.getLocationsWithFood()) {
-			path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(),
-					dwarfDatabase.getDwarfPositions().get(name), mapLocation);
+			path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(), dwarfDatabase.getDwarfPositions().get(name), mapLocation);
 			if (path != null) {
 				return path;
 			}
@@ -252,6 +238,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 
 			@Override
 			public void run() {
+				dwarfVisualCenter.getEditor().setSize(new Dimension(200 + (dwarfDatabase.getMapLocations().length * DwarfConstants.SQUARE_DIMENSION),
+						200 + (dwarfDatabase.getMapLocations()[0].length * DwarfConstants.SQUARE_DIMENSION)));
 				dwarfVisualCenter.repaintMap();
 			}
 		});

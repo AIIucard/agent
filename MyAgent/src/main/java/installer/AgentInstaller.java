@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
+import main.java.DwarfConstants;
 import main.java.agent.GUILittlePoisenDwarf;
 import main.java.agent.LittlePoisenDwarf;
 
@@ -22,7 +23,7 @@ public class AgentInstaller {
 		try {
 			if (name == null || name.equals("")) {
 
-				agentName = "smallLittlePoisenDwarf" + (owner.getDwarfDatabase().getDwarfCounter() + 1);
+				agentName = DwarfConstants.AGENT_NAME + (owner.getDwarfDatabase().getDwarfCounter() + 1);
 				owner.getDwarfDatabase().incrementDwarfCounter();
 			} else {
 				agentName = name;

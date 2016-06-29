@@ -14,7 +14,7 @@ public class MapLocation {
 	private List<LocationStatus> locationStatus;
 
 	public enum LocationStatus {
-		CLEAR, OBSTACLE, PIT, FOOD, SMELL, STENCH
+		FREE, OBSTACLE, PIT, FOOD, SMELL, STENCH
 	}
 
 	/**

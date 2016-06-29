@@ -1,79 +1,1143 @@
-INFO  2016-06-28 14:41:04.147 [                     main] - Install GUIAgent... [26][GUIAgentInstaller]
-INFO  2016-06-28 14:41:06.243 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [48][GUIAgentInstaller]
-INFO  2016-06-28 14:41:06.300 [                     main] - GUIAgent installed. [51][GUIAgentInstaller]
-INFO  2016-06-28 14:41:06.302 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [47][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.302 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [48][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.305 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [51][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.306 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [60][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.307 [ LittlePoisenDwarfWithGUI] - Install Behaviours in GUIAgent... [63][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.311 [ LittlePoisenDwarfWithGUI] - Set AgentStatus to SEARCH. [66][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.312 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [69][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:06.315 [         AWT-EventQueue-0] - Create settings panel... [63][DwarfVisualCenter]
-INFO  2016-06-28 14:41:06.365 [         AWT-EventQueue-0] - Create map editor... [66][DwarfVisualCenter]
-INFO  2016-06-28 14:41:06.408 [         AWT-EventQueue-0] - Creation of dwarf visual center finished. [71][DwarfVisualCenter]
-INFO  2016-06-28 14:41:08.688 [         AWT-EventQueue-0] - Installing new agent with random name... [25][TreeButtonUtils]
-INFO  2016-06-28 14:41:08.690 [         AWT-EventQueue-0] - Install agent with name smallLittlePoisenDwarf1 [31][AgentInstaller]
-INFO  2016-06-28 14:41:08.697 [  smallLittlePoisenDwarf1] - Searching for agents... [53][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.697 [         AWT-EventQueue-0] - Update tab panel... [138][DwarfVisualCenter]
-INFO  2016-06-28 14:41:08.698 [  smallLittlePoisenDwarf1] - ---Set filter: antWorld2016 for search. [55][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.702 [  smallLittlePoisenDwarf1] - ---Search started... [61][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.719 [         AWT-EventQueue-0] - Update tab panel finished. [160][DwarfVisualCenter]
-INFO  2016-06-28 14:41:08.728 [  smallLittlePoisenDwarf1] - ---antWorld05056552-bfed-4939-a951-40d017b19595: [65][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.729 [  smallLittlePoisenDwarf1] - ---GameLeaderAgent found: antWorld05056552-bfed-4939-a951-40d017b19595 [68][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.729 [  smallLittlePoisenDwarf1] - Searching for agents finished! [78][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.731 [  smallLittlePoisenDwarf1] - Creating login message... [21][DwarfMessagingUtils]
-INFO  2016-06-28 14:41:08.736 [  smallLittlePoisenDwarf1] - Login message created: (REQUEST
- :sender  ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name antWorld05056552-bfed-4939-a951-40d017b19595@172.22.12.25:1099/JADE ) )
+INFO  2016-06-29 18:05:53.133 [                     main] - Install GUIAgent... [26][GUIAgentInstaller]
+INFO  2016-06-29 18:05:55.374 [                     main] - Install GUIAgent with name LittlePoisenDwarfWithGUI. [48][GUIAgentInstaller]
+INFO  2016-06-29 18:05:55.459 [                     main] - GUIAgent installed. [51][GUIAgentInstaller]
+INFO  2016-06-29 18:05:55.463 [ LittlePoisenDwarfWithGUI] - Start GUIAgent... [48][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.464 [ LittlePoisenDwarfWithGUI] - Install Database in GUIAgent... [49][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.476 [ LittlePoisenDwarfWithGUI] - Install GUI in GUIAgent... [52][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.480 [ LittlePoisenDwarfWithGUI] - Install AgentContainer in GUIAgent... [62][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.481 [ LittlePoisenDwarfWithGUI] - Install Behaviours in GUIAgent... [65][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.488 [ LittlePoisenDwarfWithGUI] - Set AgentStatus to SEARCH. [68][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.490 [         AWT-EventQueue-0] - Create settings panel... [71][DwarfVisualCenter]
+INFO  2016-06-29 18:05:55.490 [ LittlePoisenDwarfWithGUI] - GUIAgent started. [71][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:05:55.544 [         AWT-EventQueue-0] - Create map editor... [74][DwarfVisualCenter]
+INFO  2016-06-29 18:05:55.639 [         AWT-EventQueue-0] - Creation of dwarf visual center finished. [79][DwarfVisualCenter]
+INFO  2016-06-29 18:06:00.291 [         AWT-EventQueue-0] - Installing new agent with random name... [25][TreeButtonUtils]
+INFO  2016-06-29 18:06:00.293 [         AWT-EventQueue-0] - Install agent with name LittlePoisenDwarfWithGUI1 [32][AgentInstaller]
+INFO  2016-06-29 18:06:00.308 [         AWT-EventQueue-0] - Update tab panel... [193][DwarfVisualCenter]
+INFO  2016-06-29 18:06:00.338 [         AWT-EventQueue-0] - Update tab panel finished. [215][DwarfVisualCenter]
+INFO  2016-06-29 18:06:00.346 [LittlePoisenDwarfWithGUI1] - Searching for agents... [63][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.346 [LittlePoisenDwarfWithGUI1] - ---Set filter: antWorld2016 for search. [65][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.350 [LittlePoisenDwarfWithGUI1] - ---Search started... [71][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.390 [LittlePoisenDwarfWithGUI1] - ---antWorld01053b8a-f9ef-4606-8b24-05b77226415a: [75][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.390 [LittlePoisenDwarfWithGUI1] - ---GameLeaderAgent found: antWorld01053b8a-f9ef-4606-8b24-05b77226415a [78][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.390 [LittlePoisenDwarfWithGUI1] - Searching for agents finished! [88][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.392 [LittlePoisenDwarfWithGUI1] - Creating login message... [21][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:00.398 [LittlePoisenDwarfWithGUI1] - Login message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
  :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_LOGIN\"}" 
  :language  JSON ) [32][DwarfMessagingUtils]
-INFO  2016-06-28 14:41:08.751 [  smallLittlePoisenDwarf1] -  Agent smallLittlePoisenDwarf1 received message: (INFORM
- :sender  ( agent-identifier :name antWorld05056552-bfed-4939-a951-40d017b19595@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc )) )
+INFO  2016-06-29 18:06:00.400 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send LoginMessage to jade.util.leap.ArrayList$1@6c18d409 [95][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:00.410 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
  :content  "{
-  \"name\" : \"smallLittlePoisenDwarf1\",
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
   \"state\" : \"ALIVE\",
   \"color\" : \"GREEN\",
   \"currentFood\" : 0,
   \"totalFood\" : 0,
   \"action\" : \"ANT_ACTION_LOGIN\",
   \"cell\" : {
-    \"row\" : 2,
-    \"col\" : 16,
+    \"row\" : 1,
+    \"col\" : 18,
     \"type\" : \"START\",
     \"food\" : 0,
     \"smell\" : 0,
     \"stench\" : 0,
-    \"ants\" : [ \"smallLittlePoisenDwarf1\" ]
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
   },
   \"replyId\" : \"\"
 }" 
- :reply-with  MSG10256  :language  JSON ) [96][LittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.764 [  smallLittlePoisenDwarf1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
-INFO  2016-06-28 14:41:08.766 [  smallLittlePoisenDwarf1] - UpdateMap message created: (INFORM
- :sender  ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc )) )
- :content  "{\"stench\":0,\"col\":16,\"dwarfName\":\"smallLittlePoisenDwarf1\",\"row\":2,\"type\":\"START\",\"smell\":0,\"food\":0,\"peformative\":7}" 
- :in-reply-to  UpdateMap  :language  JSON ) [60][DwarfMessagingUtils]
-INFO  2016-06-28 14:41:08.767 [  smallLittlePoisenDwarf1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
-INFO  2016-06-28 14:41:08.768 [  smallLittlePoisenDwarf1] - RequestMovementOrder message created: (REQUEST
- :sender  ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc )) )
- :content  "{\"dwarfName\":\"smallLittlePoisenDwarf1\",\"collectedFood\":false}" 
+ :reply-with  MSG12273  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.739 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.741 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.743 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@14a86835 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.746 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.746 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.747 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
  :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
-INFO  2016-06-28 14:41:08.770 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
- :sender  ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc )) )
- :content  "{\"stench\":0,\"col\":16,\"dwarfName\":\"smallLittlePoisenDwarf1\",\"row\":2,\"type\":\"START\",\"smell\":0,\"food\":0,\"peformative\":7}" 
- :in-reply-to  UpdateMap  :language  JSON ) [81][GUILittlePoisenDwarf]
-ERROR 2016-06-28 14:41:08.771 [ LittlePoisenDwarfWithGUI] - UpdateMap message is incomplete: (INFORM
- :sender  ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc )) )
- :content  "{\"stench\":0,\"col\":16,\"dwarfName\":\"smallLittlePoisenDwarf1\",\"row\":2,\"type\":\"START\",\"smell\":0,\"food\":0,\"peformative\":7}" 
- :in-reply-to  UpdateMap  :language  JSON ) [116][GUILittlePoisenDwarf]
-INFO  2016-06-28 14:41:08.772 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
- :sender  ( agent-identifier :name smallLittlePoisenDwarf1@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc ))
- :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.12.25:1099/JADE  :addresses (sequence http://172.22.12.25:7778/acc )) )
- :content  "{\"dwarfName\":\"smallLittlePoisenDwarf1\",\"collectedFood\":false}" 
- :in-reply-to  RequestMovementOrder  :language  JSON ) [128][GUILittlePoisenDwarf]
-ERROR 2016-06-28 14:41:08.774 [ LittlePoisenDwarfWithGUI] - Unable to send MovementOrderMessage... [174][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.748 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@28cbfde7 [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.749 [ LittlePoisenDwarfWithGUI] - Start resizing... [106][DwarfDatabase]
+INFO  2016-06-29 18:06:05.750 [ LittlePoisenDwarfWithGUI] - Resized mapLocations and added 6 new columns. [108][DwarfDatabase]
+INFO  2016-06-29 18:06:05.752 [ LittlePoisenDwarfWithGUI] - Added new home location at position [18,1] [60][DwarfDatabase]
+INFO  2016-06-29 18:06:05.753 [ LittlePoisenDwarfWithGUI] - Added new MapLocation Startfield [18,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:06:05.754 [ LittlePoisenDwarfWithGUI] - Added dwarf LittlePoisenDwarfWithGUI1 to MapLocation MapLocation Startfield [18,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [72][DwarfDatabase]
+INFO  2016-06-29 18:06:05.756 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [17][1] to investigation list [130][DwarfDatabase]
+INFO  2016-06-29 18:06:05.756 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [18][0] to investigation list [139][DwarfDatabase]
+INFO  2016-06-29 18:06:05.757 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [19][1] to investigation list [148][DwarfDatabase]
+INFO  2016-06-29 18:06:05.757 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [18][2] to investigation list [157][DwarfDatabase]
+INFO  2016-06-29 18:06:05.765 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:05.778 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.784 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [18,1] to MapLocation  [17,1] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.788 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.788 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: null and distance to target: -1 and distance to target: 1 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.789 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.790 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.790 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [18,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.791 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.791 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.791 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,1] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.792 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.792 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.793 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [18,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.793 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.794 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.797 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.798 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [18,1] to MapLocation  [17,1] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.798 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [17,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:05.800 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.801 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"LEFT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.805 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@40efad34 [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.805 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"LEFT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.807 [LittlePoisenDwarfWithGUI1] - Creating MoveLeft message... [155][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.808 [LittlePoisenDwarfWithGUI1] - MoveLeft message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_LEFT\"}" 
+ :in-reply-to  MSG12273  :language  JSON ) [167][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:05.810 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveLeft to jade.util.leap.ArrayList$1@37cb7022 [222][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.811 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:05.818 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LEFT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 17,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12273\"
+}" 
+ :reply-with  MSG12274  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.529 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.530 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.533 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@60f54f2e [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.533 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.533 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.534 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.534 [ LittlePoisenDwarfWithGUI] - Added new MapLocation  [17,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:06:08.535 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@1726a212 [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.536 [ LittlePoisenDwarfWithGUI] - Moved dwarf LittlePoisenDwarfWithGUI1 to MapLocation MapLocation  [17,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [69][DwarfDatabase]
+INFO  2016-06-29 18:06:08.536 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [16][1] to investigation list [130][DwarfDatabase]
+INFO  2016-06-29 18:06:08.536 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [17][0] to investigation list [139][DwarfDatabase]
+INFO  2016-06-29 18:06:08.536 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [17][2] to investigation list [157][DwarfDatabase]
+INFO  2016-06-29 18:06:08.537 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:08.537 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.537 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [17,1] to MapLocation  [18,0] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.538 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [17,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.538 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [16,1] is UnknownMapLocation and not targetLoaction [96][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.539 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.539 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [16,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.540 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.540 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.541 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.541 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.542 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.542 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.543 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.543 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.544 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.544 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.544 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [17,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.544 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.545 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.545 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,0] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 2 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.545 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.545 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.546 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,1] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.546 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.547 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.547 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [18,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.548 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.549 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.550 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.551 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [17,1] to MapLocation  [18,0] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.552 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [18,0], MapLocation  [18,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:08.552 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.553 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"RIGHT\",\"UP\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.554 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@2681d61e [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.554 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"RIGHT\",\"UP\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.555 [LittlePoisenDwarfWithGUI1] - Creating MoveRight message... [176][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.555 [LittlePoisenDwarfWithGUI1] - MoveRight message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_RIGHT\"}" 
+ :in-reply-to  MSG12274  :language  JSON ) [188][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:08.556 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveRight to jade.util.leap.ArrayList$1@38ddf5d7 [232][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:08.567 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_RIGHT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 18,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12274\"
+}" 
+ :reply-with  MSG12275  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:10.990 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:10.992 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:10.995 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@547bd88e [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:10.995 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:10.996 [LittlePoisenDwarfWithGUI1] - Creating MoveUP message... [113][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:10.996 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [18,1] [85][DwarfDatabase]
+INFO  2016-06-29 18:06:10.996 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation Startfield [18,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:06:10.996 [LittlePoisenDwarfWithGUI1] - MoveUP message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_UP\"}" 
+ :in-reply-to  MSG12275  :language  JSON ) [125][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:10.997 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:16.375 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveUP to jade.util.leap.ArrayList$1@1e3d7110 [202][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:16.376 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:16.392 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_UP\",
+  \"cell\" : {
+    \"row\" : 0,
+    \"col\" : 18,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12275\"
+}" 
+ :reply-with  MSG12276  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.748 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.749 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":0,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.751 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@3ca976f7 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.752 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":0,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.752 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.753 [ LittlePoisenDwarfWithGUI] - Added new MapLocation  [18,0] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:06:17.753 [ LittlePoisenDwarfWithGUI] - Moved dwarf LittlePoisenDwarfWithGUI1 to MapLocation MapLocation  [18,0] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [69][DwarfDatabase]
+INFO  2016-06-29 18:06:17.753 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [19][0] to investigation list [148][DwarfDatabase]
+INFO  2016-06-29 18:06:17.753 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.756 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:17.755 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@6b0d5ff8 [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.763 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.764 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [18,0] to MapLocation  [19,1] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.765 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,0]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.769 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,0] is UnknownMapLocation and not targetLoaction [96][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.769 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.770 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,0] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.770 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,0] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.770 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,0] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.771 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,0] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.771 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.771 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [18,0] with parentMapLocation: null and distance to target: -1 and distance to target: 2 to openList [194][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.771 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.771 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.772 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,0]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.772 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.772 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [17,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.772 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [18,0] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 4 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.772 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.772 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.773 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.773 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [19,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [18,0] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 2 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.774 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.774 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.775 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [18,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.775 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.775 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.775 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.776 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [18,0] to MapLocation  [19,1] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.776 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [19,1], MapLocation  [18,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:17.776 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.777 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"DOWN\",\"RIGHT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.777 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@36e5d0f [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.778 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"DOWN\",\"RIGHT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.779 [LittlePoisenDwarfWithGUI1] - Creating MoveDown message... [134][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.779 [LittlePoisenDwarfWithGUI1] - MoveDown message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_DOWN\"}" 
+ :in-reply-to  MSG12276  :language  JSON ) [146][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:17.780 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveDown to jade.util.leap.ArrayList$1@61b845bf [212][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:17.791 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_DOWN\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 18,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12276\"
+}" 
+ :reply-with  MSG12277  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:18.954 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:18.955 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:18.956 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@14f80d69 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:18.957 [LittlePoisenDwarfWithGUI1] - Creating MoveRight message... [176][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:18.957 [LittlePoisenDwarfWithGUI1] - MoveRight message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_RIGHT\"}" 
+ :in-reply-to  MSG12277  :language  JSON ) [188][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:18.958 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveRight to jade.util.leap.ArrayList$1@6311cfcf [232][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:18.960 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:18.960 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:18.961 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [18,1] [85][DwarfDatabase]
+INFO  2016-06-29 18:06:18.961 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation Startfield [18,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:06:18.962 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:18.973 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_RIGHT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 19,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12277\"
+}" 
+ :reply-with  MSG12278  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.007 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.008 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":19,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.010 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@62e2aeca [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.011 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.011 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.011 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":19,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.012 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@41d48a94 [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.013 [ LittlePoisenDwarfWithGUI] - Start resizing... [106][DwarfDatabase]
+INFO  2016-06-29 18:06:20.013 [ LittlePoisenDwarfWithGUI] - Resized mapLocations and added 3 new columns. [108][DwarfDatabase]
+INFO  2016-06-29 18:06:20.014 [ LittlePoisenDwarfWithGUI] - Added new MapLocation  [19,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:06:20.014 [ LittlePoisenDwarfWithGUI] - Moved dwarf LittlePoisenDwarfWithGUI1 to MapLocation MapLocation  [19,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [69][DwarfDatabase]
+INFO  2016-06-29 18:06:20.014 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [20][1] to investigation list [148][DwarfDatabase]
+INFO  2016-06-29 18:06:20.014 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [19][2] to investigation list [157][DwarfDatabase]
+INFO  2016-06-29 18:06:20.015 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.015 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:20.015 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [19,1] to MapLocation  [18,2] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.016 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [19,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.016 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.017 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [19,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.018 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.019 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [18,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.021 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.022 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.023 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.023 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [20,1] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.024 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [20,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.024 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [20,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.024 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.024 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.024 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.025 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [19,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.025 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.025 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [17,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.025 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [19,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 4 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.026 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.026 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.026 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,0] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.026 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,0] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [19,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 4 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.027 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.027 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.027 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.027 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,2] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [19,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 2 to openList [194][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.028 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.028 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.028 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.028 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [19,1] to MapLocation  [18,2] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.029 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [18,2], MapLocation  [18,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:20.029 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.030 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"LEFT\",\"DOWN\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.030 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@6c3fecce [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.031 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"LEFT\",\"DOWN\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.032 [LittlePoisenDwarfWithGUI1] - Creating MoveLeft message... [155][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.032 [LittlePoisenDwarfWithGUI1] - MoveLeft message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_LEFT\"}" 
+ :in-reply-to  MSG12278  :language  JSON ) [167][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:20.033 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveLeft to jade.util.leap.ArrayList$1@15134482 [222][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:20.042 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LEFT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 18,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12278\"
+}" 
+ :reply-with  MSG12279  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:21.130 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:21.131 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:21.132 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@78918e58 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:21.133 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:21.134 [LittlePoisenDwarfWithGUI1] - Creating MoveDown message... [134][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:21.134 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [18,1] [85][DwarfDatabase]
+INFO  2016-06-29 18:06:21.134 [LittlePoisenDwarfWithGUI1] - MoveDown message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_DOWN\"}" 
+ :in-reply-to  MSG12279  :language  JSON ) [146][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:21.135 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation Startfield [18,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:06:21.135 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveDown to jade.util.leap.ArrayList$1@f72eb7e [212][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:21.136 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:21.136 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:21.139 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_DOWN\",
+  \"cell\" : {
+    \"row\" : 2,
+    \"col\" : 18,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12279\"
+}" 
+ :reply-with  MSG12280  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.183 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.184 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":2,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.185 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@6a97402e [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.186 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.186 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":2,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.186 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.187 [ LittlePoisenDwarfWithGUI] - Added new MapLocation  [18,2] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:06:22.187 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@65af2eaa [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.187 [ LittlePoisenDwarfWithGUI] - Moved dwarf LittlePoisenDwarfWithGUI1 to MapLocation MapLocation  [18,2] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [69][DwarfDatabase]
+INFO  2016-06-29 18:06:22.188 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [18][3] to investigation list [157][DwarfDatabase]
+INFO  2016-06-29 18:06:22.189 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:22.189 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.189 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [18,2] to MapLocation  [16,1] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.190 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,2]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.190 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,2] is UnknownMapLocation and not targetLoaction [96][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.190 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,2] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.191 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,2] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.191 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.191 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [18,2] with parentMapLocation: null and distance to target: -1 and distance to target: 3 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.191 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.192 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.192 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,2] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.196 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,2] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.197 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,2] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.197 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [18,3] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.198 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,3] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.198 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,3] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.198 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,2]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.198 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.199 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [17,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.199 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [18,2] with parentMapLocation: null and distance to target: -1 and distance to target: 3 and distance to target: 3 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.199 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.199 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.200 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,0] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.201 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,0] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [18,2] with parentMapLocation: null and distance to target: -1 and distance to target: 3 and distance to target: 5 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.201 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.201 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.201 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [19,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.202 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [19,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [18,2] with parentMapLocation: null and distance to target: -1 and distance to target: 3 and distance to target: 5 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.202 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.202 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.202 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.203 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.203 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [17,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.203 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [16,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [18,2] with parentMapLocation: null and distance to target: -1 and distance to target: 3 and distance to target: 3 and distance to target: 3 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.204 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.205 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [16,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.205 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.205 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.206 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.206 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.206 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.206 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.206 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.207 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [17,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.207 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [18,2] to MapLocation  [16,1] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.207 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [16,1], MapLocation  [17,1], MapLocation  [18,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:22.207 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.208 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"UP\",\"LEFT\",\"LEFT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.209 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@51846a70 [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.209 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"UP\",\"LEFT\",\"LEFT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:22.210 [LittlePoisenDwarfWithGUI1] - Creating MoveUP message... [113][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:22.212 [LittlePoisenDwarfWithGUI1] - MoveUP message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_UP\"}" 
+ :in-reply-to  MSG12280  :language  JSON ) [125][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:24.642 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveUP to jade.util.leap.ArrayList$1@11b88f09 [202][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:24.654 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_UP\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 18,
+    \"type\" : \"START\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12280\"
+}" 
+ :reply-with  MSG12281  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:26.648 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:26.650 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:26.652 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@909af5b [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:26.653 [LittlePoisenDwarfWithGUI1] - Creating MoveLeft message... [155][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:26.653 [LittlePoisenDwarfWithGUI1] - MoveLeft message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_LEFT\"}" 
+ :in-reply-to  MSG12281  :language  JSON ) [167][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:26.656 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveLeft to jade.util.leap.ArrayList$1@594f0864 [222][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:26.656 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":18,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"START\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:26.658 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [18,1] [85][DwarfDatabase]
+INFO  2016-06-29 18:06:26.658 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation Startfield [18,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:06:26.658 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:26.661 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LEFT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 17,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12281\"
+}" 
+ :reply-with  MSG12282  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:27.779 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:27.780 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:27.781 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@4589b799 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:27.783 [LittlePoisenDwarfWithGUI1] - Creating MoveLeft message... [155][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:27.783 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:27.783 [LittlePoisenDwarfWithGUI1] - MoveLeft message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_LEFT\"}" 
+ :in-reply-to  MSG12282  :language  JSON ) [167][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:27.784 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [17,1] [85][DwarfDatabase]
+INFO  2016-06-29 18:06:27.784 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation  [17,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:06:27.787 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveLeft to jade.util.leap.ArrayList$1@101ca8e6 [222][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:27.787 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:27.788 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:27.819 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_LEFT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 16,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12282\"
+}" 
+ :reply-with  MSG12283  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.100 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.101 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":16,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.102 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@542bbec9 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.103 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.103 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":16,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.103 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.104 [ LittlePoisenDwarfWithGUI] - Added new MapLocation  [16,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:06:30.104 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@75868000 [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.105 [ LittlePoisenDwarfWithGUI] - Moved dwarf LittlePoisenDwarfWithGUI1 to MapLocation MapLocation  [16,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [69][DwarfDatabase]
+INFO  2016-06-29 18:06:30.105 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [15][1] to investigation list [130][DwarfDatabase]
+INFO  2016-06-29 18:06:30.106 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [16][0] to investigation list [139][DwarfDatabase]
+INFO  2016-06-29 18:06:30.106 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [16][2] to investigation list [157][DwarfDatabase]
+INFO  2016-06-29 18:06:30.106 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:30.107 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.108 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [16,1] to MapLocation  [17,0] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.108 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [16,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.108 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [15,1] is UnknownMapLocation and not targetLoaction [96][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.109 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [15,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.109 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [15,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.109 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [16,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.110 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.110 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [16,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.110 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [17,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.111 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,1] with parentMapLocation: MapLocation  [16,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.111 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.111 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.111 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [16,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.111 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.112 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [16,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.112 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [16,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.112 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [17,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.112 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [16,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.112 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,0] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [16,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 2 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.113 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.113 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.113 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.114 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [16,1] with parentMapLocation: null and distance to target: -1 and distance to target: 2 and distance to target: 4 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.115 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.115 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.115 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.115 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.116 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.116 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [17,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.116 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [16,1] to MapLocation  [17,0] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.116 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [17,0], MapLocation  [17,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:06:30.116 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.117 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"RIGHT\",\"UP\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.117 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@791d7778 [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.118 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"RIGHT\",\"UP\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.118 [LittlePoisenDwarfWithGUI1] - Creating MoveRight message... [176][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.119 [LittlePoisenDwarfWithGUI1] - MoveRight message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_RIGHT\"}" 
+ :in-reply-to  MSG12283  :language  JSON ) [188][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:30.121 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveRight to jade.util.leap.ArrayList$1@7d3bc456 [232][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:30.127 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_RIGHT\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 17,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12283\"
+}" 
+ :reply-with  MSG12284  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:32.529 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:32.530 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:32.531 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@815188f [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:32.532 [LittlePoisenDwarfWithGUI1] - Creating MoveUP message... [113][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:32.532 [LittlePoisenDwarfWithGUI1] - MoveUP message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_UP\"}" 
+ :in-reply-to  MSG12284  :language  JSON ) [125][DwarfMessagingUtils]
+INFO  2016-06-29 18:06:32.535 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":1,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:06:32.538 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [17,1] [85][DwarfDatabase]
+INFO  2016-06-29 18:06:32.538 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation  [17,1] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:06:32.538 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:06:34.741 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveUP to jade.util.leap.ArrayList$1@14122b2 [202][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:34.742 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:06:34.748 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (REFUSE
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_UP\",
+  \"cell\" : {
+    \"row\" : 1,
+    \"col\" : 17,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12284\"
+}" 
+ :reply-with  MSG12285  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.919 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.921 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":true,\"performative\":14,\"row\":2,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.922 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@4086241a [-1][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.923 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.923 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":true,\"performative\":14,\"row\":2,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.924 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.924 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@63bc4128 [-1][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.925 [ LittlePoisenDwarfWithGUI] - Added new MapLocation  [17,2] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [62][DwarfDatabase]
+INFO  2016-06-29 18:16:11.926 [ LittlePoisenDwarfWithGUI] - Added new UnknownMapLocation [17][3] to investigation list [157][DwarfDatabase]
+INFO  2016-06-29 18:16:11.926 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.927 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [17,1] to MapLocation  [17,2] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.927 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:16:11.927 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [17,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.928 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [16,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.928 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [16,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: null and distance to target: -1 and distance to target: 3 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.928 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.928 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [16,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.928 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.928 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.929 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.929 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.929 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: null and distance to target: -1 and distance to target: 3 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.929 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.929 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.930 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [17,2] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.930 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,2] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: null and distance to target: -1 and distance to target: 1 to openList [194][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.930 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.931 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.931 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [17,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.931 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [17,1] to MapLocation  [17,2] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.931 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [17,2],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:11.932 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.932 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"DOWN\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.933 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@86acb71 [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.938 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"DOWN\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.941 [LittlePoisenDwarfWithGUI1] - Creating MoveDown message... [134][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.941 [LittlePoisenDwarfWithGUI1] - MoveDown message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_DOWN\"}" 
+ :in-reply-to  MSG12285  :language  JSON ) [146][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:11.945 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send MoveDown to jade.util.leap.ArrayList$1@434dfcb0 [212][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.946 [LittlePoisenDwarfWithGUI1] - Active MovementOrder is finished. Removed MovementOrder [259][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:11.954 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{
+  \"name\" : \"LittlePoisenDwarfWithGUI1\",
+  \"state\" : \"ALIVE\",
+  \"color\" : \"GREEN\",
+  \"currentFood\" : 0,
+  \"totalFood\" : 0,
+  \"action\" : \"ANT_ACTION_DOWN\",
+  \"cell\" : {
+    \"row\" : 2,
+    \"col\" : 17,
+    \"type\" : \"FREE\",
+    \"food\" : 0,
+    \"smell\" : 0,
+    \"stench\" : 0,
+    \"ants\" : [ \"LittlePoisenDwarfWithGUI1\" ]
+  },
+  \"replyId\" : \"MSG12285\"
+}" 
+ :reply-with  MSG12286  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.518 [LittlePoisenDwarfWithGUI1] - Creating UpdateMap message... [42][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.519 [LittlePoisenDwarfWithGUI1] - UpdateMap message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":2,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [61][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.520 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send UpdateMap to jade.util.leap.ArrayList$1@4b1112d9 [145][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.522 [LittlePoisenDwarfWithGUI1] - Creating RequestMovementOrder message... [70][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.521 [ LittlePoisenDwarfWithGUI] - GUIAgent received UpdateMap message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"stench\":0,\"col\":17,\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"isObstacle\":false,\"performative\":7,\"row\":2,\"type\":\"FREE\",\"smell\":0,\"food\":0}" 
+ :in-reply-to  UpdateMap  :language  JSON ) [83][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.523 [LittlePoisenDwarfWithGUI1] - RequestMovementOrder message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [81][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.525 [LittlePoisenDwarfWithGUI1] - ---M--> LittlePoisenDwarfWithGUI1 send RequestMovementOrder to jade.util.leap.ArrayList$1@3ac64955 [191][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.525 [ LittlePoisenDwarfWithGUI] - Updated exsistng MapLocation MapLocation  [17,2] [85][DwarfDatabase]
+INFO  2016-06-29 18:16:30.526 [ LittlePoisenDwarfWithGUI] - Added moved dwarf LittlePoisenDwarfWithGUI1 to new location MapLocation  [17,2] with smellConcentration = 0, stenchConcentration = 0, foodUnits = 0 and LocationStatus: [FREE] [94][DwarfDatabase]
+INFO  2016-06-29 18:16:30.526 [         AWT-EventQueue-0] - Repaint map... [219][DwarfVisualCenter]
+INFO  2016-06-29 18:16:30.527 [ LittlePoisenDwarfWithGUI] - GUIAgent received RequestMovementOrder message: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"dwarfName\":\"LittlePoisenDwarfWithGUI1\",\"collectedFood\":false}" 
+ :in-reply-to  RequestMovementOrder  :language  JSON ) [117][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.530 [ LittlePoisenDwarfWithGUI] - --?--> Looking for path from MapLocation  [17,2] to MapLocation  [19,0] [27][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.530 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [17,2]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.531 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [16,2] is UnknownMapLocation and not targetLoaction [96][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.531 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,2] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.531 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [16,2] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.532 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [17,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.532 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [17,1] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.532 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,1] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.532 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,1] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.532 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,2] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.533 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,2] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.533 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,2] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.533 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.533 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,3] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.533 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,3] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,3] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [17,2]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [17,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [16,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [16,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 and distance to target: 6 to openList [92][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [16,1] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [16,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.534 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,0] is UnknownMapLocation and not targetLoaction [130][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 and distance to target: 4 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [17,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.535 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [17,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.536 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,2]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.536 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,2] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,1] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,2] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,2] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,2] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [18,3] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,3] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.537 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,3] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.538 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,2]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.538 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.538 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.538 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [18,0] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.538 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [18,0] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 and distance to target: 4 and distance to target: 4 to openList [126][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.538 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [18,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.539 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.539 [ LittlePoisenDwarfWithGUI] - --|LS|--> LocationStatus is save from mapLocation: MapLocation  [19,1] [217][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.539 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [19,1] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 and distance to target: 4 and distance to target: 4 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.539 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.539 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.540 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.541 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.541 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [18,0]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.541 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [17,0] is UnknownMapLocation and not targetLoaction [96][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.541 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [17,0] and previous path costs are lower [99][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.542 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [17,0] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.542 [ LittlePoisenDwarfWithGUI] - ----+----> Added MapLocation  [19,0] with parentMapLocation: MapLocation  [18,0] with parentMapLocation: MapLocation  [18,1] with parentMapLocation: MapLocation  [17,1] with parentMapLocation: MapLocation  [17,2] with parentMapLocation: null and distance to target: -1 and distance to target: 4 and distance to target: 4 and distance to target: 4 and distance to target: 4 to openList [160][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.542 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,0] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.542 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,0] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.543 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [18,1] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.543 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [18,0]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.543 [ LittlePoisenDwarfWithGUI] - S----+----> Start to add surrounding map locations from location MapLocation  [19,1]... [70][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.543 [ LittlePoisenDwarfWithGUI] - ---/-/---> CloseList contains already MapLocation  [18,1] [102][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.543 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,0] and previous path costs are lower [133][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.544 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,0] [136][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.544 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [20,1] is UnknownMapLocation and not targetLoaction [164][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.544 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [20,1] and previous path costs are lower [167][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.544 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [20,1] [170][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.544 [ LittlePoisenDwarfWithGUI] - Ignore MapLocation! MapLocation  [19,2] is UnknownMapLocation and not targetLoaction [198][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.544 [ LittlePoisenDwarfWithGUI] - OpenList contains already MapLocation  [19,2] and previous path costs are lower [201][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.545 [ LittlePoisenDwarfWithGUI] - ---/-/---> OpenList contains already MapLocation  [19,2] [204][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.545 [ LittlePoisenDwarfWithGUI] - F----+----> Finished adding surrounding map locations from location MapLocation  [19,1]. [207][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.545 [ LittlePoisenDwarfWithGUI] - -----> Path found from MapLocation  [17,2] to MapLocation  [19,0] [35][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.545 [ LittlePoisenDwarfWithGUI] - Path: MapLocation  [19,0], MapLocation  [18,0], MapLocation  [18,1], MapLocation  [17,1],  [63][DwarfPathFindingUtils]
+INFO  2016-06-29 18:16:30.545 [ LittlePoisenDwarfWithGUI] - Creating MovementOrder message... [90][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.545 [ LittlePoisenDwarfWithGUI] - MovementOrder message created: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"UP\",\"RIGHT\",\"UP\",\"RIGHT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [104][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.546 [ LittlePoisenDwarfWithGUI] - ---M--> LittlePoisenDwarfWithGUI1 send MovementOrder to jade.util.leap.ArrayList$1@1ba00f2e [156][GUILittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.546 [LittlePoisenDwarfWithGUI1] -  Agent LittlePoisenDwarfWithGUI1 received message: (INFORM
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc )) )
+ :content  "{\"moves\":[\"UP\",\"RIGHT\",\"UP\",\"RIGHT\"]}" 
+ :in-reply-to  MovementOrder  :language  JSON ) [109][LittlePoisenDwarf]
+INFO  2016-06-29 18:16:30.547 [LittlePoisenDwarfWithGUI1] - Creating MoveUP message... [113][DwarfMessagingUtils]
+INFO  2016-06-29 18:16:30.547 [LittlePoisenDwarfWithGUI1] - MoveUP message created: (REQUEST
+ :sender  ( agent-identifier :name LittlePoisenDwarfWithGUI1@172.22.7.66:1099/JADE  :addresses (sequence http://172.22.7.66:7778/acc ))
+ :receiver  (set ( agent-identifier :name antWorld01053b8a-f9ef-4606-8b24-05b77226415a@172.22.7.66:1099/JADE ) )
+ :content  "{\"color\":\"ANT_COLOR_GREEN\",\"type\":\"ANT_ACTION_UP\"}" 
+ :in-reply-to  MSG12286  :language  JSON ) [125][DwarfMessagingUtils]

@@ -2,6 +2,7 @@ package main.java.map;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -50,16 +51,19 @@ public class MapEditor extends JComponent {
 	private Image startField;
 	private Image stenchField;
 
+	private Dimension instanceSize;
+
 	// Image Dwarfs
 	private Image greenDwarf;
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
 	private GUILittlePoisenDwarf owner;
-	private int squareDimensionSize = 50;
+	private int squareDimensionSize = DwarfConstants.SQUARE_DIMENSION;
 
-	public MapEditor(GUILittlePoisenDwarf owner) {
+	public MapEditor(GUILittlePoisenDwarf owner, int col, int row) {
 		this.owner = owner;
+		instanceSize = new Dimension((col * squareDimensionSize) + 200, (row * squareDimensionSize) + 200);
 		try {
 			// Load MapLocations
 			clearField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "clear.jpg"));
@@ -84,6 +88,17 @@ public class MapEditor extends JComponent {
 		}
 	}
 
+	@Override
+	public Dimension getPreferredSize() {
+		return instanceSize;
+	}
+
+	@Override
+	public void setSize(Dimension d) {
+		super.setSize(d);
+		instanceSize = d;
+	}
+
 	public void updateMap() {
 		repaint();
 		revalidate();
@@ -102,38 +117,47 @@ public class MapEditor extends JComponent {
 				Stroke oldStroke = g2.getStroke();
 				g2.setStroke(new BasicStroke(2));
 				g2.draw(grid);
-				if ((owner.getDwarfDatabase().getMapLocations()[col][row] != null) && (owner.getDwarfDatabase().getMapLocations()[col][row] instanceof UnknownMapLocation)) {
+				if ((owner.getDwarfDatabase().getMapLocations()[col][row] != null)
+						&& (owner.getDwarfDatabase().getMapLocations()[col][row] instanceof UnknownMapLocation)) {
 					g2.setColor(INVESTIGATION_FIELD_COLOR);
 					g2.fill(grid);
-				} else if ((owner.getDwarfDatabase().getMapLocations()[col][row] != null) && (owner.getDwarfDatabase().getMapLocations()[col][row] instanceof MapLocation)) {
+				} else if ((owner.getDwarfDatabase().getMapLocations()[col][row] != null)
+						&& (owner.getDwarfDatabase().getMapLocations()[col][row] instanceof MapLocation)) {
 					MapLocation location = owner.getDwarfDatabase().getMapLocations()[col][row];
 					if (location.isStartField()) {
 						g2.drawImage(startField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
-					} else if (location.getLocationStatus().contains(LocationStatus.CLEAR)) {
+					} else if (location.getLocationStatus().contains(LocationStatus.FREE)) {
 						g2.drawImage(clearField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 					} else if (location.getLocationStatus().contains(LocationStatus.PIT)) {
 						g2.drawImage(pitField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 					} else {
 						if (location.getLocationStatus().contains(LocationStatus.FOOD) && location.getLocationStatus().contains(LocationStatus.SMELL)
 								&& location.getLocationStatus().contains(LocationStatus.STENCH)) {
-							g2.drawImage(foodAndSmellAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(foodAndSmellAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize,
+									squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.FOOD) && location.getLocationStatus().contains(LocationStatus.SMELL)) {
-							g2.drawImage(foodAndSmellField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(foodAndSmellField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize,
+									null);
 						} else if (location.getLocationStatus().contains(LocationStatus.FOOD) && location.getLocationStatus().contains(LocationStatus.STENCH)) {
-							g2.drawImage(foodAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(foodAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize,
+									null);
 						} else if (location.getLocationStatus().contains(LocationStatus.FOOD)) {
 							g2.drawImage(foodField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.OBSTACLE) && location.getLocationStatus().contains(LocationStatus.SMELL)
 								&& location.getLocationStatus().contains(LocationStatus.STENCH)) {
-							g2.drawImage(obstacleAndSmellAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(obstacleAndSmellAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize,
+									squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.OBSTACLE) && location.getLocationStatus().contains(LocationStatus.SMELL)) {
-							g2.drawImage(obstacleAndSmellField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(obstacleAndSmellField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize,
+									squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.OBSTACLE) && location.getLocationStatus().contains(LocationStatus.STENCH)) {
-							g2.drawImage(obstacleAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(obstacleAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize,
+									squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.OBSTACLE)) {
 							g2.drawImage(obstacleField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.SMELL) && location.getLocationStatus().contains(LocationStatus.STENCH)) {
-							g2.drawImage(smellAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+							g2.drawImage(smellAndStenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize,
+									null);
 						} else if (location.getLocationStatus().contains(LocationStatus.SMELL)) {
 							g2.drawImage(smellField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.STENCH)) {
@@ -157,8 +181,8 @@ public class MapEditor extends JComponent {
 			Map.Entry mentry = (Map.Entry) iterator.next();
 			MapLocation location = (MapLocation) mentry.getValue();
 			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-			g2.drawImage(greenDwarf, 100 + location.getIntColumnCoordinate() * squareDimensionSize, 100 + location.getIntRowCoordinate() * squareDimensionSize, squareDimensionSize,
-					squareDimensionSize, null);
+			g2.drawImage(greenDwarf, 100 + location.getIntColumnCoordinate() * squareDimensionSize, 100 + location.getIntRowCoordinate() * squareDimensionSize,
+					squareDimensionSize, squareDimensionSize, null);
 		}
 		g2.dispose();
 	}
