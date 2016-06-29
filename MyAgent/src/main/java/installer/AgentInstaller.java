@@ -6,19 +6,19 @@ import org.slf4j.LoggerFactory;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.DwarfConstants;
-import main.java.agent.GUILittlePoisenDwarf;
+import main.java.agent.KingLittlePoisenDwarf;
 import main.java.agent.LittlePoisenDwarf;
 
 public class AgentInstaller {
 
-	protected static GUILittlePoisenDwarf dwarfVisualCenter;
+	protected static KingLittlePoisenDwarf dwarfVisualCenter;
 	protected static AgentController agentController;
 	protected static AgentContainer container;
 	protected static String agentName;
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
-	public static void installAgentWithSpecificName(GUILittlePoisenDwarf owner, String name) {
+	public static void installAgentWithSpecificName(KingLittlePoisenDwarf owner, String name) {
 		container = owner.getContainerController();
 		try {
 			if (name == null || name.equals("")) {
@@ -39,7 +39,7 @@ public class AgentInstaller {
 		}
 	}
 
-	public static void installAgentWithRandomName(GUILittlePoisenDwarf owner) {
+	public static void installAgentWithRandomName(KingLittlePoisenDwarf owner) {
 		installAgentWithSpecificName(owner, "");
 	}
 }

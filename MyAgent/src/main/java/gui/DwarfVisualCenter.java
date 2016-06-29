@@ -27,7 +27,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import main.java.agent.GUILittlePoisenDwarf;
+import main.java.agent.KingLittlePoisenDwarf;
 import main.java.jSwingComponentMenuTree.ComponentTreeNode;
 import main.java.jSwingComponentMenuTree.DwarfTreeCellEditor;
 import main.java.jSwingComponentMenuTree.MenuOptionCaption;
@@ -46,7 +46,7 @@ public class DwarfVisualCenter extends JFrame {
 	DefaultTableModel agentsTableModel;
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 	private JTree agentSettingsTree;
-	private GUILittlePoisenDwarf owner;
+	private KingLittlePoisenDwarf owner;
 	private MapEditor editor;
 
 	// Tab names
@@ -56,7 +56,7 @@ public class DwarfVisualCenter extends JFrame {
 	// Tree root
 	private static final String agentSettingsTreeRootNodeLabelEditor = "Agenten";
 
-	public DwarfVisualCenter(GUILittlePoisenDwarf owner, int col, int row) {
+	public DwarfVisualCenter(KingLittlePoisenDwarf owner, int col, int row) {
 		this.owner = owner;
 		setTitle("DwarfVisualCenter");
 		this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);

@@ -47,27 +47,22 @@ public class DwarfPathFindingUtils {
 	}
 
 	private static Queue<MapLocation> getPath(MapLocation startLocation, MapLocationForPathFinding currentMapLocation) {
-		String logString = "Path: ";
 		Deque<MapLocation> pathStack = new ArrayDeque<MapLocation>();
-		logString += "" + currentMapLocation.getSourceMapLocation().toShortString() + ", ";
 		pathStack.push(currentMapLocation.getSourceMapLocation());
 		MapLocationForPathFinding previousMapLocation = currentMapLocation.getParentMapLocation();
 		while (!previousMapLocation.getSourceMapLocation().equals(startLocation)) {
-			logString += "" + previousMapLocation.getSourceMapLocation().toShortString() + ", ";
 			pathStack.push(previousMapLocation.getSourceMapLocation());
 			previousMapLocation = previousMapLocation.getParentMapLocation();
 		}
 		pathStack.push(startLocation);
-		// TODO Check if invert of pathQueue is needed
 		Queue<MapLocation> pathQueue = new LinkedList<MapLocation>(pathStack);
-		log.info("{}", logString);
 		return pathQueue;
 	}
 
 	private static void addSurroundingLocationsToPriorityQueue(PriorityQueue<MapLocationForPathFinding> openList, List<MapLocation> closedList,
 			MapLocation[][] mapLocations, MapLocationForPathFinding parentMapLocation, MapLocation targetLocation) {
 		MapLocation sourceParentMapLocation = parentMapLocation.getSourceMapLocation();
-		log.info("S----+----> Start to add surrounding map locations from location {}...", sourceParentMapLocation.toShortString());
+		log.debug("S----+----> Start to add surrounding map locations from location {}...", sourceParentMapLocation.toShortString());
 		if (sourceParentMapLocation.getIntColumnCoordinate() - 1 >= 0) {
 			if (mapLocations[sourceParentMapLocation.getIntColumnCoordinate() - 1][sourceParentMapLocation.getIntRowCoordinate()] != null) {
 				MapLocation currentMapLocation = mapLocations[sourceParentMapLocation.getIntColumnCoordinate() - 1][sourceParentMapLocation.getIntRowCoordinate()];
@@ -84,22 +79,22 @@ public class DwarfPathFindingUtils {
 									currentPathFindingMapLocation = DwarfPathFindingUtils.getSpecificMapLocationInQueue(currentPathFindingMapLocation, openList);
 									currentPathFindingMapLocation.setPreviousPathCosts(pathCostSoFar);
 									currentPathFindingMapLocation.setParentMapLocation(parentMapLocation);
-									log.info("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
+									log.debug("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
 											currentPathFindingMapLocation, parentMapLocation.toShortString(), pathCostSoFar);
 								} else {
 									setDistancesToMapLocation(currentPathFindingMapLocation, mapLocations, parentMapLocation, targetLocation);
 									openList.add(currentPathFindingMapLocation);
-									log.info("----+----> Added {} to openList", currentPathFindingMapLocation);
+									log.debug("----+----> Added {} to openList", currentPathFindingMapLocation);
 								}
 							}
 						} else {
-							log.info("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
+							log.debug("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
 									currentPathFindingMapLocation.getSourceMapLocation().toShortString());
 						}
-						log.info("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
+						log.debug("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
 					}
 				}
-				log.info("---/-/---> CloseList contains already {}", currentMapLocation.toShortString());
+				log.debug("---/-/---> CloseList contains already {}", currentMapLocation.toShortString());
 			}
 		}
 		if (sourceParentMapLocation.getIntRowCoordinate() - 1 >= 0) {
@@ -118,22 +113,22 @@ public class DwarfPathFindingUtils {
 									currentPathFindingMapLocation = getSpecificMapLocationInQueue(currentPathFindingMapLocation, openList);
 									currentPathFindingMapLocation.setPreviousPathCosts(pathCostSoFar);
 									currentPathFindingMapLocation.setParentMapLocation(parentMapLocation);
-									log.info("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
+									log.debug("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
 											currentPathFindingMapLocation, parentMapLocation.toShortString(), pathCostSoFar);
 								} else {
 									setDistancesToMapLocation(currentPathFindingMapLocation, mapLocations, parentMapLocation, targetLocation);
 									openList.add(currentPathFindingMapLocation);
-									log.info("----+----> Added {} to openList", currentPathFindingMapLocation);
+									log.debug("----+----> Added {} to openList", currentPathFindingMapLocation);
 								}
 							}
 						} else {
-							log.info("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
+							log.debug("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
 									currentPathFindingMapLocation.getSourceMapLocation().toShortString());
 						}
-						log.info("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
+						log.debug("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
 					}
 				}
-				log.info("---/-/---> OpenList contains already {}", currentMapLocation.toShortString());
+				log.debug("---/-/---> OpenList contains already {}", currentMapLocation.toShortString());
 			}
 		}
 		if (!(sourceParentMapLocation.getIntColumnCoordinate() + 1 >= mapLocations.length)) {
@@ -152,22 +147,22 @@ public class DwarfPathFindingUtils {
 									currentPathFindingMapLocation = getSpecificMapLocationInQueue(currentPathFindingMapLocation, openList);
 									currentPathFindingMapLocation.setPreviousPathCosts(pathCostSoFar);
 									currentPathFindingMapLocation.setParentMapLocation(parentMapLocation);
-									log.info("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
+									log.debug("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
 											currentPathFindingMapLocation, parentMapLocation.toShortString(), pathCostSoFar);
 								} else {
 									setDistancesToMapLocation(currentPathFindingMapLocation, mapLocations, parentMapLocation, targetLocation);
 									openList.add(currentPathFindingMapLocation);
-									log.info("----+----> Added {} to openList", currentPathFindingMapLocation);
+									log.debug("----+----> Added {} to openList", currentPathFindingMapLocation);
 								}
 							}
 						} else {
-							log.info("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
+							log.debug("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
 									currentPathFindingMapLocation.getSourceMapLocation().toShortString());
 						}
-						log.info("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
+						log.debug("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
 					}
 				}
-				log.info("---/-/---> OpenList contains already {}", currentMapLocation.toShortString());
+				log.debug("---/-/---> OpenList contains already {}", currentMapLocation.toShortString());
 			}
 		}
 		if (!(sourceParentMapLocation.getIntRowCoordinate() + 1 >= mapLocations[0].length)) {
@@ -186,25 +181,25 @@ public class DwarfPathFindingUtils {
 									currentPathFindingMapLocation = getSpecificMapLocationInQueue(currentPathFindingMapLocation, openList);
 									currentPathFindingMapLocation.setPreviousPathCosts(pathCostSoFar);
 									currentPathFindingMapLocation.setParentMapLocation(parentMapLocation);
-									log.info("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
+									log.debug("----+----> Updated parent location and path costs from {} with new parent: {} and new costs: {}",
 											currentPathFindingMapLocation, parentMapLocation.toShortString(), pathCostSoFar);
 								} else {
 									setDistancesToMapLocation(currentPathFindingMapLocation, mapLocations, parentMapLocation, targetLocation);
 									openList.add(currentPathFindingMapLocation);
-									log.info("----+----> Added {} to openList", currentPathFindingMapLocation);
+									log.debug("----+----> Added {} to openList", currentPathFindingMapLocation);
 								}
 							}
 						} else {
-							log.info("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
+							log.debug("Ignore MapLocation! {} is UnknownMapLocation and not targetLoaction",
 									currentPathFindingMapLocation.getSourceMapLocation().toShortString());
 						}
-						log.info("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
+						log.debug("OpenList contains already {} and previous path costs are lower", currentMapLocation.toShortString());
 					}
 				}
-				log.info("---/-/---> OpenList contains already {}", currentMapLocation.toShortString());
+				log.debug("---/-/---> OpenList contains already {}", currentMapLocation.toShortString());
 			}
 		}
-		log.info("F----+----> Finished adding surrounding map locations from location {}.", sourceParentMapLocation.toShortString());
+		log.debug("F----+----> Finished adding surrounding map locations from location {}.", sourceParentMapLocation.toShortString());
 	}
 
 	private static boolean checkLocationStatus(MapLocation mapLocation) {
@@ -214,21 +209,21 @@ public class DwarfPathFindingUtils {
 		}
 		for (int i = 0; i < locationStati.size(); i++) {
 			if (locationStati.get(i).equals(LocationStatus.FREE)) {
-				log.info("--|LS|--> LocationStatus is save from mapLocation: {}", mapLocation.toShortString());
+				log.debug("--|LS|--> LocationStatus is save from mapLocation: {}", mapLocation.toShortString());
 				return true;
 			}
 			if (locationStati.get(i).equals(LocationStatus.OBSTACLE) || locationStati.get(i).equals(LocationStatus.PIT)) {
-				log.info("--|LNS|--> LocationStatus is unsave from mapLocation: {}", mapLocation.toShortString());
+				log.debug("--|LNS|--> LocationStatus is unsave from mapLocation: {}", mapLocation.toShortString());
 				return false;
 			}
 			if (locationStati.get(i).equals(LocationStatus.STENCH)) {
 				if (!mapLocation.isSave()) {
-					log.info("--|LNS|--> LocationStatus is unsave from mapLocation: {}", mapLocation.toShortString());
+					log.debug("--|LNS|--> LocationStatus is unsave from mapLocation: {}", mapLocation.toShortString());
 					return false;
 				}
 			}
 		}
-		log.info("--|LS|--> LocationStatus is save from mapLocation: {}", mapLocation.toShortString());
+		log.debug("--|LS|--> LocationStatus is save from mapLocation: {}", mapLocation.toShortString());
 		return true;
 	}
 

@@ -4,7 +4,7 @@ import java.io.File;
 
 public class DwarfConstants {
 	// Dwarf Names
-	public static final String GUI_AGENT_NAME = "LittlePoisenDwarfWithGUI";
+	public static final String GUI_AGENT_NAME = "KingPoisenDwarfWithGUI";
 	public static final String AGENT_NAME = "LittlePoisenDwarfWithGUI";
 
 	// Editor

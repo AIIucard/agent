@@ -36,15 +36,19 @@ public class DwarfDatabase {
 		dwarfPositions = new HashMap<String, MapLocation>();
 	}
 
-	public boolean updateExistingMapLocation(boolean isTrap, boolean isBlockade, int col, int row, int foodUnits, int smellConcentration, int stenchConcentration) {
-		if (col > mapLocations.length || row > mapLocations[0].length) {
-			log.error("Location [{},{}] is not an existing mapLocation", row, col);
-			return false;
-		}
-		mapLocations[col][row].updateLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
-				DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration, stenchConcentration));
-		return true;
-	}
+	// public boolean updateExistingMapLocation(boolean isTrap, boolean
+	// isBlockade, int col, int row, int foodUnits, int smellConcentration, int
+	// stenchConcentration) {
+	// if (col > mapLocations.length || row > mapLocations[0].length) {
+	// log.error("Location [{},{}] is not an existing mapLocation", row, col);
+	// return false;
+	// }
+	// mapLocations[col][row].updateLocation(col, row, smellConcentration,
+	// stenchConcentration, foodUnits,
+	// DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits,
+	// smellConcentration, stenchConcentration));
+	// return true;
+	// }
 
 	public boolean updateMapLocation(boolean isStartfield, boolean isTrap, boolean isBlockade, int col, int row, int foodUnits, int smellConcentration,
 			int stenchConcentration, String dwarfName, int performative) {
@@ -61,24 +65,16 @@ public class DwarfDatabase {
 				}
 				log.info("Added new {}", mapLocations[col][row].toString());
 
-				// Dwarf Position
-				if (performative == ACLMessage.INFORM) {
-					if (dwarfPositions.containsKey(dwarfName)) {
-						dwarfPositions.remove(dwarfName);
-						dwarfPositions.put(dwarfName, mapLocations[col][row]);
-						log.info("Moved dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
-					} else {
-						dwarfPositions.put(dwarfName, mapLocations[col][row]);
-						log.info("Added dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
-					}
-				}
+				updateDwarfPosition(col, row, dwarfName, performative);
 
 				// Surrounding Locations
-				addSurroundingLocationsToBeInvestigated(row, col);
+				if (stenchConcentration == 0 && !isBlockade && !isTrap) {
+					addSurroundingLocationsToBeInvestigated(row, col);
+				}
 
 				// Food Locations
 				if (foodUnits > 0) {
-					addFoodLocation(row, col, mapLocations[col][row]);
+					addFoodLocation(mapLocations[col][row]);
 				}
 				return true;
 			} else {
@@ -91,11 +87,27 @@ public class DwarfDatabase {
 					dwarfPositions.remove("dwarfName");
 				}
 				dwarfPositions.put(dwarfName, mapLocations[col][row]);
-				log.info("Added moved dwarf {} to new location {}", dwarfName, mapLocations[col][row].toString());
+				log.info("Moved dwarf {} to new location {}", dwarfName, mapLocations[col][row].toString());
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private void updateDwarfPosition(int col, int row, String dwarfName, int performative) {
+		// Dwarf Position
+		if (performative == ACLMessage.INFORM) {
+			if (dwarfPositions.containsKey(dwarfName)) {
+				dwarfPositions.remove(dwarfName);
+				dwarfPositions.put(dwarfName, mapLocations[col][row]);
+				log.info("Moved dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
+			} else {
+				dwarfPositions.put(dwarfName, mapLocations[col][row]);
+				log.info("Added dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
+			}
+		} else {
+			log.info("Dwarf {} ");
+		}
 	}
 
 	private void checkForResize(int col, int row) {
@@ -115,8 +127,8 @@ public class DwarfDatabase {
 		}
 	}
 
-	private void addFoodLocation(int col, int row, MapLocation loc) {
-		if (checkForLocationNotInFoodLocationList(col, row)) {
+	private void addFoodLocation(MapLocation loc) {
+		if (checkForLocationNotInFoodLocationList(loc.getIntColumnCoordinate(), loc.getIntRowCoordinate())) {
 			locationsWithFood.add(loc);
 		}
 	}

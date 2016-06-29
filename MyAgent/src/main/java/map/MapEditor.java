@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import main.java.DwarfConstants;
-import main.java.agent.GUILittlePoisenDwarf;
+import main.java.agent.KingLittlePoisenDwarf;
 import main.java.map.MapLocation.LocationStatus;
 
 public class MapEditor extends JComponent {
@@ -58,10 +58,10 @@ public class MapEditor extends JComponent {
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
-	private GUILittlePoisenDwarf owner;
+	private KingLittlePoisenDwarf owner;
 	private int squareDimensionSize = DwarfConstants.SQUARE_DIMENSION;
 
-	public MapEditor(GUILittlePoisenDwarf owner, int col, int row) {
+	public MapEditor(KingLittlePoisenDwarf owner, int col, int row) {
 		this.owner = owner;
 		instanceSize = new Dimension((col * squareDimensionSize) + 200, (row * squareDimensionSize) + 200);
 		try {
@@ -126,8 +126,6 @@ public class MapEditor extends JComponent {
 					MapLocation location = owner.getDwarfDatabase().getMapLocations()[col][row];
 					if (location.isStartField()) {
 						g2.drawImage(startField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
-					} else if (location.getLocationStatus().contains(LocationStatus.FREE)) {
-						g2.drawImage(clearField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 					} else if (location.getLocationStatus().contains(LocationStatus.PIT)) {
 						g2.drawImage(pitField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 					} else {
@@ -162,6 +160,8 @@ public class MapEditor extends JComponent {
 							g2.drawImage(smellField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 						} else if (location.getLocationStatus().contains(LocationStatus.STENCH)) {
 							g2.drawImage(stenchField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
+						} else if (location.getLocationStatus().contains(LocationStatus.FREE)) {
+							g2.drawImage(clearField, 100 + col * squareDimensionSize, 100 + row * squareDimensionSize, squareDimensionSize, squareDimensionSize, null);
 						} else {
 							log.error("Location status unknown! Can not draw image...");
 						}

@@ -28,7 +28,7 @@ import main.java.utils.DwarfMessagingUtils;
 import main.java.utils.DwarfPathFindingUtils;
 import main.java.utils.DwarfUtils;
 
-public class GUILittlePoisenDwarf extends GuiAgent {
+public class KingLittlePoisenDwarf extends GuiAgent {
 
 	private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 
 			@Override
 			public void run() {
-				dwarfVisualCenter = new DwarfVisualCenter(GUILittlePoisenDwarf.this, dwarfDatabase.getMapLocations().length, dwarfDatabase.getMapLocations()[0].length);
+				dwarfVisualCenter = new DwarfVisualCenter(KingLittlePoisenDwarf.this, dwarfDatabase.getMapLocations().length, dwarfDatabase.getMapLocations()[0].length);
 				DwarfVisualCenter.showOnScreen(1, dwarfVisualCenter);
 			}
 		});
@@ -95,7 +95,8 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 									boolean isTrap = false;
 									if (jsonObject.get("type").equals(AntCellType.PIT.name()))
 										isTrap = true;
-									boolean isObstacle = jsonObject.get("isObstacle").equals("true") ? true : false;
+									boolean isObstacle = (boolean) jsonObject.get("isObstacle");
+									// TODO Remove
 									Boolean updated = dwarfDatabase.updateMapLocation(isStartfield, isTrap, isObstacle,
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
@@ -198,6 +199,7 @@ public class GUILittlePoisenDwarf extends GuiAgent {
 			}
 		} else {
 			log.info("No locations for investigation left! Can not find Path!");
+			
 		}
 		return null;
 	}

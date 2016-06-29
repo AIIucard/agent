@@ -31,11 +31,15 @@ public class DwarfUtils {
 		if (isBlockade) {
 			list.add(MapLocation.LocationStatus.OBSTACLE);
 		}
-		if (foodUnits != 0) {
+		if (foodUnits > 0) {
 			list.add(MapLocation.LocationStatus.FOOD);
-		}
-		if (smellConcentration != 0) {
-			list.add(MapLocation.LocationStatus.SMELL);
+			if (smellConcentration > foodUnits) {
+				list.add(MapLocation.LocationStatus.SMELL);
+			}
+		} else {
+			if (smellConcentration > 0) {
+				list.add(MapLocation.LocationStatus.SMELL);
+			}
 		}
 		if (stenchConcentration != 0) {
 			list.add(MapLocation.LocationStatus.STENCH);

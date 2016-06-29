@@ -11,11 +11,11 @@ import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import main.java.DwarfConstants;
-import main.java.agent.GUILittlePoisenDwarf;
+import main.java.agent.KingLittlePoisenDwarf;
 
 public class GUIAgentInstaller {
 
-	protected static GUILittlePoisenDwarf dwarfVisualCenter;
+	protected static KingLittlePoisenDwarf dwarfVisualCenter;
 	protected static AgentController agentController;
 	protected static AgentContainer container;
 	protected static String agentName;
@@ -46,7 +46,7 @@ public class GUIAgentInstaller {
 				agentName = args[0];
 			}
 			log.info("Install GUIAgent with name {}.", agentName);
-			agentController = container.createNewAgent(agentName, GUILittlePoisenDwarf.class.getName(), args);
+			agentController = container.createNewAgent(agentName, KingLittlePoisenDwarf.class.getName(), args);
 			agentController.start();
 			log.info("GUIAgent installed.");
 		} catch (Exception ex) {

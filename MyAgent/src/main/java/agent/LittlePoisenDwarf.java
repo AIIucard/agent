@@ -129,12 +129,13 @@ public class LittlePoisenDwarf extends Agent {
 											expectedRow = DwarfUtils.castJSONObjectLongToInt(structure.get("row"));
 										}
 										if (checkForObstacle(expectedColumn, expectedRow, DwarfUtils.castJSONObjectLongToInt(structure.get("col")),
-												DwarfUtils.castJSONObjectLongToInt(structure.get("row")), receivedMessage.getPerformative())) {
+												DwarfUtils.castJSONObjectLongToInt(structure.get("row")), receivedMessage.getPerformative(), jsonObject.get("action"))) {
 											log.info("Found obstacle at Location[{},{}]", expectedColumn, expectedRow);
 											isObstacle = true;
 											updateMapMessage = DwarfMessagingUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), expectedRow,
-													expectedColumn, structure.get("type"), structure.get("food"), structure.get("smell"), structure.get("stench"), name,
-													receivedMessage.getPerformative(), isObstacle);
+													expectedColumn, structure.get("type"), 0, 0, 0, name, receivedMessage.getPerformative(), isObstacle);
+											expectedColumn = DwarfUtils.castJSONObjectLongToInt(structure.get("col"));
+											expectedRow = DwarfUtils.castJSONObjectLongToInt(structure.get("row"));
 										} else {
 											isObstacle = false;
 											updateMapMessage = DwarfMessagingUtils.createUpdateMapMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(),
@@ -158,7 +159,7 @@ public class LittlePoisenDwarf extends Agent {
 								}
 								if (jsonObject.containsKey("state")) {
 									if (jsonObject.get("state").equals("DEAD")) {
-										log.info("Dwarf {} died!", name);
+										log.info("####################### Dwarf {} died! #######################", name);
 										isAlive = false;
 										takeDown();
 									}
@@ -198,7 +199,7 @@ public class LittlePoisenDwarf extends Agent {
 								case UP:
 									ACLMessage moveUpMessage = DwarfMessagingUtils.createMoveUpMessage(antWorldGameLeaderAID, getAID(), antWorldGameLeaderReply);
 									if (moveUpMessage != null) {
-										expectedRow += 1;
+										expectedRow -= 1;
 										send(moveUpMessage);
 										log.info("---M--> {} send {} to {}", name, DwarfConstants.MOVE_UP_MESSAGE_REPLY, moveUpMessage.getAllReceiver());
 									} else {
@@ -208,7 +209,7 @@ public class LittlePoisenDwarf extends Agent {
 								case DOWN:
 									ACLMessage moveDownMessage = DwarfMessagingUtils.createMoveDownMessage(antWorldGameLeaderAID, getAID(), antWorldGameLeaderReply);
 									if (moveDownMessage != null) {
-										expectedRow -= 1;
+										expectedRow += 1;
 										send(moveDownMessage);
 										log.info("---M--> {} send {} to {}", name, DwarfConstants.MOVE_DOWN_MESSAGE_REPLY, moveDownMessage.getAllReceiver());
 									} else {
@@ -260,6 +261,7 @@ public class LittlePoisenDwarf extends Agent {
 									log.info("Active MovementOrder is finished. Removed MovementOrder");
 								}
 							}
+							log.debug("ExpectedColumn {} ExpectedRow {} for next MapLocation", expectedColumn, expectedRow);
 						} catch (ParseException pex) {
 							log.error("Error while parsing message at position {}!", pex.getPosition(), pex);
 						}
@@ -271,8 +273,8 @@ public class LittlePoisenDwarf extends Agent {
 				}
 			}
 
-			private boolean checkForObstacle(int expectedColumn, int expectedRow, Object column, Object row, int performative) {
-				if (performative == ACLMessage.REFUSE) {
+			private boolean checkForObstacle(int expectedColumn, int expectedRow, Object column, Object row, int performative, Object action) {
+				if (performative == ACLMessage.REFUSE && !action.equals(AntWorldConsts.ANT_ACTION_COLLECT)) {
 					if ((expectedColumn != ((Integer) column).intValue()) || (expectedRow != Integer.valueOf((Integer) row))) {
 						return true;
 					}
