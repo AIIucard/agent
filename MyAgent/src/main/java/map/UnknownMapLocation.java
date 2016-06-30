@@ -8,6 +8,6 @@ public class UnknownMapLocation extends MapLocation {
 
 	@Override
 	public String toString() {
-		return "UnknownMapLocation [" + getColumnCoordinate() + "][" + getRowCoordinate() + "]";
+		return "UnknownMapLocation [" + getColumnCoordinate() + "," + getRowCoordinate() + "]";
 	}
 }

@@ -32,15 +32,12 @@ public class LittlePoisenDwarf extends Agent {
 
 	private String name;
 	private AID antWorldGameLeaderAID;
-
 	private MovementOrder activeMovementOrder;
-	private boolean collectedFood;
-
 	private String antWorldGameLeaderReply;
-
 	private boolean waitingForMovementOrder;
 	private boolean isAlive;
-
+	private boolean isCollectPossible;
+	private boolean collectedFood;
 	private int expectedRow;
 	private int expectedColumn;
 
@@ -49,6 +46,8 @@ public class LittlePoisenDwarf extends Agent {
 		name = getLocalName();
 		antWorldGameLeaderReply = "";
 		waitingForMovementOrder = false;
+		isCollectPossible = false;
+		collectedFood = false;
 		isAlive = true;
 		expectedRow = -1;
 		expectedColumn = -1;
@@ -116,7 +115,6 @@ public class LittlePoisenDwarf extends Agent {
 								if (receivedMessage.getReplyWith() != null) {
 									antWorldGameLeaderReply = receivedMessage.getReplyWith();
 								}
-								// TODO check if collect and drop are possible
 								if (jsonObject.containsKey("cell")) {
 									JSONObject structure = (JSONObject) jsonObject.get("cell");
 									if (structure.containsKey("row") && structure.containsKey("col")) {
@@ -142,15 +140,25 @@ public class LittlePoisenDwarf extends Agent {
 													structure.get("row"), structure.get("col"), structure.get("type"), structure.get("food"), structure.get("smell"),
 													structure.get("stench"), name, receivedMessage.getPerformative(), isObstacle);
 										}
+
+										// Update isCollectPossible
+										isCollectPossible = DwarfUtils.castJSONObjectLongToInt(structure.get("food")) > 0 ? true : false;
+
+										// Update collected
+										if (receivedMessage.getPerformative() == ACLMessage.INFORM
+												&& jsonObject.get("action").equals(AntWorldConsts.ANT_ACTION_COLLECT)) {
+											collectedFood = true;
+										}
+										if (receivedMessage.getPerformative() == ACLMessage.INFORM && jsonObject.get("action").equals(AntWorldConsts.ANT_ACTION_DROP)) {
+											collectedFood = false;
+										}
+
 										if (updateMapMessage != null) {
 											send(updateMapMessage);
 											log.info("---M--> {} send {} to {}", name, DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, updateMapMessage.getAllReceiver());
 										} else {
 											log.info("---X--> Can not send {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY);
 										}
-										// TODO Update activeMovementOrder
-										// (isFinished = True if col and row
-										// fit)
 									} else {
 										log.error("Perception message is incomplete: {}", receivedMessage);
 									}
@@ -195,6 +203,9 @@ public class LittlePoisenDwarf extends Agent {
 								}
 							} else if (activeMovementOrder != null && isAlive) {
 								Move currentMovement = activeMovementOrder.getMoves().remove();
+								if (currentMovement.equals(Move.COLLECT)) {
+									log.info("");
+								}
 								switch (currentMovement) {
 								case UP:
 									ACLMessage moveUpMessage = DwarfMessagingUtils.createMoveUpMessage(antWorldGameLeaderAID, getAID(), antWorldGameLeaderReply);
@@ -237,13 +248,27 @@ public class LittlePoisenDwarf extends Agent {
 									}
 									break;
 								case COLLECT:
-									ACLMessage moveCollectMessage = DwarfMessagingUtils.createMoveCollectMessage(antWorldGameLeaderAID, getAID(),
-											antWorldGameLeaderReply);
-									if (moveCollectMessage != null) {
-										send(moveCollectMessage);
-										log.info("---M--> {} send {} to {}", name, DwarfConstants.MOVE_COLLECT_MESSAGE_REPLY, moveCollectMessage.getAllReceiver());
+									if (isCollectPossible) {
+										ACLMessage moveCollectMessage = DwarfMessagingUtils.createMoveCollectMessage(antWorldGameLeaderAID, getAID(),
+												antWorldGameLeaderReply);
+										if (moveCollectMessage != null) {
+											send(moveCollectMessage);
+											log.info("---M--> {} send {} to {}", name, DwarfConstants.MOVE_COLLECT_MESSAGE_REPLY, moveCollectMessage.getAllReceiver());
+										} else {
+											log.info("---X--> Can not send {}", DwarfConstants.MOVE_COLLECT_MESSAGE_REPLY);
+										}
 									} else {
-										log.info("---X--> Can not send {}", DwarfConstants.MOVE_COLLECT_MESSAGE_REPLY);
+										log.error("Can not collect food!");
+										ACLMessage requestMovementOrderMessage = DwarfMessagingUtils
+												.createRequestMovementOrderMessage(getAID(DwarfConstants.GUI_AGENT_NAME), getAID(), name, collectedFood);
+										if (requestMovementOrderMessage != null) {
+											send(requestMovementOrderMessage);
+											waitingForMovementOrder = true;
+											log.info("---M--> {} send {} to {}", name, DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY,
+													requestMovementOrderMessage.getAllReceiver());
+										} else {
+											log.info("---X--> Can not send {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY);
+										}
 									}
 									break;
 								case DROP:

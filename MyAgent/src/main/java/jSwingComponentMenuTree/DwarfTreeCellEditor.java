@@ -14,60 +14,60 @@ import javax.swing.tree.TreeCellEditor;
 
 public class DwarfTreeCellEditor implements TreeCellEditor {
 
-  public DwarfTreeCellEditor() {
-  }
+	public DwarfTreeCellEditor() {
+	}
 
-  @Override
-  public void addCellEditorListener(CellEditorListener l) {
-    // TODO
-  }
+	@Override
+	public void addCellEditorListener(CellEditorListener l) {
+		// No fuction
+	}
 
-  @Override
-  public void cancelCellEditing() {
-    // TODO
-  }
+	@Override
+	public void cancelCellEditing() {
+		// No fuction
+	}
 
-  @Override
-  public Object getCellEditorValue() {
-    return this;
-  }
+	@Override
+	public Object getCellEditorValue() {
+		return this;
+	}
 
-  @Override
-  public boolean isCellEditable(EventObject evt) {
-    if (evt instanceof MouseEvent) {
-      MouseEvent mevt = (MouseEvent) evt;
+	@Override
+	public boolean isCellEditable(EventObject evt) {
+		if (evt instanceof MouseEvent) {
+			MouseEvent mevt = (MouseEvent) evt;
 
-      if (mevt.getClickCount() == 1) {
-        return true;
-      }
-    }
+			if (mevt.getClickCount() == 1) {
+				return true;
+			}
+		}
 
-    return false;
-  }
+		return false;
+	}
 
-  @Override
-  public void removeCellEditorListener(CellEditorListener l) {
-    //
-  }
+	@Override
+	public void removeCellEditorListener(CellEditorListener l) {
+		// No fuction
+	}
 
-  @Override
-  public boolean shouldSelectCell(EventObject anEvent) {
-    return true;
-  }
+	@Override
+	public boolean shouldSelectCell(EventObject anEvent) {
+		return true;
+	}
 
-  @Override
-  public boolean stopCellEditing() {
-    return false;
-  }
+	@Override
+	public boolean stopCellEditing() {
+		return false;
+	}
 
-  @Override
-  public Component getTreeCellEditorComponent(JTree tree, Object value, boolean isSelected, boolean expanded, boolean leaf, int row) {
-    DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
-    if (node.getUserObject() instanceof JComponent) {
-      JComponent comp = (JComponent) node.getUserObject();
-      return comp;
-    } else {
-      return new JLabel((String) node.getUserObject());
-    }
-  }
+	@Override
+	public Component getTreeCellEditorComponent(JTree tree, Object value, boolean isSelected, boolean expanded, boolean leaf, int row) {
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
+		if (node.getUserObject() instanceof JComponent) {
+			JComponent comp = (JComponent) node.getUserObject();
+			return comp;
+		} else {
+			return new JLabel((String) node.getUserObject());
+		}
+	}
 }

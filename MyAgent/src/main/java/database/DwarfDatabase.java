@@ -44,7 +44,7 @@ public class DwarfDatabase {
 				// Location Status
 				mapLocations[col][row] = new MapLocation(col, row, smellConcentration, stenchConcentration, foodUnits,
 						DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits, smellConcentration, stenchConcentration));
-				if (isStartfield) {
+				if (isStartfield && homeLocation == null) {
 					mapLocations[col][row].setStartField(isStartfield);
 					setHomeLocation(mapLocations[col][row]);
 					log.info("Added new home location at position [{},{}]", col, row);
@@ -60,8 +60,9 @@ public class DwarfDatabase {
 
 				// Food Locations
 				if (foodUnits > 0) {
-					addFoodLocation(mapLocations[col][row]);
+					updateFoodLocation(mapLocations[col][row]);
 				}
+
 				return true;
 			} else {
 				log.info("Updated exsistng MapLocation {}", mapLocations[col][row].toShortString());
@@ -72,6 +73,11 @@ public class DwarfDatabase {
 				if (dwarfPositions.containsKey("dwarfName")) {
 					dwarfPositions.remove("dwarfName");
 				}
+
+				// Food Locations
+				if (foodUnits == 0) {
+					removeFoodLocation(mapLocations[col][row]);
+				}
 				dwarfPositions.put(dwarfName, mapLocations[col][row]);
 				log.info("Moved dwarf {} to new location {}", dwarfName, mapLocations[col][row].toString());
 				return true;
@@ -81,7 +87,6 @@ public class DwarfDatabase {
 	}
 
 	private void updateDwarfPosition(int col, int row, String dwarfName, int performative) {
-		// Dwarf Position
 		if (performative == ACLMessage.INFORM) {
 			if (dwarfPositions.containsKey(dwarfName)) {
 				dwarfPositions.remove(dwarfName);
@@ -92,7 +97,7 @@ public class DwarfDatabase {
 				log.info("Added dwarf {} to MapLocation {}", dwarfName, mapLocations[col][row].toString());
 			}
 		} else {
-			log.info("Dwarf {} ");
+			log.info("Position from Dwarf {} can not be updated");
 		}
 	}
 
@@ -113,9 +118,29 @@ public class DwarfDatabase {
 		}
 	}
 
-	private void addFoodLocation(MapLocation loc) {
-		if (checkForLocationNotInFoodLocationList(loc.getIntColumnCoordinate(), loc.getIntRowCoordinate())) {
-			locationsWithFood.add(loc);
+	private void updateFoodLocation(MapLocation mapLocation) {
+		for (int i = 0; i < locationsWithFood.size(); ++i) {
+			if (locationsWithFood.get(i).equals(mapLocation)) {
+				if (locationsWithFood.get(i).getFoodUnits() == 0) {
+					locationsWithFood.remove(i);
+					log.info("{} removed from FoodLocations", mapLocation.toShortString());
+				}
+				return;
+			}
+		}
+		mapLocation.setSave(true);
+		locationsWithFood.add(mapLocation);
+	}
+
+	private void removeFoodLocation(MapLocation mapLocation) {
+		for (int i = 0; i < locationsWithFood.size(); ++i) {
+			if (locationsWithFood.get(i).equals(mapLocation)) {
+				if (locationsWithFood.get(i).getFoodUnits() == 0) {
+					locationsWithFood.remove(mapLocation);
+					log.info("{} removed from FoodLocations", mapLocation.toShortString());
+				}
+				return;
+			}
 		}
 	}
 
