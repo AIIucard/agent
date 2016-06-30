@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="main/java/img/dwarfs/|main/java/img/mapLocations/" kind="src" path="src"/>
 	<classpathentry kind="src" path="cfg"/>
+	<classpathentry kind="src" path="src/main/java/img/dwarfs"/>
+	<classpathentry kind="src" path="src/main/java/img/mapLocations"/>
 	<classpathentry exported="true" kind="lib" path="lib/jade-4.4.0.jar" sourcepath="lib/jade/src"/>
 	<classpathentry exported="true" kind="lib" path="lib/java-json.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/antworld.jar"/>

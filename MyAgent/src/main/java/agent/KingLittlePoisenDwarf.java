@@ -75,7 +75,6 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 			@Override
 			public void run() {
 				dwarfVisualCenter = new DwarfVisualCenter(KingLittlePoisenDwarf.this, dwarfDatabase.getMapLocations().length, dwarfDatabase.getMapLocations()[0].length);
-				DwarfVisualCenter.showOnScreen(1, dwarfVisualCenter);
 			}
 		});
 
@@ -156,7 +155,7 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 										if (dwarfDatabase.getLocationsToBeInvestigated().size() != 0 || dwarfDatabase.getLocationsWithFood().size() != 0) {
 											// Dwarf MovementOrder
 											// classification
-											if (dwarfDatabase.getLocationsWithFood().size() >= 2) {
+											if (dwarfDatabase.getLocationsWithFood().size() >= 1) {
 												dwarfMood = DwarfMood.DRINK_MOOD;
 											} else {
 												dwarfMood = DwarfMood.SEARCH_MOOD;

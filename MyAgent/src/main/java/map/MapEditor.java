@@ -9,14 +9,12 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
-import java.io.File;
-import java.io.IOException;
+import java.awt.Toolkit;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 import org.slf4j.Logger;
@@ -64,28 +62,24 @@ public class MapEditor extends JComponent {
 	public MapEditor(KingLittlePoisenDwarf owner, int col, int row) {
 		this.owner = owner;
 		instanceSize = new Dimension((col * squareDimensionSize) + 200, (row * squareDimensionSize) + 200);
-		try {
-			// Load MapLocations
-			clearField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "clear.jpg"));
-			foodAndSmellAndStenchField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "food_smell_stench.jpg"));
-			foodAndSmellField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "food_smell.jpg"));
-			foodAndStenchField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "food_stench.jpg"));
-			foodField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "food.jpg"));
-			obstacleAndSmellAndStenchField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "obstacle_smell_stench.jpg"));
-			obstacleAndSmellField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "obstacle_smell.jpg"));
-			obstacleAndStenchField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "obstacle_stench.jpg"));
-			obstacleField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "obstacle.jpg"));
-			pitField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "pit.jpg"));
-			smellAndStenchField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "smell_stench.jpg"));
-			smellField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "smell.jpg"));
-			startField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "start.jpg"));
-			stenchField = ImageIO.read(new File(DwarfConstants.MAP_LOCATION_IMAGE_FILE_PATH + "stench.jpg"));
+		// Load MapLocations
+		clearField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/clear.jpg"));
+		foodAndSmellAndStenchField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/food_smell_stench.jpg"));
+		foodAndSmellField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/food_smell.jpg"));
+		foodAndStenchField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/food_stench.jpg"));
+		foodField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/food.jpg"));
+		obstacleAndSmellAndStenchField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/obstacle_smell_stench.jpg"));
+		obstacleAndSmellField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/obstacle_smell.jpg"));
+		obstacleAndStenchField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/obstacle_stench.jpg"));
+		obstacleField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/obstacle.jpg"));
+		pitField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/pit.jpg"));
+		smellAndStenchField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/smell_stench.jpg"));
+		smellField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/smell.jpg"));
+		startField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/start.jpg"));
+		stenchField = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/stench.jpg"));
 
-			// Load Dwarfs
-			greenDwarf = ImageIO.read(new File(DwarfConstants.DWARF_IMAGE_FILE_PATH + "dwarf_green.png"));
-		} catch (IOException ioex) {
-			log.error("Error while loading images!", ioex);
-		}
+		// Load Dwarfs
+		greenDwarf = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/dwarf_green.png"));
 	}
 
 	@Override
