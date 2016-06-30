@@ -106,7 +106,6 @@ public class MapEditor extends JComponent {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		// TODO
 		super.paintComponent(g); // Call it's parent for proper rendering.
 		Graphics2D g2 = (Graphics2D) g;
 

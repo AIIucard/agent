@@ -32,16 +32,32 @@ import main.java.utils.DwarfMessagingUtils;
 import main.java.utils.DwarfPathFindingUtils;
 import main.java.utils.DwarfUtils;
 
+/**
+ * @author Maximilian Weidemann
+ * 
+ *         This Class is the controller of all other Agent. The class provide is
+ *         also database and GUI manager. It provides methods for updating
+ *         Database and GUI and generate movement orders for all other agents.
+ *         Generating movement orders includes path finding and dwarf position
+ *         management.
+ */
+/**
+ * @author Atze
+ *
+ */
+/**
+ * @author Atze
+ *
+ */
 public class KingLittlePoisenDwarf extends GuiAgent {
 
 	private static final long serialVersionUID = 1L;
 
 	private DwarfVisualCenter dwarfVisualCenter;
 	private DwarfDatabase dwarfDatabase;
+	private DwarfMood dwarfMood;
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
-
-	private DwarfMood dwarfMood;
 
 	public enum DwarfMood {
 		SEARCH_MOOD, DRINK_MOOD
@@ -75,6 +91,12 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		log.info("GUIAgent started.");
 	}
 
+	/**
+	 * This method is the primary method. The method will install one
+	 * CyclicBehaviour for receiving and parsing messages from other agents. A
+	 * message can be an update or a request. A request includes pathfinding and
+	 * MovementOrder generation.
+	 */
 	private void installBehaviours() {
 		this.addBehaviour(new CyclicBehaviour(this) {
 			private static final long serialVersionUID = 1L;
@@ -83,6 +105,7 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 			public void action() {
 				ACLMessage receivedMessage = receive();
 				if (receivedMessage != null) {
+					// Update Map
 					if (receivedMessage.getInReplyTo().equals(DwarfConstants.UPDATE_MAP_MESSAGE_REPLY)) {
 						log.info("GUIAgent received {} message: {}", DwarfConstants.UPDATE_MAP_MESSAGE_REPLY, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
@@ -94,7 +117,6 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 									boolean isStartfield = jsonObject.get("type").equals(AntCellType.START.name()) ? true : false;
 									boolean isTrap = jsonObject.get("type").equals(AntCellType.PIT.name()) ? true : false;
 									boolean isObstacle = (boolean) jsonObject.get("isObstacle");
-									// TODO Remove
 									Boolean locationUpdated = dwarfDatabase.updateMapLocation(isStartfield, isTrap, isObstacle,
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("col")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("row")),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
@@ -113,6 +135,7 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 						} else {
 							log.error("Message type unknown, because language key not set! Can not decode message into JSONObject!");
 						}
+						// Generate MovementOrder
 					} else if (receivedMessage.getInReplyTo().equals(DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY)) {
 						log.info("GUIAgent received {} message: {}", DwarfConstants.REQUEST_MOVEMENTORDER_MESSAGE_REPLY, receivedMessage);
 						if (receivedMessage.getLanguage().equals("JSON")) {
@@ -203,21 +226,51 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		});
 	}
 
+	/**
+	 * Check if content of received requestMovementOrder message is complete
+	 * 
+	 * @param jsonObject
+	 *            The content of the received message
+	 * @return true If content is complete otherwise false
+	 */
 	private boolean isRequestMovementOrderMessageComplete(JSONObject jsonObject) {
 		return jsonObject.containsKey("dwarfName") && jsonObject.containsKey("collectedFood");
 	}
 
+	/**
+	 * Check if content of received updateMap message is complete
+	 * 
+	 * @param jsonObject
+	 *            The content of the received message
+	 * @return true If content is complete otherwise false
+	 */
 	private boolean isUpdateMapMessageComplete(JSONObject jsonObject) {
 		return jsonObject.containsKey("row") && jsonObject.containsKey("col") && jsonObject.containsKey("type") && jsonObject.containsKey("food")
 				&& jsonObject.containsKey("smell") && jsonObject.containsKey("stench") && jsonObject.containsKey("dwarfName") && jsonObject.containsKey("performative")
 				&& jsonObject.containsKey("isObstacle");
 	}
 
+	/**
+	 * Search for a path to home location. The name is for getting the agent
+	 * position
+	 * 
+	 * @param name
+	 *            Name of the agent
+	 * @return Queue<MapLocation> The path to the home location
+	 */
 	private Queue<MapLocation> searchForHomePath(String name) {
 		return DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(), dwarfDatabase.getDwarfPositions().get(name),
 				dwarfDatabase.getHomeLocation());
 	}
 
+	/**
+	 * Search for a path to investigation location. The name is for getting the
+	 * agent position
+	 * 
+	 * @param name
+	 *            Name of the agent
+	 * @return Queue<MapLocation> The path to the next investigation location
+	 */
 	private Queue<MapLocation> searchForPathToNextLocationToInvestigate(String name) {
 		Queue<MapLocation> path;
 		if (dwarfDatabase.getLocationsToBeInvestigated().size() != 0) {
@@ -234,6 +287,14 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		return null;
 	}
 
+	/**
+	 * Search for a path to food location. The name is for getting the agent
+	 * position
+	 * 
+	 * @param name
+	 *            Name of the agent
+	 * @return Queue<MapLocation> The path to the next food location
+	 */
 	private Queue<MapLocation> searchForPathToFoodLocation(String name) {
 		Queue<MapLocation> path;
 		if (dwarfDatabase.getLocationsWithFood().size() != 0) {
@@ -249,6 +310,9 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		return null;
 	}
 
+	/**
+	 * After MapUpdate use this method for searching for traps on the map.
+	 */
 	private void searchAllMapLocationsForTraps() {
 		log.info("Start search for Traps...");
 		MapLocation[][] mapLocations = dwarfDatabase.getMapLocations();
@@ -256,19 +320,22 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 			for (int row = 0; row < mapLocations[0].length; row++) {
 				if (mapLocations[col][row] == null) {
 					searchForTrapsByStench(col, row);
-
+					// Other trap searching
 				}
-				// else if (!searchForSurrounding4LocationsWithStench(col, row))
-				// {
-				//
-				// }
-				// // Solo Stench Traps
-				// searchForSoloTraps(col, row);
 			}
 		}
 		log.info("Finish search for Traps.");
 	}
 
+	/**
+	 * One search method for checking a specific location
+	 * 
+	 * @param col
+	 *            Column of the location
+	 * @param row
+	 *            Row of the location
+	 * @return true if traps were found
+	 */
 	private boolean searchForTrapsByStench(int col, int row) {
 		MapLocation[][] mapLocations = dwarfDatabase.getMapLocations();
 		int upperStench = checkStenchUpperLocation(col, row, mapLocations);
@@ -371,6 +438,7 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 				}
 			}
 		}
+		// TODO Incomplete Trap finding
 		// if (checkForSurroundingNullLocations(col, row, mapLocations,
 		// upperStench) && checkIf3SurroundingLocationsKnown(col, row,
 		// mapLocations)) {
@@ -393,27 +461,34 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		// }
 	}
 
-	private boolean checkIf3SurroundingLocationsKnown(int col, int row, MapLocation[][] mapLocations) {
-		int countLocations = 0;
-		if (col <= mapLocations.length - 1 && row <= mapLocations[0].length - 1) {
-			if (row - 1 < 0 || isValidLocation(col, row - 1, mapLocations) || isObstacleLocation(col, row - 1, mapLocations)) {
-				++countLocations;
-			}
-			if (isValidLocation(col, row + 1, mapLocations) || isObstacleLocation(col, row + 1, mapLocations)) {
-				++countLocations;
-			}
-			if (col - 1 < 0 || isValidLocation(col - 1, row, mapLocations) || isObstacleLocation(col - 1, row, mapLocations)) {
-				++countLocations;
-			}
-			if (isValidLocation(col + 1, row, mapLocations) || isObstacleLocation(col + 1, row, mapLocations)) {
-				++countLocations;
-			}
-			if (countLocations == 3) {
-				return true;
-			}
-		}
-		return false;
-	}
+	// Currently unused
+	// private boolean checkIf3SurroundingLocationsKnown(int col, int row,
+	// MapLocation[][] mapLocations) {
+	// int countLocations = 0;
+	// if (col <= mapLocations.length - 1 && row <= mapLocations[0].length - 1)
+	// {
+	// if (row - 1 < 0 || isValidLocation(col, row - 1, mapLocations) ||
+	// isObstacleLocation(col, row - 1, mapLocations)) {
+	// ++countLocations;
+	// }
+	// if (isValidLocation(col, row + 1, mapLocations) ||
+	// isObstacleLocation(col, row + 1, mapLocations)) {
+	// ++countLocations;
+	// }
+	// if (col - 1 < 0 || isValidLocation(col - 1, row, mapLocations) ||
+	// isObstacleLocation(col - 1, row, mapLocations)) {
+	// ++countLocations;
+	// }
+	// if (isValidLocation(col + 1, row, mapLocations) || isObstacleLocation(col
+	// + 1, row, mapLocations)) {
+	// ++countLocations;
+	// }
+	// if (countLocations == 3) {
+	// return true;
+	// }
+	// }
+	// return false;
+	// }
 
 	private boolean checkForSurroundingNullLocations(int col, int row, MapLocation[][] mapLocations, int stenchCount) {
 		if (col >= 0 && col <= mapLocations.length - 1 && row >= 0 && row <= mapLocations[0].length - 1) {
@@ -424,6 +499,19 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		return false;
 	}
 
+	/**
+	 * Count surrounding null locations from a specific location
+	 * 
+	 * @param col
+	 *            Column of the specific location
+	 * @param row
+	 *            Row of the specific location
+	 * 
+	 * @param mapLocations
+	 *            Database of mapLocations
+	 * 
+	 * @return int The number of surrounding null locations
+	 */
 	private int countSurroundingNullLocations(int col, int row, MapLocation[][] mapLocations) {
 		int nullLocationCounter = 0;
 		if (col - 1 >= 0 && row >= 0 && row <= mapLocations[0].length - 1) {
@@ -584,6 +672,9 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		});
 	}
 
+	/**
+	 * Updates the GUI an repaint the map in a different thread.
+	 */
 	private void updateMap() {
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -606,7 +697,6 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 
 	@Override
 	protected void onGuiEvent(GuiEvent arg0) {
-		// TODO Auto-generated method stub
-
+		// Currently unused...
 	}
 }

@@ -12,19 +12,26 @@ import javax.swing.event.CellEditorListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellEditor;
 
+/**
+ * @author Maximilian Weidemann
+ * 
+ *         Editor for JComponent Tree in Menu
+ *
+ */
 public class DwarfTreeCellEditor implements TreeCellEditor {
 
 	public DwarfTreeCellEditor() {
+		// No function
 	}
 
 	@Override
 	public void addCellEditorListener(CellEditorListener l) {
-		// No fuction
+		// No function
 	}
 
 	@Override
 	public void cancelCellEditing() {
-		// No fuction
+		// No function
 	}
 
 	@Override
@@ -47,7 +54,7 @@ public class DwarfTreeCellEditor implements TreeCellEditor {
 
 	@Override
 	public void removeCellEditorListener(CellEditorListener l) {
-		// No fuction
+		// No function
 	}
 
 	@Override

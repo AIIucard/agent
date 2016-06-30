@@ -128,7 +128,6 @@ public class DwarfVisualCenter extends JFrame {
 	private JTabbedPane createSettingsPanel() {
 		JTabbedPane pane = new JTabbedPane();
 		pane.addTab(AGENT_SETTINGS_TAB, createAgentSettingsTree());
-		// TODO
 		return pane;
 	}
 

@@ -5,7 +5,6 @@
 package main.java.jSwingComponentMenuTree;
 
 public enum MenuOptionCaption {
-	// TODO
 	INSTALLATION("Installation"); //
 
 	protected final String label;
