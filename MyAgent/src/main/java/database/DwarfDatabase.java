@@ -36,20 +36,6 @@ public class DwarfDatabase {
 		dwarfPositions = new HashMap<String, MapLocation>();
 	}
 
-	// public boolean updateExistingMapLocation(boolean isTrap, boolean
-	// isBlockade, int col, int row, int foodUnits, int smellConcentration, int
-	// stenchConcentration) {
-	// if (col > mapLocations.length || row > mapLocations[0].length) {
-	// log.error("Location [{},{}] is not an existing mapLocation", row, col);
-	// return false;
-	// }
-	// mapLocations[col][row].updateLocation(col, row, smellConcentration,
-	// stenchConcentration, foodUnits,
-	// DwarfUtils.getLocationStatus(isTrap, isBlockade, foodUnits,
-	// smellConcentration, stenchConcentration));
-	// return true;
-	// }
-
 	public boolean updateMapLocation(boolean isStartfield, boolean isTrap, boolean isBlockade, int col, int row, int foodUnits, int smellConcentration,
 			int stenchConcentration, String dwarfName, int performative) {
 		checkForResize(col, row);
@@ -69,7 +55,7 @@ public class DwarfDatabase {
 
 				// Surrounding Locations
 				if (stenchConcentration == 0 && !isBlockade && !isTrap) {
-					addSurroundingLocationsToBeInvestigated(row, col);
+					addSurroundingLocationsToBeInvestigated(col, row);
 				}
 
 				// Food Locations
@@ -133,7 +119,7 @@ public class DwarfDatabase {
 		}
 	}
 
-	private void addSurroundingLocationsToBeInvestigated(int row, int col) {
+	public void addSurroundingLocationsToBeInvestigated(int col, int row) {
 		if (col - 1 >= 0) {
 			if (mapLocations[col - 1][row] == null) {
 				if (checkForLocationNotInInvestigationQueue(col - 1, row)) {
@@ -152,7 +138,7 @@ public class DwarfDatabase {
 				}
 			}
 		}
-		if (!(col + 1 >= mapLocations.length)) {
+		if (!(col + 1 >= mapLocations.length - 1)) {
 			if (mapLocations[col + 1][row] == null) {
 				if (checkForLocationNotInInvestigationQueue(col + 1, row)) {
 					mapLocations[col + 1][row] = new UnknownMapLocation(col + 1, row);
@@ -161,7 +147,7 @@ public class DwarfDatabase {
 				}
 			}
 		}
-		if (!(row + 1 >= mapLocations[0].length)) {
+		if (!(row + 1 >= mapLocations[0].length - 1)) {
 			if (mapLocations[col][row + 1] == null) {
 				if (checkForLocationNotInInvestigationQueue(col, row + 1)) {
 					mapLocations[col][row + 1] = new UnknownMapLocation(col, row + 1);

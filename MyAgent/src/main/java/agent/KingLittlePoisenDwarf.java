@@ -1,6 +1,8 @@
 package main.java.agent;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -24,6 +26,8 @@ import main.java.agent.MovementOrder.Move;
 import main.java.database.DwarfDatabase;
 import main.java.gui.DwarfVisualCenter;
 import main.java.map.MapLocation;
+import main.java.map.MapLocation.LocationStatus;
+import main.java.map.UnknownMapLocation;
 import main.java.utils.DwarfMessagingUtils;
 import main.java.utils.DwarfPathFindingUtils;
 import main.java.utils.DwarfUtils;
@@ -37,10 +41,10 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 
 	private static Logger log = LoggerFactory.getLogger(java.lang.invoke.MethodHandles.lookup().lookupClass());
 
-	private AgentenStatus agentStatus;
+	private DawarfMood dwarfMood;
 
-	public enum AgentenStatus {
-		SEARCH, COLLECT
+	public enum DawarfMood {
+		SEARCH_MOOD, DRINK_MOOD
 	}
 
 	@Override
@@ -66,7 +70,7 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 		installBehaviours();
 
 		log.info("Set AgentStatus to SEARCH.");
-		agentStatus = AgentenStatus.SEARCH;
+		dwarfMood = DawarfMood.SEARCH_MOOD;
 
 		log.info("GUIAgent started.");
 	}
@@ -102,6 +106,7 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("food")), DwarfUtils.castJSONObjectLongToInt(jsonObject.get("smell")),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("stench")), jsonObject.get("dwarfName").toString(),
 											DwarfUtils.castJSONObjectLongToInt(jsonObject.get("performative")));
+									searchAllMapLocationsForTraps();
 									if (updated) {
 										updateMap();
 									}
@@ -131,22 +136,47 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 											moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path, false, true);
 										}
 									} else {
-										switch (agentStatus) {
-										case SEARCH:
-											path = searchForPathToNextLocationToInvestigate(name);
-
+										if (dwarfDatabase.getLocationsToBeInvestigated().size() != 0 || dwarfDatabase.getLocationsWithFood().size() != 0) {
+											switch (dwarfMood) {
+											case SEARCH_MOOD:
+												path = searchForPathToNextLocationToInvestigate(name);
+												// TODO
+												// if (path == null &&
+												// dwarfDatabase.getLocationsToBeInvestigated().size()
+												// == 0) {
+												// dwarfMood =
+												// DawarfMood.DRINK_MOOD;
+												// path =
+												// searchForPathToFoodLocation(name);
+												// }
+												break;
+											case DRINK_MOOD:
+												path = searchForPathToFoodLocation(name);
+												if (path == null && dwarfDatabase.getLocationsWithFood().size() == 0) {
+													dwarfMood = DawarfMood.SEARCH_MOOD;
+													path = searchForPathToNextLocationToInvestigate(name);
+												}
+												break;
+											}
 											if (path != null) {
 												moveActionQueue = DwarfPathFindingUtils.convertPathToActions(path, false, false);
+												// TODO
+												// &&
+												// dwarfDatabase.getLocationsWithFood().size()
+												// == 0
+											} else if (dwarfDatabase.getLocationsToBeInvestigated().size() == 0) {
+												log.info("No interesting locations left. Start search for Traps in MapLocations...");
+												searchAllMapLocationsForTraps();
+												log.info("Finished search for Traps in MapLocations.");
+												updateMap();
+											} else {
+												log.error("######################## Error with pathfinding! ########################");
 											}
-											break;
-										case COLLECT:
-											path = searchForPathToFoodLocation(name);
-											if (path != null) {
-												// moveActionQueue =
-												// convertPathToActions(path,
-												// true, false);
-											}
-											break;
+										} else {
+											log.info("No interesting locations left. Start search for Traps in MapLocations...");
+											searchAllMapLocationsForTraps();
+											log.info("Finished search for Traps in MapLocations.");
+											updateMap();
 										}
 									}
 									if ((path != null) && (path.size() != 0) && (moveActionQueue != null) && (moveActionQueue.size() != 0)) {
@@ -198,21 +228,109 @@ public class KingLittlePoisenDwarf extends GuiAgent {
 				}
 			}
 		} else {
-			log.info("No locations for investigation left! Can not find Path!");
-			
+			log.info("No locations for investigation left!");
 		}
 		return null;
 	}
 
 	private Queue<MapLocation> searchForPathToFoodLocation(String name) {
 		Queue<MapLocation> path;
-		for (MapLocation mapLocation : dwarfDatabase.getLocationsWithFood()) {
-			path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(), dwarfDatabase.getDwarfPositions().get(name), mapLocation);
-			if (path != null) {
-				return path;
+		if (dwarfDatabase.getLocationsWithFood().size() != 0) {
+			for (MapLocation mapLocation : dwarfDatabase.getLocationsWithFood()) {
+				path = DwarfPathFindingUtils.checkForPathToLocation(dwarfDatabase.getMapLocations(), dwarfDatabase.getDwarfPositions().get(name), mapLocation);
+				if (path != null) {
+					return path;
+				}
 			}
+		} else {
+			log.info("No locations with Food left!");
 		}
 		return null;
+	}
+
+	private void searchAllMapLocationsForTraps() {
+		log.info("Start search for Traps...");
+		MapLocation[][] mapLocations = dwarfDatabase.getMapLocations();
+		for (int col = 0; col < mapLocations.length; col++) {
+			for (int row = 0; row < mapLocations[0].length; row++) {
+				if (mapLocations[col][row] == null) {
+					// Easy Traps
+					if (col == 16 && row == 5) {
+						log.info("");
+					}
+					searchForSurrounding4LocationsWithStench(col, row);
+				}
+			}
+		}
+		log.info("Finish search for Traps.");
+	}
+
+	private void searchForSurrounding4LocationsWithStench(int col, int row) {
+		MapLocation[][] mapLocations = dwarfDatabase.getMapLocations();
+		if ((row - 1 >= 0) && (row + 1 <= mapLocations[0].length - 2)) {
+			if (checkUperLocation(col, row, mapLocations) && checkLowerLocation(col, row, mapLocations)) {
+				if ((col - 1 >= 0) && (col + 1 <= mapLocations.length - 2)) {
+					if (checkLeftLocation(col, row, mapLocations) && checkRightLocation(col, row, mapLocations)) {
+						updateTrapAndSurroundingLocations(col, row);
+					}
+				}
+			}
+		}
+	}
+
+	private boolean checkRightLocation(int col, int row, MapLocation[][] mapLocations) {
+		return isValidLocation(col + 1, row, mapLocations) && ((locationHasStench(col + 1, row, mapLocations) || locationIsObstacle(col + 1, row, mapLocations)));
+	}
+
+	private boolean checkLeftLocation(int col, int row, MapLocation[][] mapLocations) {
+		return isValidLocation(col - 1, row, mapLocations) && ((locationHasStench(col - 1, row, mapLocations) || locationIsObstacle(col - 1, row, mapLocations)));
+	}
+
+	private boolean checkLowerLocation(int col, int row, MapLocation[][] mapLocations) {
+		return isValidLocation(col, row + 1, mapLocations) && ((locationHasStench(col, row + 1, mapLocations) || locationIsObstacle(col, row + 1, mapLocations)));
+	}
+
+	private boolean checkUperLocation(int col, int row, MapLocation[][] mapLocations) {
+		return isValidLocation(col, row - 1, mapLocations) && ((locationHasStench(col, row - 1, mapLocations) || locationIsObstacle(col, row - 1, mapLocations)));
+	}
+
+	private boolean locationIsObstacle(int col, int row, MapLocation[][] mapLocations) {
+		return mapLocations[col][row].getLocationStatus().contains(LocationStatus.OBSTACLE);
+	}
+
+	private boolean locationHasStench(int col, int row, MapLocation[][] mapLocations) {
+		return mapLocations[col][row].getStenchConcentration() > 0;
+	}
+
+	private boolean isValidLocation(int col, int row, MapLocation[][] mapLocations) {
+		return mapLocations[col][row] != null && !(mapLocations[col][row] instanceof UnknownMapLocation);
+	}
+
+	private void updateTrapAndSurroundingLocations(int col, int row) {
+		MapLocation[][] mapLocations = dwarfDatabase.getMapLocations();
+		mapLocations[col][row] = new MapLocation(col, row, 0, 0, 0, new ArrayList<LocationStatus>(Arrays.asList(LocationStatus.PIT)));
+		log.info("Found Trap at {}", mapLocations[col][row].toShortString());
+		updateSpecificLocation(col - 1, row);
+		updateSpecificLocation(col + 1, row);
+		updateSpecificLocation(col, row - 1);
+		updateSpecificLocation(col, row + 1);
+	}
+
+	private void updateSpecificLocation(int col, int row) {
+		MapLocation location = dwarfDatabase.getMapLocations()[col][row];
+		if (location != null && !(location instanceof UnknownMapLocation)) {
+			dwarfDatabase.getMapLocations()[location.getIntColumnCoordinate()][location.getIntRowCoordinate()].updateLocation(location.getIntColumnCoordinate(),
+					location.getIntRowCoordinate(), location.getSmellConcentration(), location.getStenchConcentration(), location.getFoodUnits(),
+					DwarfUtils.getLocationStatus(location.getLocationStatus().contains(LocationStatus.PIT),
+							location.getLocationStatus().contains(LocationStatus.OBSTACLE), location.getFoodUnits(), location.getSmellConcentration(),
+							location.getStenchConcentration()));
+			if (dwarfDatabase.getMapLocations()[col][row].getStenchConcentration() - 1 == 0) {
+				dwarfDatabase.getMapLocations()[col][row].setSave(true);
+			}
+			if (dwarfDatabase.getMapLocations()[col][row].isSave()) {
+				dwarfDatabase.addSurroundingLocationsToBeInvestigated(col, row);
+			}
+		}
 	}
 
 	public void shutDownAgent() {
