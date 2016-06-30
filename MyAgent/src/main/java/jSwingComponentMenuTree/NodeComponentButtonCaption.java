@@ -1,14 +1,8 @@
-/*
- * Copyright (c) 2016 SSI Schaefer Noell GmbH
- */
-
 package main.java.jSwingComponentMenuTree;
 
 public enum NodeComponentButtonCaption {
 
-	INSTALL_NEW_AGENT("Neuen Agenten installieren",
-			"<html>Installiert einen neuen Agenten im Container<br> und startet diesen</html>",
-			MenuOptionCaption.INSTALLATION);//
+	INSTALL_NEW_AGENT("Neuen Agenten installieren", "<html>Installiert einen neuen Agenten im Container<br> und startet diesen</html>", MenuOptionCaption.INSTALLATION);//
 
 	protected final String buttonLabel;
 	protected final String helpText;

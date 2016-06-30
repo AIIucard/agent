@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2016 SSI Schaefer Noell GmbH
- */
-
 package main.java.jSwingComponentMenuTree;
 
 public enum MenuOptionCaption {

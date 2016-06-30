@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2016 SSI Schaefer Noell GmbH
- */
-
 package main.java.jSwingComponentMenuTree;
 
 import javax.swing.tree.DefaultMutableTreeNode;
